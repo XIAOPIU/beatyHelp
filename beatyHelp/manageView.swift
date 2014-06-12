@@ -36,9 +36,6 @@ class GetTopTab{
         setRightTab(_controller)
     }
     
-    
-    
-    
     //创建顶部Tab框体并设置尺寸
     func setTopTab (controller:UIViewController){
         topTab = UIView(frame:CGRectMake(10, 20, 300, 42))
@@ -88,8 +85,6 @@ class GetTopTab{
         rightTab.addSubview(tabLabel)
         topTab.addSubview(rightTab)
     }
-    
-    
 }
 
 class GetPubTableView{
@@ -110,7 +105,6 @@ class GetPubTableView{
         else{
             userImage = arrayDic[(rowNo+1)%3].objectForKey("userImage") as String
         }
-        
         
         cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath:indexPath) as UITableViewCell
         cell.backgroundColor = UIColor.clearColor()
