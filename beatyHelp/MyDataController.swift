@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class MyDataController: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         MyDataViewDraw(_controller: self)
