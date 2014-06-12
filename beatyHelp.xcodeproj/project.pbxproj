@@ -44,6 +44,11 @@
 		A33AFF661948424D006A4839 /* detailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33AFF651948424D006A4839 /* detailView.swift */; };
 		A34434B5194946960061D2F9 /* BHHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34434B4194946960061D2F9 /* BHHttpRequest.swift */; };
 		A34434B719494F570061D2F9 /* BHUIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34434B619494F570061D2F9 /* BHUIViewExt.swift */; };
+		A34434BB19496ECE0061D2F9 /* detailsTopBgBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A34434B819496ECE0061D2F9 /* detailsTopBgBlue@2x.png */; };
+		A34434BC19496ECE0061D2F9 /* detailsTopBgGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A34434B919496ECE0061D2F9 /* detailsTopBgGreen@2x.png */; };
+		A34434BD19496ECE0061D2F9 /* detailsTopBgRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A34434BA19496ECE0061D2F9 /* detailsTopBgRed@2x.png */; };
+		A34434BF19496EE20061D2F9 /* headBackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A34434BE19496EE20061D2F9 /* headBackBtn@2x.png */; };
+		A34434C119496EEA0061D2F9 /* headBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A34434C019496EEA0061D2F9 /* headBg@2x.png */; };
 		A39CCF3A1943FEEE006D061A /* obTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF391943FEEE006D061A /* obTool.m */; };
 		A39CCF3E19454EAB006D061A /* footButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF3D19454EAB006D061A /* footButtonAction.swift */; };
 		A39CCF4019455975006D061A /* ManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF3F19455975006D061A /* ManageController.swift */; };
@@ -105,6 +110,11 @@
 		A33AFF651948424D006A4839 /* detailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailView.swift; sourceTree = "<group>"; };
 		A34434B4194946960061D2F9 /* BHHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHHttpRequest.swift; sourceTree = "<group>"; };
 		A34434B619494F570061D2F9 /* BHUIViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHUIViewExt.swift; sourceTree = "<group>"; };
+		A34434B819496ECE0061D2F9 /* detailsTopBgBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "detailsTopBgBlue@2x.png"; path = "../../../../Desktop/images/detailsTopBgBlue@2x.png"; sourceTree = "<group>"; };
+		A34434B919496ECE0061D2F9 /* detailsTopBgGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "detailsTopBgGreen@2x.png"; path = "../../../../Desktop/images/detailsTopBgGreen@2x.png"; sourceTree = "<group>"; };
+		A34434BA19496ECE0061D2F9 /* detailsTopBgRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "detailsTopBgRed@2x.png"; path = "../../../../Desktop/images/detailsTopBgRed@2x.png"; sourceTree = "<group>"; };
+		A34434BE19496EE20061D2F9 /* headBackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "headBackBtn@2x.png"; path = "../../../../Desktop/images/headBackBtn@2x.png"; sourceTree = "<group>"; };
+		A34434C019496EEA0061D2F9 /* headBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "headBg@2x.png"; path = "../../../../Desktop/images/headBg@2x.png"; sourceTree = "<group>"; };
 		A39CCF321943FDF2006D061A /* beatyHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beatyHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		A39CCF391943FEEE006D061A /* obTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = obTool.m; sourceTree = "<group>"; };
 		A39CCF3B1943FEFB006D061A /* obTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = obTool.h; sourceTree = "<group>"; };
@@ -146,6 +156,11 @@
 			children = (
 				A32D8D181946B12E00A03EB7 /* bgMini@2x.png */,
 				A32D8D191946B12E00A03EB7 /* blackBtn@2x.png */,
+				A34434B819496ECE0061D2F9 /* detailsTopBgBlue@2x.png */,
+				A34434B919496ECE0061D2F9 /* detailsTopBgGreen@2x.png */,
+				A34434BE19496EE20061D2F9 /* headBackBtn@2x.png */,
+				A34434C019496EEA0061D2F9 /* headBg@2x.png */,
+				A34434BA19496ECE0061D2F9 /* detailsTopBgRed@2x.png */,
 				A32D8D1A1946B12E00A03EB7 /* blueBtn@2x.png */,
 				A32D8D1B1946B12E00A03EB7 /* downIcon@2x.png */,
 				A32D8D1C1946B12E00A03EB7 /* footBtn01@2x.png */,
@@ -371,11 +386,14 @@
 			files = (
 				A32D8D3E1946B12E00A03EB7 /* footLine@2x.png in Resources */,
 				A32D8D381946B12E00A03EB7 /* footBtn01@2x.png in Resources */,
+				A34434BB19496ECE0061D2F9 /* detailsTopBgBlue@2x.png in Resources */,
+				A34434BD19496ECE0061D2F9 /* detailsTopBgRed@2x.png in Resources */,
 				A32D8D4D1946B12E00A03EB7 /* userList01@2x.jpg in Resources */,
 				A32D8D421946B12E00A03EB7 /* listCellGreen@2x.png in Resources */,
 				A32D8D3A1946B12E00A03EB7 /* footBtn02@2x.png in Resources */,
 				A32D8D161946B12400A03EB7 /* statuses.plist in Resources */,
 				A32D8D491946B12E00A03EB7 /* rightValueLine@2x.png in Resources */,
+				A34434BC19496ECE0061D2F9 /* detailsTopBgGreen@2x.png in Resources */,
 				A32D8D351946B12E00A03EB7 /* blackBtn@2x.png in Resources */,
 				A32D8D391946B12E00A03EB7 /* footBtn01x@2x.png in Resources */,
 				A32D8D3D1946B12E00A03EB7 /* footBtn03x@2x.png in Resources */,
@@ -384,12 +402,14 @@
 				A32D8D4A1946B12E00A03EB7 /* topBgImg@2x.jpg in Resources */,
 				A32D8D441946B12E00A03EB7 /* listCellRed@2x.png in Resources */,
 				A32D8D3B1946B12E00A03EB7 /* footBtn02x@2x.png in Resources */,
+				A34434BF19496EE20061D2F9 /* headBackBtn@2x.png in Resources */,
 				A32D8D431946B12E00A03EB7 /* listCellGreenX@2x.png in Resources */,
 				A32D8D471946B12E00A03EB7 /* middleLine@2x.png in Resources */,
 				A32D8D361946B12E00A03EB7 /* blueBtn@2x.png in Resources */,
 				A32D8D341946B12E00A03EB7 /* bgMini@2x.png in Resources */,
 				A32D8D4B1946B12E00A03EB7 /* upIcon@2x.png in Resources */,
 				A32D8D371946B12E00A03EB7 /* downIcon@2x.png in Resources */,
+				A34434C119496EEA0061D2F9 /* headBg@2x.png in Resources */,
 				A32D8D411946B12E00A03EB7 /* listCellBlueX@2x.png in Resources */,
 				A32D8D401946B12E00A03EB7 /* listCellBlue@2x.png in Resources */,
 				A32D8D481946B12E00A03EB7 /* phoneIcon@2x.png in Resources */,
