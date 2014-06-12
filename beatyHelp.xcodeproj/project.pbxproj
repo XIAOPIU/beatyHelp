@@ -43,6 +43,7 @@
 		A33AFF64194841F4006A4839 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33AFF63194841F4006A4839 /* DetailsController.swift */; };
 		A33AFF661948424D006A4839 /* detailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33AFF651948424D006A4839 /* detailView.swift */; };
 		A34434B5194946960061D2F9 /* BHHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34434B4194946960061D2F9 /* BHHttpRequest.swift */; };
+		A34434B719494F570061D2F9 /* BHUIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34434B619494F570061D2F9 /* BHUIViewExt.swift */; };
 		A39CCF3A1943FEEE006D061A /* obTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF391943FEEE006D061A /* obTool.m */; };
 		A39CCF3E19454EAB006D061A /* footButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF3D19454EAB006D061A /* footButtonAction.swift */; };
 		A39CCF4019455975006D061A /* ManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF3F19455975006D061A /* ManageController.swift */; };
@@ -103,6 +104,7 @@
 		A33AFF63194841F4006A4839 /* DetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		A33AFF651948424D006A4839 /* detailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailView.swift; sourceTree = "<group>"; };
 		A34434B4194946960061D2F9 /* BHHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHHttpRequest.swift; sourceTree = "<group>"; };
+		A34434B619494F570061D2F9 /* BHUIViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHUIViewExt.swift; sourceTree = "<group>"; };
 		A39CCF321943FDF2006D061A /* beatyHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beatyHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		A39CCF391943FEEE006D061A /* obTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = obTool.m; sourceTree = "<group>"; };
 		A39CCF3B1943FEFB006D061A /* obTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = obTool.h; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				A3E671601941CFBA00DE0D03 /* tool.swift */,
 				A34434B4194946960061D2F9 /* BHHttpRequest.swift */,
+				A34434B619494F570061D2F9 /* BHUIViewExt.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A34434B719494F570061D2F9 /* BHUIViewExt.swift in Sources */,
 				A33AFF64194841F4006A4839 /* DetailsController.swift in Sources */,
 				A3E6715F1941CF9700DE0D03 /* mainView.swift in Sources */,
 				A31C38B8194597F700A3713D /* MyDataController.swift in Sources */,

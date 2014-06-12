@@ -49,8 +49,6 @@ func getDictionary(string:String)->AnyObject{
     return dictionary.objectForKey(string)
 }
 
-
-
 /**
 *  通过字典查出相应颜色
 *
@@ -64,5 +62,3 @@ func getColorFromDictionary(dictionaryName:String) -> UIColor{
     colorArray = colorList.objectForKey(dictionaryName) as NSMutableArray
     return UIColor(red: CGFloat(colorArray[0] as NSNumber)/255, green: CGFloat(colorArray[1] as NSNumber)/255, blue: CGFloat(colorArray[2] as NSNumber)/255, alpha: CGFloat(colorArray[3] as NSNumber))
 }
-
-

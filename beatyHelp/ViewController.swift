@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // mainView 界面绘制
         setIndexTable()
+//        loadData()
         MainViewDraw(_controller: self)
     }
 
@@ -73,5 +74,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func footBtn3Action(sender: UIButton!) {
         var myDataCon = MyDataController()
         self.presentModalViewController(myDataCon, animated:false)
+    }
+    
+    func loadData()
+    {
+        var url = "http://mm.renren.com/task-all?userid=1"
+        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+            var getCode: AnyObject! = data.objectForKey("data")
+            UIView.showAlertView("提示",message:toString(getCode))
+        })
     }
 }
