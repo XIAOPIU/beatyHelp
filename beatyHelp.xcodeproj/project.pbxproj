@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185BBE4719496FA700B1D738 /* bottomLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4319496FA700B1D738 /* bottomLine@2x.png */; };
+		185BBE4819496FA700B1D738 /* separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4419496FA700B1D738 /* separator@2x.png */; };
+		185BBE4919496FA700B1D738 /* leftTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4519496FA700B1D738 /* leftTabIcon@2x.png */; };
+		185BBE4A19496FA700B1D738 /* rightTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4619496FA700B1D738 /* rightTabIcon@2x.png */; };
 		A31C38B8194597F700A3713D /* MyDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C38B7194597F700A3713D /* MyDataController.swift */; };
 		A31C38BA1945985B00A3713D /* myDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C38B91945985B00A3713D /* myDataView.swift */; };
 		A31C38BD1945A08700A3713D /* manageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C38BC1945A08700A3713D /* manageView.swift */; };
@@ -72,6 +76,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		185BBE4319496FA700B1D738 /* bottomLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomLine@2x.png"; sourceTree = "<group>"; };
+		185BBE4419496FA700B1D738 /* separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator@2x.png"; sourceTree = "<group>"; };
+		185BBE4519496FA700B1D738 /* leftTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftTabIcon@2x.png"; sourceTree = "<group>"; };
+		185BBE4619496FA700B1D738 /* rightTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightTabIcon@2x.png"; sourceTree = "<group>"; };
 		A31C38B7194597F700A3713D /* MyDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDataController.swift; sourceTree = "<group>"; };
 		A31C38B91945985B00A3713D /* myDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myDataView.swift; sourceTree = "<group>"; };
 		A31C38BC1945A08700A3713D /* manageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = manageView.swift; sourceTree = "<group>"; };
@@ -158,6 +166,10 @@
 				A32D8D191946B12E00A03EB7 /* blackBtn@2x.png */,
 				A34434B819496ECE0061D2F9 /* detailsTopBgBlue@2x.png */,
 				A34434B919496ECE0061D2F9 /* detailsTopBgGreen@2x.png */,
+				185BBE4319496FA700B1D738 /* bottomLine@2x.png */,
+				185BBE4419496FA700B1D738 /* separator@2x.png */,
+				185BBE4519496FA700B1D738 /* leftTabIcon@2x.png */,
+				185BBE4619496FA700B1D738 /* rightTabIcon@2x.png */,
 				A34434BE19496EE20061D2F9 /* headBackBtn@2x.png */,
 				A34434C019496EEA0061D2F9 /* headBg@2x.png */,
 				A34434BA19496ECE0061D2F9 /* detailsTopBgRed@2x.png */,
@@ -385,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A32D8D3E1946B12E00A03EB7 /* footLine@2x.png in Resources */,
+				185BBE4A19496FA700B1D738 /* rightTabIcon@2x.png in Resources */,
 				A32D8D381946B12E00A03EB7 /* footBtn01@2x.png in Resources */,
 				A34434BB19496ECE0061D2F9 /* detailsTopBgBlue@2x.png in Resources */,
 				A34434BD19496ECE0061D2F9 /* detailsTopBgRed@2x.png in Resources */,
@@ -396,12 +409,14 @@
 				A34434BC19496ECE0061D2F9 /* detailsTopBgGreen@2x.png in Resources */,
 				A32D8D351946B12E00A03EB7 /* blackBtn@2x.png in Resources */,
 				A32D8D391946B12E00A03EB7 /* footBtn01x@2x.png in Resources */,
+				185BBE4919496FA700B1D738 /* leftTabIcon@2x.png in Resources */,
 				A32D8D3D1946B12E00A03EB7 /* footBtn03x@2x.png in Resources */,
 				A32D8D3F1946B12E00A03EB7 /* goldIcon@2x.png in Resources */,
 				A3F4925D1941B37D0067A74F /* Images.xcassets in Resources */,
 				A32D8D4A1946B12E00A03EB7 /* topBgImg@2x.jpg in Resources */,
 				A32D8D441946B12E00A03EB7 /* listCellRed@2x.png in Resources */,
 				A32D8D3B1946B12E00A03EB7 /* footBtn02x@2x.png in Resources */,
+				185BBE4819496FA700B1D738 /* separator@2x.png in Resources */,
 				A34434BF19496EE20061D2F9 /* headBackBtn@2x.png in Resources */,
 				A32D8D431946B12E00A03EB7 /* listCellGreenX@2x.png in Resources */,
 				A32D8D471946B12E00A03EB7 /* middleLine@2x.png in Resources */,
@@ -419,6 +434,7 @@
 				A32D8D4C1946B12E00A03EB7 /* userHead@2x.jpg in Resources */,
 				A32D8D461946B12E00A03EB7 /* middleBtn@2x.png in Resources */,
 				A32D8D451946B12E00A03EB7 /* listCellRedX@2x.png in Resources */,
+				185BBE4719496FA700B1D738 /* bottomLine@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
