@@ -2,7 +2,7 @@
 //  BHHttpRequest.swift
 //  beatyHelp
 //
-//  Created by 李国锐 on 6/12/14.
+//  Created by 李国锐,张杨雪 on 6/12/14.
 //  Copyright (c) 2014 XIAOPIU. All rights reserved.
 //
 
@@ -10,10 +10,7 @@ import UIKit
 import Foundation
 
 class BHHttpRequest: NSObject {
-    init()
-    {
-        super.init();
-    }
+    init(){super.init()}
     
     class func requestWithURL(urlString:String,completionHandler:(data:AnyObject)->Void)
     {
@@ -21,22 +18,14 @@ class BHHttpRequest: NSObject {
         var req = NSURLRequest(URL: URL)
         var queue = NSOperationQueue();
         NSURLConnection.sendAsynchronousRequest(req, queue: queue, completionHandler: { response, data, error in
-            if error
-            {
-                dispatch_async(dispatch_get_main_queue(),
-                    {
-                        println(error)
-                        completionHandler(data:NSNull())
-                    })
-            }
-            else
-            {
+            if error {
+                dispatch_async(dispatch_get_main_queue(),{
+                    println(error)
+                    completionHandler(data:NSNull())
+                })
+            }else{
                 let jsonData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-                
-                dispatch_async(dispatch_get_main_queue(),
-                    {
-                        completionHandler(data:jsonData)
-                    })
+                dispatch_async(dispatch_get_main_queue(),{completionHandler(data:jsonData)})
             }
         })
     }

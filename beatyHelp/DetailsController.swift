@@ -2,7 +2,7 @@
 //  DetailsController.swift
 //  beatyHelp
 //
-//  Created by 李国锐 on 6/11/14.
+//  Created by 李国锐,张杨雪 on 6/11/14.
 //  Copyright (c) 2014 XIAOPIU. All rights reserved.
 //
 
@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class DetailsController: UIViewController {
+    var rowIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DetailViewDraw(_controller: self)

@@ -2,7 +2,7 @@
 //  manageView.swift
 //  beatyHelp
 //
-//  Created by 李国锐 on 6/9/14.
+//  Created by 李国锐,张杨雪 on 6/9/14.
 //  Copyright (c) 2014 XIAOPIU. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ class ManageViewDraw{
     var leftTab:UIButton! // 发布的任务
     var rightTab:UIButton! //领取的任务
     
-    init(_controller: UIViewController){
+    init(_controller: ManageController){
         GetUIBaseView(_controller: _controller)
         GetFootBar(_controller: _controller, _index: 2)
         var topView=GetTopTab(_controller: _controller)

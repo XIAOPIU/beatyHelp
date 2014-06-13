@@ -2,7 +2,7 @@
 //  baseView.swift
 //  beatyHelp
 //
-//  Created by 李国锐 on 6/6/14.
+//  Created by 李国锐,张杨雪 on 6/6/14.
 //  Copyright (c) 2014 XIAOPIU. All rights reserved.
 //
 
@@ -20,7 +20,6 @@ class GetUIBaseView{
         _controller.view.backgroundColor = UIColor(patternImage: UIImage(named:"bgMini"))
     }
 }
-
 
 class GetFootBar{
     var footBg:UIImageView! // 底部框体包括背景图
