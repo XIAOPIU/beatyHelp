@@ -37,7 +37,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.pubTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-71), style:UITableViewStyle.Plain)
         self.pubTable!.delegate = self
         self.pubTable!.dataSource = self
-        self.pubTable!.rowHeight = 125
+        self.pubTable!.rowHeight = 160
         self.pubTable!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.pubTable!.backgroundColor = UIColor.clearColor()
         self.pubTable!.separatorColor = UIColor.clearColor()
@@ -49,7 +49,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.getTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-71), style:UITableViewStyle.Plain)
         self.getTable!.delegate = self
         self.getTable!.dataSource = self
-        self.getTable!.rowHeight = 125
+        self.getTable!.rowHeight = 160
         self.getTable!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.getTable!.backgroundColor = UIColor.clearColor()
         self.getTable!.separatorColor = UIColor.clearColor()
@@ -73,10 +73,10 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
         if(tableView==self.pubTable){
-            return GetPubTableView(tableView: tableView,cellForRowAtIndexPath:indexPath,tableIndex: 0).cell
+            return GetPubTableView(tableView: tableView,indexPath: indexPath,tableIndex: 0).cell
         }
         else{
-            return GetPubTableView(tableView: tableView,cellForRowAtIndexPath:indexPath,tableIndex: 1).cell
+            return GetPubTableView(tableView: tableView,indexPath: indexPath,tableIndex: 1).cell
         }
     }
     
