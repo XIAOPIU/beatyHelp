@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  beatyHelp
 //
-//  Created by 李国锐 on 6/6/14.
+//  Created by 李国锐,张杨雪 on 6/6/14.
 //  Copyright (c) 2014 XIAOPIU. All rights reserved.
 //
 
@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.indexTable = UITableView(frame:CGRectMake(7,160,306,UIScreen.mainScreen().applicationFrame.height-179), style:UITableViewStyle.Plain)
         self.indexTable!.delegate = self
         self.indexTable!.dataSource = self
-        self.indexTable!.rowHeight = 125
+        self.indexTable!.rowHeight = 135
         self.indexTable!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.indexTable!.backgroundColor = UIColor.clearColor()
         self.indexTable!.separatorColor = UIColor.clearColor()
@@ -62,6 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         // 跳转到详情内页
         var detailsCon = DetailsController()
+        detailsCon.rowIndex = indexPath!.row
         self.presentModalViewController(detailsCon, animated:false)
         self.indexTable!.deselectRowAtIndexPath(indexPath, animated: false)
     }

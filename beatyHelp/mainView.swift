@@ -2,7 +2,7 @@
 //  mainView.swift
 //  beatyHelp
 //
-//  Created by 李国锐 on 6/6/14.
+//  Created by 李国锐,张杨雪 on 6/6/14.
 //  Copyright (c) 2014 XIAOPIU. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class MainViewDraw{
-    init(_controller:UIViewController){
+    init(_controller:ViewController){
         // 为controller添加baseView
         GetUIBaseView(_controller: _controller)
         GetMainViewTop(_controller: _controller,_pageNum: 1)
@@ -156,6 +156,18 @@ class GetMainViewMiddle{
         imgBtnView = UIImageView(image:btnImg)
         imgBtnView.frame = CGRectMake(229, 128, 90, 32)
         controller.view.addSubview(imgBtnView)
+        
+        var btnIcon = UIImageView(image: UIImage(named:"icon01"))
+        btnIcon.frame = CGRectMake(11, 5, 20, 20)
+        imgBtnView.addSubview(btnIcon)
+        
+        var btnLabel = UILabel(frame:CGRectMake(33, 5, 45, 20))
+        btnLabel.text = "发任务"
+        btnLabel.font = UIFont(name:"Arial",size:15)
+        btnLabel.textColor = UIColor.whiteColor()
+        btnLabel.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
+        btnLabel.shadowOffset = CGSizeMake(0, 0.5)
+        imgBtnView.addSubview(btnLabel)
     }
 }
 
@@ -171,6 +183,11 @@ class GetTableView{
         var imageName = arrayDic[rowNo%3].objectForKey("imageName") as String
         var dateText = arrayDic[rowNo%3].objectForKey("time") as String
         var userImage = arrayDic[rowNo%3].objectForKey("userImage") as String
+        var iconImage = arrayDic[rowNo%3].objectForKey("taskIcon") as String
+        var nameLabel = arrayDic[rowNo%3].objectForKey("taskName") as String
+        var goldLabel = arrayDic[rowNo%3].objectForKey("gold") as String
+        var userLabel = arrayDic[rowNo%3].objectForKey("userName") as String
+        var infoLabel = arrayDic[rowNo%3].objectForKey("taskInfo") as String
     
         cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath:indexPath) as UITableViewCell
         cell.backgroundColor = UIColor.clearColor()
@@ -178,8 +195,55 @@ class GetTableView{
     
         var img = UIImage(named:imageName).stretchableImageWithLeftCapWidth(0, topCapHeight:70)
         imgView = UIImageView(image:img)
-        imgView.frame = CGRectMake(0, 10, 306 , 125)
+        imgView.frame = CGRectMake(0, 10, 306 , 135)
         cell.addSubview(imgView)
+        
+        var taskIcon = UIImageView(image: UIImage(named:iconImage))
+        taskIcon.frame = CGRectMake(75, 14, 20, 20)
+        cell.addSubview(taskIcon)
+        
+        var taskName = UILabel(frame:CGRectMake(97, 13, 45, 20))
+        taskName.text = nameLabel
+        taskName.font = UIFont(name:"Arial",size:12)
+        taskName.textColor = UIColor.whiteColor()
+        taskName.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
+        taskName.shadowOffset = CGSizeMake(0, 0.5)
+        cell.addSubview(taskName)
+        
+        var taskLine = UIView(frame:CGRectMake(136, 16, 1, 14))
+        taskLine.backgroundColor = UIColor.whiteColor()
+        cell.addSubview(taskLine)
+        
+        var goldIcon =  UIImageView(image: UIImage(named: "icon05"))
+        goldIcon.frame = CGRectMake(141, 14, 20, 20)
+        cell.addSubview(goldIcon)
+        
+        var goldValue = UILabel(frame:CGRectMake(150, 13, 40, 20))
+        goldValue.text = goldLabel
+        goldValue.textAlignment = NSTextAlignment.Center
+        goldValue.font = UIFont(name:"Arial",size:12)
+        goldValue.textColor = UIColor.whiteColor()
+        goldValue.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
+        goldValue.shadowOffset = CGSizeMake(0, 0.5)
+        cell.addSubview(goldValue)
+        
+        var userName = UILabel(frame:CGRectMake(0, 79, 70, 20))
+        userName.text = userLabel
+        userName.textAlignment = NSTextAlignment.Center
+        userName.font = UIFont(name:"Arial",size:11)
+        userName.textColor = getColorFromDictionary("grey33")
+        cell.addSubview(userName)
+        
+        var taskInfo = UILabel(frame:CGRectMake(75, 43, 224, 55))
+        taskInfo.text = infoLabel
+        taskInfo.font = UIFont(name:"Arial",size:12)
+        taskInfo.textColor = getColorFromDictionary("grey50")
+        var height = infoLabel.stringHeightWith(12,width:224)
+        taskInfo.setHeight(height <= 55 ? height : 55)
+        //自动折行设置
+        taskInfo.lineBreakMode = .ByWordWrapping
+        taskInfo.numberOfLines = 0
+        cell.addSubview(taskInfo)
     
         timeLabel = UILabel(frame:CGRectMake(198, 14, 160, 20))
         timeLabel.text = dateText
