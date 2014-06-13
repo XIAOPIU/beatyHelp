@@ -254,6 +254,13 @@ class GetTableView{
             buttonIcon.frame = CGRectMake(40, 5, 20, 20)
             buttonBg.addSubview(buttonIcon)
             
+            if i != 2 {
+                var middleLine=UIView(frame:CGRectMake(CGFloat(101*(i+1)+3), cell.height()-25, 1, 20))
+                middleLine.backgroundColor=UIColor.grayColor()
+                middleLine.alpha=0.3
+                cell.addSubview(middleLine)
+            }
+            
             buttonArray.insert(buttonBg, atIndex: i)
             cell.addSubview(buttonBg)
         }
