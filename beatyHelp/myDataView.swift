@@ -24,9 +24,12 @@ class MyDataViewDraw{
     }
     
     func getScrollView(controller: UIViewController){
-        scrollView = UIScrollView(frame:CGRectMake(0, 128, 320, 317))
+        scrollView = UIScrollView(frame:CGRectMake(0, 128, 320, UIScreen.mainScreen().applicationFrame.height-143))
         // 设置可滚动的区域
-        scrollView.contentSize = CGSizeMake(320, 335)
+        
+        if  UIScreen.mainScreen().applicationFrame.height == 460 {
+            scrollView.contentSize = CGSizeMake(320, UIScreen.mainScreen().applicationFrame.height-125)
+        }
         controller.view.addSubview(scrollView)
     }
 }

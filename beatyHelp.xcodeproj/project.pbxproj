@@ -323,7 +323,6 @@
 				A31C38B91945985B00A3713D /* myDataView.swift */,
 				A31C38BC1945A08700A3713D /* manageView.swift */,
 				A33AFF651948424D006A4839 /* detailView.swift */,
-				A3942D78194AF2D9003D5F90 /* Main.storyboard */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -355,6 +354,7 @@
 				A3E6715D1941CF3000DE0D03 /* view */,
 				A3E6715B1941CE3600DE0D03 /* controller */,
 				A3F492551941B37D0067A74F /* AppDelegate.swift */,
+				A3942D78194AF2D9003D5F90 /* Main.storyboard */,
 				A3F4925C1941B37D0067A74F /* Images.xcassets */,
 				A3F492531941B37D0067A74F /* Supporting Files */,
 			);

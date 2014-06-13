@@ -21,7 +21,7 @@ class DetailViewDraw{
     func setScrollView(_controller:UIViewController){
         scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-60))
         // 设置可滚动的区域
-        scrollView.contentSize = CGSizeMake(320, UIScreen.mainScreen().applicationFrame.height)
+//        scrollView.contentSize = CGSizeMake(320, UIScreen.mainScreen().applicationFrame.height)
         _controller.view.addSubview(scrollView)
     }
 }
