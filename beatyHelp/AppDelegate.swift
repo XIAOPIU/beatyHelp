@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBarHidden = true
         self.window!.rootViewController = navigationController
-//        self.window!.makeKeyAndVisible()
+        self.window!.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true
     }

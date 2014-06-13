@@ -122,7 +122,7 @@ class GetDetailView{
     }
     
     func setStateLabel(){
-        stateLabel = UILabel(frame:CGRectMake(2, 92, 70, 20))
+        stateLabel = UILabel(frame:CGRectMake(2, 94, 70, 20))
         stateLabel.text = "任务已领取"
         stateLabel.textAlignment = NSTextAlignment.Center
         stateLabel.font = UIFont(name:"Arial",size:10)
@@ -138,15 +138,15 @@ class GetDetailView{
         taskInfo.textColor = getColorFromDictionary("grey50")
         var height = infoLabel.stringHeightWith(12,width:224)
         var textHeight: CGFloat!
-        if(height <= 300 && height >= 75){
+        if(height <= 300 && height >= 78){
             textHeight = height
             bgHeight = height+40
         }else if(height > 300){
             textHeight = 300
             bgHeight = height+40
-        }else if(height < 75){
+        }else if(height < 78){
             textHeight = height
-            bgHeight = 115
+            bgHeight = 118
         }
         taskInfo.setHeight(textHeight)
         topBg.setHeight(bgHeight)

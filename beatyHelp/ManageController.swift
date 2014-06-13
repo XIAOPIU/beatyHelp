@@ -99,11 +99,13 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func footBtn1Action(sender: UIButton!) {
         var ViewCon = ViewController()
+//        ViewCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(ViewCon, animated:false)
     }
     
     func footBtn3Action(sender: UIButton!) {
         var myDataCon = MyDataController()
+//        myDataCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(myDataCon, animated:false)
     }
     

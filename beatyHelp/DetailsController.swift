@@ -27,6 +27,7 @@ class DetailsController: UIViewController {
     }
     
     func goBackAction(sender: UIButton!) {
-        self.dismissModalViewControllerAnimated(false)
+//        self.navigationController.popViewControllerAnimated(true)
+        self.dismissModalViewControllerAnimated(true)
     }
 }

@@ -175,6 +175,7 @@ class GetTableView{
     var cell:UITableViewCell!
     var timeLabel:UILabel!
     var imgView:UIImageView!
+    var buttonArray:UIImageView[] = []
     
     init(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!){
         var arrayDic = getDictionary("list") as NSArray
@@ -244,6 +245,18 @@ class GetTableView{
         taskInfo.lineBreakMode = .ByWordWrapping
         taskInfo.numberOfLines = 0
         cell.addSubview(taskInfo)
+        
+        for i in 0..3{
+            var buttonBg = UIImageView()
+            buttonBg.frame = CGRectMake(CGFloat(101*i+2), cell.height()-30, 100, 30)
+            
+            var buttonIcon =  UIImageView(image: UIImage(named: "greyIcon0\(i+1)"))
+            buttonIcon.frame = CGRectMake(40, 5, 20, 20)
+            buttonBg.addSubview(buttonIcon)
+            
+            buttonArray.insert(buttonBg, atIndex: i)
+            cell.addSubview(buttonBg)
+        }
     
         timeLabel = UILabel(frame:CGRectMake(198, 14, 160, 20))
         timeLabel.text = dateText

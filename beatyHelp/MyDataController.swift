@@ -26,11 +26,13 @@ class MyDataController: UIViewController {
     
     func footBtn1Action(sender: UIButton!) {
         var ViewCon = ViewController()
+//        ViewCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(ViewCon, animated:false)
     }
     
     func footBtn2Action(sender: UIButton!) {
         var manageCon = ManageController()
+//        manageCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(manageCon, animated:false)
     }
 }

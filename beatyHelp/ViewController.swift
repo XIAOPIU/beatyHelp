@@ -63,17 +63,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 跳转到详情内页
         var detailsCon = DetailsController()
         detailsCon.rowIndex = indexPath!.row
-        self.presentModalViewController(detailsCon, animated:false)
+//        self.navigationController.pushViewController(detailsCon, animated: true)
+        
+//        detailsCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+        self.presentModalViewController(detailsCon, animated:true)
         self.indexTable!.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     func footBtn2Action(sender: UIButton!) {
         var manageCon = ManageController()
+//        manageCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(manageCon, animated:false)
     }
     
     func footBtn3Action(sender: UIButton!) {
         var myDataCon = MyDataController()
+//        myDataCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(myDataCon, animated:false)
     }
     
