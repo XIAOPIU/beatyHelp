@@ -94,8 +94,14 @@ class GetPubTableView{
     var telLabel:UILabel!
     var commonFriLabel:UILabel!
     var imgView:UIImageView!
+    var mainTable:UITableView!
+    var cellIndex:NSIndexPath!
+    var tabIndex:Int
     
     init(tableView: UITableView!, indexPath: NSIndexPath!,tableIndex:Int){
+        mainTable=tableView
+        cellIndex=indexPath
+        tabIndex=tableIndex
         drawCell(tableView, indexPath: indexPath!,tableIndex: tableIndex)
     }
     
@@ -122,6 +128,7 @@ class GetPubTableView{
         }
         
         cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath:indexPath) as UITableViewCell
+        
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
@@ -129,6 +136,43 @@ class GetPubTableView{
         imgView = UIImageView(image:img)
         imgView.frame = CGRectMake(0, 10, 306 , 160)
         cell.addSubview(imgView)
+        
+        var iconImage=arrayDic[rowNo%3].objectForKey("taskIcon") as String
+        var taskIcon = UIImageView(image: UIImage(named:iconImage))
+        taskIcon.frame = CGRectMake(75, 14, 20, 20)
+        cell.addSubview(taskIcon)
+        
+        var taskName = UILabel(frame:CGRectMake(97, 13, 45, 20))
+        taskName.text = arrayDic[rowNo%3].objectForKey("taskName") as String
+        taskName.font = UIFont(name:"Arial",size:12)
+        taskName.textColor = UIColor.whiteColor()
+        taskName.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
+        taskName.shadowOffset = CGSizeMake(0, 0.5)
+        cell.addSubview(taskName)
+        
+        var taskLine = UIView(frame:CGRectMake(136, 16, 1, 14))
+        taskLine.backgroundColor = UIColor.whiteColor()
+        cell.addSubview(taskLine)
+
+        var goldIcon =  UIImageView(image: UIImage(named: "icon05"))
+        goldIcon.frame = CGRectMake(141, 14, 20, 20)
+        cell.addSubview(goldIcon)
+
+        var goldValue = UILabel(frame:CGRectMake(150, 13, 40, 20))
+        goldValue.text = arrayDic[rowNo%3].objectForKey("gold") as String
+        goldValue.textAlignment = NSTextAlignment.Center
+        goldValue.font = UIFont(name:"Arial",size:12)
+        goldValue.textColor = UIColor.whiteColor()
+        goldValue.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
+        goldValue.shadowOffset = CGSizeMake(0, 0.5)
+        cell.addSubview(goldValue)
+        
+        var userName = UILabel(frame:CGRectMake(0, 79, 70, 20))
+        userName.text = arrayDic[rowNo%3].objectForKey("userName") as String
+        userName.textAlignment = NSTextAlignment.Center
+        userName.font = UIFont(name:"Arial",size:11)
+        userName.textColor = getColorFromDictionary("grey33")
+        cell.addSubview(userName)
         
         //状态文案
         statusLabel = UILabel(frame:CGRectMake(218, 14, 160, 20))
@@ -194,5 +238,83 @@ class GetPubTableView{
         
         // 添加圆形头像
         creatRoundImage(cell,CGRectMake(3, 9, 64, 64),userImage,1.5);
+        
+        setBottom(status)
+    }
+    
+    func setBottom(status:Int){
+        //查看icon
+        var previewIcon = UIImage(named:"previewIcon")
+        var previewImgView = UIImageView(image:previewIcon)
+        previewImgView.frame = CGRectMake(56, 8, 15 , 13)
+        
+        //查看文案
+        var previewLabel = UILabel(frame:CGRectMake(75, 8, 25, 13))
+        previewLabel.text = "查看"
+        previewLabel.font = UIFont(name:"Arial",size:12)
+        previewLabel.textColor = UIColor.grayColor()
+        
+        //终止icon
+        var stopIcon = UIImage(named:"stopIcon")
+        var stopImgView = UIImageView(image:stopIcon)
+        stopImgView.frame = CGRectMake(56, 8, 15 , 13)
+        
+        //stop文案
+        var stopLabel = UILabel(frame:CGRectMake(75, 8, 25, 13))
+        stopLabel.text = "终止"
+        stopLabel.font = UIFont(name:"Arial",size:12)
+        stopLabel.textColor = UIColor.grayColor()
+//
+        //评价icon
+        var commentIcon = UIImage(named:"pubCommentIcon")
+        var commentImgView = UIImageView(image:commentIcon)
+        commentImgView.frame = CGRectMake(40, 8, 15 , 13)
+        
+        //comment文案
+        var commentLabel = UILabel(frame:CGRectMake(59, 8, 65, 13))
+        commentLabel.text = "评价发布人"
+        commentLabel.font = UIFont(name:"Arial",size:12)
+        commentLabel.textColor = UIColor.grayColor()
+        
+        if status==2{
+            var leftBtn=UIButton(frame:CGRectMake(2, 130, 150, 28))
+            leftBtn.addSubview(previewImgView)
+            leftBtn.addSubview(previewLabel)
+            cell.addSubview(leftBtn)
+            
+            var middleLine=UIView(frame:CGRectMake(150, 135, 1, 20))
+            middleLine.backgroundColor=UIColor.grayColor()
+            middleLine.alpha=0.3
+            cell.addSubview(middleLine)
+            
+            var rightBtn=UIButton(frame:CGRectMake(152, 130, 150, 28))
+            rightBtn.addSubview(stopImgView)
+            rightBtn.addSubview(stopLabel)
+            cell.addSubview(rightBtn)
+        }
+        else if status==3{
+            var leftBtn=UIButton(frame:CGRectMake(2, 130, 150, 28))
+            leftBtn.addSubview(previewImgView)
+            leftBtn.addSubview(previewLabel)
+            cell.addSubview(leftBtn)
+            
+            var middleLine=UIView(frame:CGRectMake(150, 135, 1, 20))
+            middleLine.backgroundColor=UIColor.grayColor()
+            middleLine.alpha=0.3
+            cell.addSubview(middleLine)
+            
+            var rightBtn=UIButton(frame:CGRectMake(152, 130, 150, 28))
+            rightBtn.addSubview(commentImgView)
+            rightBtn.addSubview(commentLabel)
+            cell.addSubview(rightBtn)
+        }
+        else if status==0{
+            var leftBtn=UIButton(frame:CGRectMake(2, 130, 300, 28))
+            leftBtn.addSubview(previewImgView)
+            leftBtn.addSubview(previewLabel)
+            previewImgView.setX(130)
+            previewLabel.setX(150)
+            cell.addSubview(leftBtn)
+        }
     }
 }

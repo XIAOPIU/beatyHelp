@@ -34,7 +34,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func setPubTable(){
-        self.pubTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-71), style:UITableViewStyle.Plain)
+        self.pubTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-90), style:UITableViewStyle.Plain)
         self.pubTable!.delegate = self
         self.pubTable!.dataSource = self
         self.pubTable!.rowHeight = 160
@@ -46,7 +46,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func setGetTable(){
-        self.getTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-71), style:UITableViewStyle.Plain)
+        self.getTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-90), style:UITableViewStyle.Plain)
         self.getTable!.delegate = self
         self.getTable!.dataSource = self
         self.getTable!.rowHeight = 160

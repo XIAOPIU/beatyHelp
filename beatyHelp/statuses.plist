@@ -26,7 +26,12 @@
 		</dict>
 		<dict>
 			<key>taskInfo</key>
-			<string>找人一同上自习，寝室小伙伴们都有男朋友了，每天都是孤零零的上自习，求同伴。— 地点：湖南大学综合楼— 周一：早上 09：00 - 12：00 — 周四：下午 03：00 - 09：30单身帅哥们速速来揭榜！！！</string>
+			<string>找人一同上自习，寝室小伙伴们都有男朋
+友了，每天都是孤零零的上自习，求同伴。
+— 地点：湖南大学综合楼
+— 周一：早上 09：00 - 12：00 
+— 周四：下午 03：00 - 09：30
+单身帅哥们速速来揭榜！！！</string>
 			<key>userName</key>
 			<string>刘萌萌</string>
 			<key>gold</key>
@@ -70,6 +75,8 @@
 		<dict>
 			<key>userImage</key>
 			<string>userList01.jpg</string>
+			<key>userName</key>
+			<string>张子萱</string>
 			<key>statusLabel</key>
 			<string>任务已领取</string>
 			<key>status</key>
@@ -90,6 +97,12 @@
 			<string>2014-05-21 14:37</string>
 			<key>limitTime</key>
 			<string>2014-06-30 12:30</string>
+			<key>gold</key>
+			<string>20</string>
+			<key>taskName</key>
+			<string>陪聊天</string>
+			<key>taskIcon</key>
+			<string>icon02</string>
 			<key>commonFri</key>
 			<array>
 				<dict>
@@ -127,6 +140,8 @@
 		<dict>
 			<key>userImage</key>
 			<string>userList02.jpg</string>
+			<key>userName</key>
+			<string>刘萌萌</string>
 			<key>statusLabel</key>
 			<string>任务已完成</string>
 			<key>status</key>
@@ -162,10 +177,18 @@
 					<string>8</string>
 				</dict>
 			</array>
+			<key>gold</key>
+			<string>100</string>
+			<key>taskName</key>
+			<string>上自习</string>
+			<key>taskIcon</key>
+			<string>icon03</string>
 		</dict>
 		<dict>
 			<key>userImage</key>
 			<string>userList03.jpg</string>
+			<key>userName</key>
+			<string>赵晓彤</string>
 			<key>statusLabel</key>
 			<string>任务已终止</string>
 			<key>status</key>
@@ -207,6 +230,12 @@
 					<string>10</string>
 				</dict>
 			</array>
+			<key>gold</key>
+			<string>15</string>
+			<key>taskName</key>
+			<string>领快递</string>
+			<key>taskIcon</key>
+			<string>icon04</string>
 		</dict>
 	</array>
 	<key>colorList</key>
