@@ -75,8 +75,8 @@ class GetTopTab{
         rightTab = UIButton(frame:CGRectMake(165, 11, 120, 20))
         var tabIcon = UIImageView(frame:CGRectMake(0,0,18,17))
         var tabLabel=UILabel(frame:CGRectMake(20, 0, 120, 20))
-        tabIcon.image = UIImage(named:"leftTabIcon")
-        tabLabel.text="发布的任务(21)"
+        tabIcon.image = UIImage(named:"rightTabIcon")
+        tabLabel.text="领取的任务(21)"
         tabLabel.font=UIFont(name:"Arial",size:13)
         tabLabel.textColor=UIColor.whiteColor()
         rightTab.alpha=0.5
@@ -89,15 +89,30 @@ class GetTopTab{
 
 class GetPubTableView{
     var cell:UITableViewCell!
-    var timeLabel:UILabel!
+    var statusLabel:UILabel!
+    var schoolLabel:UILabel!
+    var telLabel:UILabel!
+    var commonFriLabel:UILabel!
     var imgView:UIImageView!
     
-    init(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!,tableIndex:Int){
-        var arrayDic = getDictionary("list") as NSArray
+    init(tableView: UITableView!, indexPath: NSIndexPath!,tableIndex:Int){
+        drawCell(tableView, indexPath: indexPath!,tableIndex: tableIndex)
+    }
+    
+    func drawCell(tableView: UITableView!, indexPath: NSIndexPath!,tableIndex: Int){
+        var arrayDic = getDictionary("publist") as NSArray
         var rowNo = indexPath.row
         var identifier = arrayDic[rowNo%3].objectForKey("identifier") as String
         var imageName = arrayDic[rowNo%3].objectForKey("imageName") as String
-        var dateText = arrayDic[rowNo%3].objectForKey("time") as String
+        var statusText = arrayDic[rowNo%3].objectForKey("statusLabel") as String
+        var statusColor = arrayDic[rowNo%3].objectForKey("statusColor") as String
+        var status=arrayDic[rowNo%3].objectForKey("status") as Int
+        var school=arrayDic[rowNo%3].objectForKey("school") as String
+        var academy=arrayDic[rowNo%3].objectForKey("academy") as String
+        var commonFri=arrayDic[rowNo%3].objectForKey("commonFri") as NSArray
+        var tel=arrayDic[rowNo%3].objectForKey("tel") as String
+        var commenFriNum=commonFri.count
+        var commenFriTitle="你们的共同好友有 \(commenFriNum) 位"
         var userImage:String
         if tableIndex==0{
             userImage = arrayDic[rowNo%3].objectForKey("userImage") as String
@@ -112,14 +127,71 @@ class GetPubTableView{
         
         var img = UIImage(named:imageName).stretchableImageWithLeftCapWidth(0, topCapHeight:70)
         imgView = UIImageView(image:img)
-        imgView.frame = CGRectMake(0, 10, 306 , 125)
+        imgView.frame = CGRectMake(0, 10, 306 , 160)
         cell.addSubview(imgView)
         
-        timeLabel = UILabel(frame:CGRectMake(198, 14, 160, 20))
-        timeLabel.text = dateText
-        timeLabel.font = UIFont(name:"Arial",size:10)
-        timeLabel.textColor = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1)
-        cell.addSubview(timeLabel)
+        //状态文案
+        statusLabel = UILabel(frame:CGRectMake(218, 14, 160, 20))
+        statusLabel.text = statusText
+        statusLabel.font = UIFont(name:"Arial",size:12)
+        statusLabel.textColor = getColorFromDictionary(statusColor)
+        cell.addSubview(statusLabel)
+        
+        //学校和学院文案
+        schoolLabel = UILabel(frame:CGRectMake(75, 40, 217, 15))
+        schoolLabel.text = "\(school) \(academy)"
+        schoolLabel.font = UIFont(name:"Arial",size:11)
+        schoolLabel.textColor = UIColor.blackColor()
+        cell.addSubview(schoolLabel)
+        
+        //电话号码图标
+        var mobileIcon = UIImage(named:"mobileIcon")
+        imgView = UIImageView(image:mobileIcon)
+        imgView.frame = CGRectMake(220, 57, 6 , 10)
+        cell.addSubview(imgView)
+        
+        //电话号码文案
+        telLabel = UILabel(frame:CGRectMake(229, 55, 217, 15))
+        telLabel.text = tel
+        telLabel.font = UIFont(name:"Arial",size:10)
+        telLabel.textColor = UIColor.blackColor()
+        cell.addSubview(telLabel)
+        
+        
+        //共同好友文案
+        commonFriLabel = UILabel(frame:CGRectMake(75, 55, 217, 15))
+        commonFriLabel.text = commenFriTitle
+        commonFriLabel.font = UIFont(name:"Arial",size:10)
+        commonFriLabel.textColor = UIColor.blackColor()
+        cell.addSubview(commonFriLabel)
+        
+        //共同好友照片
+        for i in 0..commenFriNum{
+            var photoName=commonFri[i].objectForKey("photo") as String
+            var img = UIImage(named:photoName)
+            imgView = UIImageView(image:img)
+            imgView.frame = CGRectMake(CGFloat(75+i*37), 73, 32 , 32)
+            cell.addSubview(imgView)
+        }
+        
+        //领取时间文案
+        var getTime=arrayDic[rowNo%3].objectForKey("getTime") as String
+        var getTimeText="领取时间 |  \(getTime)"
+        var getTimeLabel = UILabel(frame:CGRectMake(15, 110, 135, 12))
+        getTimeLabel.text = getTimeText
+        getTimeLabel.font = UIFont(name:"Arial",size:10)
+        getTimeLabel.textColor = UIColor.grayColor()
+        cell.addSubview(getTimeLabel)
+        
+        //领取时间文案
+        var limitTime=arrayDic[rowNo%3].objectForKey("limitTime") as String
+        var limitTimeText="有效时间 |  \(limitTime)"
+        var limitTimeLabel = UILabel(frame:CGRectMake(160, 110, 135, 12))
+        limitTimeLabel.text = limitTimeText
+        limitTimeLabel.font = UIFont(name:"Arial",size:10)
+        limitTimeLabel.textColor = UIColor.grayColor()
+        cell.addSubview(limitTimeLabel)
+        
         // 添加圆形头像
         creatRoundImage(cell,CGRectMake(3, 9, 64, 64),userImage,1.5);
     }
