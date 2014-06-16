@@ -9,13 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    let identifier = "cell"
     var indexTable : UITableView?
+    var dataArray = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // mainView 界面绘制
         setIndexTable()
-//        loadData()
+        loadData()
+        // mainView 界面绘制
         MainViewDraw(_controller: self)
     }
 
@@ -33,11 +35,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.indexTable!.delegate = self
         self.indexTable!.dataSource = self
         self.indexTable!.rowHeight = 135
-        self.indexTable!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.indexTable!.registerClass(GetMainTabelCell.self, forCellReuseIdentifier: identifier)
         self.indexTable!.backgroundColor = UIColor.clearColor()
         self.indexTable!.separatorColor = UIColor.clearColor()
         self.automaticallyAdjustsScrollViewInsets = false
         self.view?.addSubview(self.indexTable)
+    }
+    
+    func loadData()
+    {
+        var url = "http://mm.renren.com/task-all"
+        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+            var arr = data["data"] as NSArray
+            for data : AnyObject  in arr{
+                self.dataArray.addObject(data)
+            }
+            self.indexTable!.reloadData()
+//            UIView.showAlertView("提示",message:toString(self.dataArray))
+            })
     }
     
     // UITableViewDataSource Methods
@@ -48,13 +63,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        return 12
+        return self.dataArray.count
     }
     
     //创建一个单元格
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
-        return GetTableView(tableView: tableView,cellForRowAtIndexPath:indexPath).cell
+        var cell = tableView?.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? GetMainTabelCell
+        var index = indexPath!.row
+        var getData = self.dataArray[index] as NSDictionary
+        cell!.data = getData
+        return cell
     }
     
     // UITableViewDelegate Methods
@@ -62,7 +81,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         // 跳转到详情内页
         var detailsCon = DetailsController()
-        detailsCon.rowIndex = indexPath!.row
+        var row = indexPath!.row
+        detailsCon.rowIndex = row
+        var getId = self.dataArray[row].objectForKey("id") as String
+        detailsCon.id = getId.toInt()!
 //        self.navigationController.pushViewController(detailsCon, animated: true)
         
 //        detailsCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
@@ -80,14 +102,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var myDataCon = MyDataController()
 //        myDataCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(myDataCon, animated:false)
-    }
-    
-    func loadData()
-    {
-        var url = "http://mm.renren.com/task-all?userid=1"
-        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
-            var getCode: AnyObject! = data.objectForKey("data")
-            UIView.showAlertView("提示",message:toString(getCode))
-        })
     }
 }

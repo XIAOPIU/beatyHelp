@@ -11,6 +11,7 @@ import UIKit
 
 class DetailsController: UIViewController {
     var rowIndex: Int = 0
+    var id: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

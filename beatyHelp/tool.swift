@@ -18,11 +18,11 @@ import UIKit
 *  @param border 描边的大小
 *  @return 返回创建的UIimageView
 */
-func creatRoundImage(view:UIView,frame:CGRect,name:String,border:Float)->UIImageView{
+func creatRoundImage(view:UIView,frame:CGRect,img:UIImage,border:Float)->UIImageView{
     //创建图片并设置尺寸
     var imageView = UIImageView(frame:frame)
     //根据图片名，确定图片引用
-    imageView.image = UIImage(named:name)
+    imageView.image = img
     //是否设置边框以及是否可见
     imageView.layer.masksToBounds = true
     //设置边框的宽度
@@ -30,7 +30,13 @@ func creatRoundImage(view:UIView,frame:CGRect,name:String,border:Float)->UIImage
     //设置边框的颜色
     imageView.layer.borderColor = UIColor(white: 1, alpha: 1).CGColor
     //设置边框圆角的幅度为宽度的一半，由此变成圆形
+    //图片截取高度居中显示
     imageView.layer.cornerRadius = imageView.frame.size.width/2
+    imageView.contentScaleFactor = UIScreen.mainScreen().scale
+    imageView.contentMode = .ScaleAspectFill
+//    imageView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+    imageView.clipsToBounds = true
+    
     //将圆图添加到UIView上
     view.addSubview(imageView)
     return imageView
@@ -61,4 +67,23 @@ func getColorFromDictionary(dictionaryName:String) -> UIColor{
     var colorArray = NSMutableArray()
     colorArray = colorList.objectForKey(dictionaryName) as NSMutableArray
     return UIColor(red: CGFloat(colorArray[0] as NSNumber)/255, green: CGFloat(colorArray[1] as NSNumber)/255, blue: CGFloat(colorArray[2] as NSNumber)/255, alpha: CGFloat(colorArray[3] as NSNumber))
+}
+
+
+
+extension NSDictionary {
+    func stringAttributeForKey(key:String)->String
+    {
+        var obj : AnyObject! = self[key]
+        if obj as NSObject == NSNull()
+        {
+            return ""
+        }
+        if obj.isKindOfClass(NSNumber)
+        {
+            var num = obj as NSNumber
+            return num.stringValue
+        }
+        return obj as String
+    }
 }
