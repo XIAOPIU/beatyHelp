@@ -68,6 +68,8 @@
 		A35264FB194AB10900C52FA2 /* greyIcon03.png in Resources */ = {isa = PBXBuildFile; fileRef = A35264F8194AB10900C52FA2 /* greyIcon03.png */; };
 		A3601FC3194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */; };
 		A3601FC5194EAB9B003AA8F3 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */; };
+		A3601FC7194ED3F7003AA8F3 /* OtherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC6194ED3F7003AA8F3 /* OtherController.swift */; };
+		A3601FC9194ED43D003AA8F3 /* otherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC8194ED43D003AA8F3 /* otherView.swift */; };
 		A3942D79194AF2D9003D5F90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3942D78194AF2D9003D5F90 /* Main.storyboard */; };
 		A39CCF3A1943FEEE006D061A /* obTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF391943FEEE006D061A /* obTool.m */; };
 		A39CCF3E19454EAB006D061A /* footButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF3D19454EAB006D061A /* footButtonAction.swift */; };
@@ -164,6 +166,8 @@
 		A35264F8194AB10900C52FA2 /* greyIcon03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greyIcon03.png; sourceTree = "<group>"; };
 		A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHUIImageViewWebExtension.swift; sourceTree = "<group>"; };
 		A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
+		A3601FC6194ED3F7003AA8F3 /* OtherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherController.swift; sourceTree = "<group>"; };
+		A3601FC8194ED43D003AA8F3 /* otherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = otherView.swift; sourceTree = "<group>"; };
 		A3942D78194AF2D9003D5F90 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A39CCF321943FDF2006D061A /* beatyHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beatyHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		A39CCF391943FEEE006D061A /* obTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = obTool.m; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 				A39CCF3F19455975006D061A /* ManageController.swift */,
 				A31C38B7194597F700A3713D /* MyDataController.swift */,
 				A33AFF63194841F4006A4839 /* DetailsController.swift */,
+				A3601FC6194ED3F7003AA8F3 /* OtherController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				A31C38B91945985B00A3713D /* myDataView.swift */,
 				A31C38BC1945A08700A3713D /* manageView.swift */,
 				A33AFF651948424D006A4839 /* detailView.swift */,
+				A3601FC8194ED43D003AA8F3 /* otherView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -571,7 +577,9 @@
 				A3F492561941B37D0067A74F /* AppDelegate.swift in Sources */,
 				A34434B5194946960061D2F9 /* BHHttpRequest.swift in Sources */,
 				A39CCF4019455975006D061A /* ManageController.swift in Sources */,
+				A3601FC9194ED43D003AA8F3 /* otherView.swift in Sources */,
 				A39CCF3A1943FEEE006D061A /* obTool.m in Sources */,
+				A3601FC7194ED3F7003AA8F3 /* OtherController.swift in Sources */,
 				A3E671611941CFBA00DE0D03 /* tool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

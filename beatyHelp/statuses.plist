@@ -306,6 +306,8 @@
 	</dict>
 	<key>userInfo</key>
 	<dict>
+		<key>userId</key>
+		<string>3</string>
 		<key>phoneNum</key>
 		<string>18601940866</string>
 		<key>iconValue</key>

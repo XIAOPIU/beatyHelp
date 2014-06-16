@@ -15,10 +15,10 @@ class DetailViewDraw{
         GetUIBaseView(_controller: _controller)
         GetHeadBar(_controller: _controller, _title: "任务详情")
         setScrollView(_controller)
-        var detailTop = GetDetailView(_scrollView: scrollView, _id: _controller.id)
+        var detailView = GetDetailView(_scrollView: scrollView, _controller: _controller)
     }
     
-    func setScrollView(_controller:UIViewController){
+    func setScrollView(_controller:DetailsController){
         scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-60))
         // 设置可滚动的区域
 //        scrollView.contentSize = CGSizeMake(320, UIScreen.mainScreen().applicationFrame.height)
@@ -36,6 +36,7 @@ class GetDetailView{
     var button: UIButton!
     
     var data: NSDictionary!
+    var getController: DetailsController!
     
     var arrayDic = getDictionary("list") as NSArray
     var rowNo = 1
@@ -44,17 +45,12 @@ class GetDetailView{
     var idNum = 0
     var imageNameIndex = 0
     
-    init(_scrollView: UIScrollView, _id: Int){
-        idNum = _id
-        loadData(_scrollView,id: idNum)
-    }
-    
-    func loadData(scrollView: UIScrollView, id:Int){
-        var url = "http://mm.renren.com/task-get?id=" + String(id)
-        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
-            self.data = data["data"] as NSDictionary
-            self.setView(scrollView)
-        })
+    init(_scrollView: UIScrollView, _controller: DetailsController){
+        getController = _controller
+        data = _controller.data
+        idNum = _controller.id
+        
+        setView(_scrollView)
     }
     
     func setView(scrollView: UIScrollView){
@@ -120,8 +116,11 @@ class GetDetailView{
     
     func setUserView(){
         var URL = data.objectForKey("avatar") as String
+        var imageButton = UIButton(frame:CGRectMake(3, 2.5, 64, 64))
+        imageButton.addTarget(self.getController,action:"otherImage:",forControlEvents:.TouchUpInside)
         // 添加圆形头像
-        creatRoundImage(topBg,CGRectMake(3, 2.5, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
+        creatRoundImage(imageButton,CGRectMake(0, 0, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
+        topBg.addSubview(imageButton)
     }
     
     func setNameLabel(){
@@ -131,6 +130,7 @@ class GetDetailView{
         userName.font = UIFont(name:"Arial",size:11)
         userName.textColor = getColorFromDictionary("grey33")
         topBg.addSubview(userName)
+        topBg.userInteractionEnabled = true
     }
     
     func setStateLabel(){

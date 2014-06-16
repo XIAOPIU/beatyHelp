@@ -14,7 +14,7 @@ class MainViewDraw{
         // 为controller添加baseView
         GetUIBaseView(_controller: _controller)
         GetMainViewTop(_controller: _controller,_pageNum: 1)
-        GetMainViewMiddle(_controller: _controller)
+        GetMainViewMiddle(_uiView: _controller.view)
         GetFootBar(_controller: _controller, _index: 1)
     }
 }
@@ -28,34 +28,49 @@ class GetMainViewTop{
     var phoneIcon:UIImageView!
     var phoneNum:UILabel!
     
+    var getController:UIViewController!
+    
     init(_controller:UIViewController, _pageNum:Int){
-        setTopValueBg(_controller)
-        setUserImage()
+        getController = _controller
+        setTopValueBg(_controller.view)
         setUserName()
         setUserSign()
         if _pageNum == 1 {
+            setImageClick()
             setLabelArray()
         }
         else if _pageNum == 2{
+            setUserImage()
             setPhoneIcon()
             setPhoneNum()
         }
     }
     
-    func setTopValueBg(controller:UIViewController){
+    func setTopValueBg(uiView:UIView){
         // 创建框体并设置尺寸
         topValueBg = UIImageView(frame:CGRectMake(0,20,320,108))
         //根据图片名，确定图片引用
         topValueBg.image = UIImage(named:"topBgImg.jpg")
         // 将圆图添加到UIView上
-        controller.view.addSubview(topValueBg)
+        uiView.addSubview(topValueBg)
     }
     
     func setUserImage(){
         // 在plist文件中获取用户头像信息
         var str2 = getDictionary("userInfo").objectForKey("headImage") as NSString
         // 添加圆形头像
-        userImage = creatRoundImage(topValueBg,CGRectMake(20,15,78,78),UIImage(named:str2),3.0);
+        userImage = creatRoundImage(topValueBg,CGRectMake(20,15,78,78),UIImage(named:str2),3.0)
+    }
+    
+    func setImageClick(){
+        // 在plist文件中获取用户头像信息
+        var str2 = getDictionary("userInfo").objectForKey("headImage") as NSString
+        var imageButton = UIButton(frame:CGRectMake(20,15,78,78))
+        imageButton.addTarget(self.getController,action:"footBtn3Action:",forControlEvents:.TouchUpInside)
+        // 添加圆形头像
+        creatRoundImage(imageButton,CGRectMake(0, 0, 78, 78),UIImage(named:str2),3)
+        topValueBg.addSubview(imageButton)
+        topValueBg.userInteractionEnabled = true
     }
     
     func setUserName(){
@@ -136,26 +151,26 @@ class GetMainViewMiddle{
     var lineImgView:UIImageView! // 筛选栏
     var imgBtnView:UIImageView! // 按钮
     
-    init(_controller:UIViewController){
-        setLineImgView(_controller)
-        setImgBtnView(_controller)
+    init(_uiView:UIView){
+        setLineImgView(_uiView)
+        setImgBtnView(_uiView)
     }
     
-    func setLineImgView(controller:UIViewController){
+    func setLineImgView(uiView:UIView){
         //创建图片并设置引用,根据宽高设置拉伸图片
         var lineImg = UIImage(named:"middleLine").stretchableImageWithLeftCapWidth(4,topCapHeight: 0)
         //根据拉伸后的图片创建imageView
         lineImgView = UIImageView(image:lineImg)
         //设置尺寸和位置
         lineImgView.frame = CGRectMake(0, 128, 234, 31)
-        controller.view.addSubview(lineImgView)
+        uiView.addSubview(lineImgView)
     }
     
-    func setImgBtnView(controller:UIViewController){
+    func setImgBtnView(uiView:UIView){
         var btnImg = UIImage(named:"middleBtn").stretchableImageWithLeftCapWidth(13,topCapHeight: 0)
         imgBtnView = UIImageView(image:btnImg)
         imgBtnView.frame = CGRectMake(229, 128, 90, 32)
-        controller.view.addSubview(imgBtnView)
+        uiView.addSubview(imgBtnView)
         
         var btnIcon = UIImageView(image: UIImage(named:"icon01"))
         btnIcon.frame = CGRectMake(11, 5, 20, 20)
@@ -176,6 +191,8 @@ class GetMainTabelCell:UITableViewCell{
     var imgView:UIImageView!
     var buttonArray:UIImageView[] = []
     var data :NSDictionary!
+    
+    var getController:UIViewController!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -281,8 +298,18 @@ class GetMainTabelCell:UITableViewCell{
         self.addSubview(timeLabel)
         
         var URL = data.objectForKey("avatar") as String
+        var imageButton = UIButton(frame:CGRectMake(3, 9, 64, 64))
+        imageButton.addTarget(self,action:"otherImage:",forControlEvents:.TouchUpInside)
         // 添加圆形头像
-        creatRoundImage(self,CGRectMake(3, 9, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
+        creatRoundImage(imageButton,CGRectMake(0, 0, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
+        self.addSubview(imageButton)
+    }
+    
+    func otherImage(sender: UIButton!){
+        // 跳转到详情内页
+        var otherCon = OtherController()
+        otherCon.uid = (data.objectForKey("uid") as String).toInt()!
+        self.getController.presentModalViewController(otherCon, animated:true)
     }
 }
 

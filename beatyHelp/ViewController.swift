@@ -73,6 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var index = indexPath!.row
         var getData = self.dataArray[index] as NSDictionary
         cell!.data = getData
+        cell!.getController = self
         return cell
     }
     
@@ -86,7 +87,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var getId = self.dataArray[row].objectForKey("id") as String
         detailsCon.id = getId.toInt()!
 //        self.navigationController.pushViewController(detailsCon, animated: true)
-        
 //        detailsCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(detailsCon, animated:true)
         self.indexTable!.deselectRowAtIndexPath(indexPath, animated: false)
