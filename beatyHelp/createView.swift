@@ -198,7 +198,7 @@ class getInputArea:UIView{
         
         setAreaBg()
         if inputType==2{
-            desInfo=["联系信息", "mobileIcon1"]
+            desInfo=["联系信息", "mobileIcon2"]
             self.setHeight(70)
             setNumberArea()
         }
