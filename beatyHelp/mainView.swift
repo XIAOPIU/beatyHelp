@@ -152,14 +152,14 @@ class GetMainViewMiddle{
     }
     
     func setImgBtnView(controller:UIViewController){
+        var createBtn = UIButton(frame:CGRectMake(229, 128, 90, 32))
         var btnImg = UIImage(named:"middleBtn").stretchableImageWithLeftCapWidth(13,topCapHeight: 0)
-        imgBtnView = UIImageView(image:btnImg)
-        imgBtnView.frame = CGRectMake(229, 128, 90, 32)
-        controller.view.addSubview(imgBtnView)
+        createBtn.setBackgroundImage(btnImg, forState: UIControlState.Normal)
+        controller.view.addSubview(createBtn)
         
         var btnIcon = UIImageView(image: UIImage(named:"icon01"))
         btnIcon.frame = CGRectMake(11, 5, 20, 20)
-        imgBtnView.addSubview(btnIcon)
+        createBtn.addSubview(btnIcon)
         
         var btnLabel = UILabel(frame:CGRectMake(33, 5, 45, 20))
         btnLabel.text = "发任务"
@@ -167,7 +167,8 @@ class GetMainViewMiddle{
         btnLabel.textColor = UIColor.whiteColor()
         btnLabel.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
         btnLabel.shadowOffset = CGSizeMake(0, 0.5)
-        imgBtnView.addSubview(btnLabel)
+        createBtn.addSubview(btnLabel)
+        createBtn.addTarget(controller,action:"createAction:",forControlEvents:.TouchUpInside);
     }
 }
 

@@ -30,4 +30,7 @@ class DetailsController: UIViewController {
 //        self.navigationController.popViewControllerAnimated(true)
         self.dismissModalViewControllerAnimated(true)
     }
+    
+    
+    
 }

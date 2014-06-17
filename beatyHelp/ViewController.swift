@@ -82,6 +82,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.presentModalViewController(myDataCon, animated:false)
     }
     
+    func createAction(sender: UIButton!) {
+        var createCon = CreateController()
+        self.presentModalViewController(createCon, animated:true)
+    }
+    
     func loadData()
     {
         var url = "http://mm.renren.com/task-all?userid=1"

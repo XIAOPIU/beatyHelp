@@ -86,7 +86,7 @@
 			<key>identifier</key>
 			<string>cell</string>
 			<key>statusColor</key>
-			<string>green</string>
+			<string>greenT</string>
 			<key>school</key>
 			<string>湖南大学</string>
 			<key>academy</key>
@@ -245,6 +245,13 @@
 			<real>16</real>
 			<real>149</real>
 			<integer>51</integer>
+			<integer>1</integer>
+		</array>
+		<key>white</key>
+		<array>
+			<integer>255</integer>
+			<integer>255</integer>
+			<integer>255</integer>
 			<integer>1</integer>
 		</array>
 		<key>grey50</key>
