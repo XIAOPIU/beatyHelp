@@ -237,7 +237,7 @@ class GetPubTableView{
         cell.addSubview(limitTimeLabel)
         
         // 添加圆形头像
-        creatRoundImage(cell,CGRectMake(3, 9, 64, 64),userImage,1.5);
+        creatRoundImage(cell,CGRectMake(3, 9, 64, 64),UIImage(named:userImage),1.5);
         
         setBottom(status)
     }

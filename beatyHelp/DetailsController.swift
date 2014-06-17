@@ -11,10 +11,12 @@ import UIKit
 
 class DetailsController: UIViewController {
     var rowIndex: Int = 0
+    var id: Int = 0
+    var data: NSDictionary?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DetailViewDraw(_controller: self)
+        loadData(id)
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,6 +26,22 @@ class DetailsController: UIViewController {
     // 使顶部状态bar变为白色
     override func preferredStatusBarStyle()->UIStatusBarStyle{
         return UIStatusBarStyle.LightContent
+    }
+    
+    func loadData(id:Int){
+        var url = "http://mm.renren.com/task-get?id=" + String(id)
+        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+            self.data = data["data"] as NSDictionary!
+            DetailViewDraw(_controller: self)
+        })
+    }
+    
+    func otherImage(sender: UIButton!){
+//        println(123)
+        // 跳转到详情内页
+        var otherCon = OtherController()
+        otherCon.uid = (self.data!.objectForKey("uid") as String).toInt()!
+        self.presentModalViewController(otherCon, animated:true)
     }
     
     func goBackAction(sender: UIButton!) {

@@ -76,6 +76,10 @@
 		A35264F9194AB10900C52FA2 /* greyIcon01.png in Resources */ = {isa = PBXBuildFile; fileRef = A35264F6194AB10900C52FA2 /* greyIcon01.png */; };
 		A35264FA194AB10900C52FA2 /* greyIcon02.png in Resources */ = {isa = PBXBuildFile; fileRef = A35264F7194AB10900C52FA2 /* greyIcon02.png */; };
 		A35264FB194AB10900C52FA2 /* greyIcon03.png in Resources */ = {isa = PBXBuildFile; fileRef = A35264F8194AB10900C52FA2 /* greyIcon03.png */; };
+		A3601FC3194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */; };
+		A3601FC5194EAB9B003AA8F3 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */; };
+		A3601FC7194ED3F7003AA8F3 /* OtherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC6194ED3F7003AA8F3 /* OtherController.swift */; };
+		A3601FC9194ED43D003AA8F3 /* otherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC8194ED43D003AA8F3 /* otherView.swift */; };
 		A3942D79194AF2D9003D5F90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3942D78194AF2D9003D5F90 /* Main.storyboard */; };
 		A39CCF3A1943FEEE006D061A /* obTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF391943FEEE006D061A /* obTool.m */; };
 		A39CCF3E19454EAB006D061A /* footButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39CCF3D19454EAB006D061A /* footButtonAction.swift */; };
@@ -180,6 +184,10 @@
 		A35264F6194AB10900C52FA2 /* greyIcon01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greyIcon01.png; sourceTree = "<group>"; };
 		A35264F7194AB10900C52FA2 /* greyIcon02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greyIcon02.png; sourceTree = "<group>"; };
 		A35264F8194AB10900C52FA2 /* greyIcon03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greyIcon03.png; sourceTree = "<group>"; };
+		A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHUIImageViewWebExtension.swift; sourceTree = "<group>"; };
+		A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
+		A3601FC6194ED3F7003AA8F3 /* OtherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherController.swift; sourceTree = "<group>"; };
+		A3601FC8194ED43D003AA8F3 /* otherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = otherView.swift; sourceTree = "<group>"; };
 		A3942D78194AF2D9003D5F90 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A39CCF321943FDF2006D061A /* beatyHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beatyHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		A39CCF391943FEEE006D061A /* obTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = obTool.m; sourceTree = "<group>"; };
@@ -329,6 +337,7 @@
 				A31C38B7194597F700A3713D /* MyDataController.swift */,
 				A33AFF63194841F4006A4839 /* DetailsController.swift */,
 				18A49470194AFD9500380807 /* CreateController.swift */,
+				A3601FC6194ED3F7003AA8F3 /* OtherController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -340,6 +349,8 @@
 				A34434B4194946960061D2F9 /* BHHttpRequest.swift */,
 				A34434B619494F570061D2F9 /* BHUIViewExtension.swift */,
 				A34CA07019499DE000B7CE5C /* BHNSStringExtension.swift */,
+				A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */,
+				A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -354,6 +365,7 @@
 				A33AFF651948424D006A4839 /* detailView.swift */,
 				18A4946E194AFD5100380807 /* createView.swift */,
 				A3942D78194AF2D9003D5F90 /* Main.storyboard */,
+				A3601FC8194ED43D003AA8F3 /* otherView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -385,6 +397,7 @@
 				A3E6715D1941CF3000DE0D03 /* view */,
 				A3E6715B1941CE3600DE0D03 /* controller */,
 				A3F492551941B37D0067A74F /* AppDelegate.swift */,
+				A3942D78194AF2D9003D5F90 /* Main.storyboard */,
 				A3F4925C1941B37D0067A74F /* Images.xcassets */,
 				A3F492531941B37D0067A74F /* Supporting Files */,
 			);
@@ -467,6 +480,7 @@
 				TargetAttributes = {
 					A3F4924F1941B37D0067A74F = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 66S44HPFWQ;
 					};
 					A3F492611941B37D0067A74F = {
 						CreatedOnToolsVersion = 6.0;
@@ -588,6 +602,8 @@
 				A34CA07119499DE000B7CE5C /* BHNSStringExtension.swift in Sources */,
 				A34434B719494F570061D2F9 /* BHUIViewExtension.swift in Sources */,
 				A33AFF64194841F4006A4839 /* DetailsController.swift in Sources */,
+				A3601FC3194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift in Sources */,
+				A3601FC5194EAB9B003AA8F3 /* FileUtility.swift in Sources */,
 				A3E6715F1941CF9700DE0D03 /* mainView.swift in Sources */,
 				A31C38B8194597F700A3713D /* MyDataController.swift in Sources */,
 				A3F492581941B37D0067A74F /* ViewController.swift in Sources */,
@@ -602,7 +618,9 @@
 				A34434B5194946960061D2F9 /* BHHttpRequest.swift in Sources */,
 				18A4946F194AFD5100380807 /* createView.swift in Sources */,
 				A39CCF4019455975006D061A /* ManageController.swift in Sources */,
+				A3601FC9194ED43D003AA8F3 /* otherView.swift in Sources */,
 				A39CCF3A1943FEEE006D061A /* obTool.m in Sources */,
+				A3601FC7194ED3F7003AA8F3 /* OtherController.swift in Sources */,
 				A3E671611941CFBA00DE0D03 /* tool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

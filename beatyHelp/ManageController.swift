@@ -83,18 +83,18 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // UITableViewDelegate Methods
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {
-        if(tableView==self.pubTable){
-            // 跳转到详情内页
-            var detailsCon = DetailsController()
-            self.presentModalViewController(detailsCon, animated:false)
-            self.pubTable!.deselectRowAtIndexPath(indexPath, animated: false)
-        }
-        else{
-            // 跳转到详情内页
-            var detailsCon = DetailsController()
-            self.presentModalViewController(detailsCon, animated:false)
-            self.getTable!.deselectRowAtIndexPath(indexPath, animated: false)
-        }
+//        if(tableView==self.pubTable){
+//            // 跳转到详情内页
+//            var detailsCon = DetailsController()
+//            self.presentModalViewController(detailsCon, animated:false)
+//            self.pubTable!.deselectRowAtIndexPath(indexPath, animated: false)
+//        }
+//        else{
+//            // 跳转到详情内页
+//            var detailsCon = DetailsController()
+//            self.presentModalViewController(detailsCon, animated:false)
+//            self.getTable!.deselectRowAtIndexPath(indexPath, animated: false)
+//        }
     }
     
     func footBtn1Action(sender: UIButton!) {
