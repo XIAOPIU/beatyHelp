@@ -1,5 +1,5 @@
 //
-//  tool.swift
+//  BHTool.swift
 //  beatyHelp
 //
 //  Created by 李国锐,张杨雪 on 6/6/14.
@@ -67,6 +67,24 @@ func getColorFromDictionary(dictionaryName:String) -> UIColor{
     var colorArray = NSMutableArray()
     colorArray = colorList.objectForKey(dictionaryName) as NSMutableArray
     return UIColor(red: CGFloat(colorArray[0] as NSNumber)/255, green: CGFloat(colorArray[1] as NSNumber)/255, blue: CGFloat(colorArray[2] as NSNumber)/255, alpha: CGFloat(colorArray[3] as NSNumber))
+}
+
+
+
+/**
+*  通过16进制RGB来返回UIColor
+*
+*  @param rgbValue 16进制RGB值 例如：0x333333
+*
+*  @return 返回相应的UIColor对象
+*/
+func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+    return UIColor(
+        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+        alpha: CGFloat(1.0)
+    )
 }
 
 

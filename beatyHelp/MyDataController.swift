@@ -35,4 +35,8 @@ class MyDataController: UIViewController {
 //        manageCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(manageCon, animated:false)
     }
+    
+    func signOut(sender: UIButton!){
+        BHAlertView().signOut(self, title: "退出应用", subTitle: "是否确定退出该应用？")
+    }
 }

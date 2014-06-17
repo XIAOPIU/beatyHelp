@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class OtherController: UIViewController {
-//    var rowIndex: Int = 0
     var uid: Int = 0
     var index: Int = 0
     var dataArray = NSMutableArray()
@@ -32,22 +31,24 @@ class OtherController: UIViewController {
     func loadFriendData(uid:Int){
         var url = "http://mm.renren.com/users-friend?uid=" + String(uid)
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
-            println(data)
+            if data as NSObject == NSNull(){
+                UIView.showAlertView("提示",message:"加载失败")
+                return
+            }
+            
             var arr = data["data"] as NSArray
             for data : AnyObject  in arr{
                 self.dataArray.addObject(data)
             }
             OtherViewDraw(_controller: self)
 //            self.setView(scrollView)
-            })
+            }
+        )
     }
     
     func otherImage(sender: UIButton!){
-        //        println(123)
-        // 跳转到详情内页
         var otherCon = OtherController()
-        otherCon.uid = (dataArray[index].objectForKey("id") as String).toInt()!
-//        otherCon.uid = uid
+        otherCon.uid = (dataArray[sender.tag].objectForKey("id") as String).toInt()!
         self.presentModalViewController(otherCon, animated:true)
     }
     

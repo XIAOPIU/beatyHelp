@@ -46,6 +46,11 @@ class GetOtherView{
     func loadUserData(scrollView: UIScrollView, uid:Int){
         var url = "http://mm.renren.com/users-get?id=" + String(uid)
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+            if data as NSObject == NSNull(){
+                UIView.showAlertView("提示",message:"加载失败")
+                return
+            }
+            
             self.data = data["data"] as NSDictionary
             self.setView(scrollView)
             var viewMiddle = GetMyDataMiddle(_scrollView: scrollView)
@@ -117,7 +122,12 @@ class GetFriendView{
     
 //    func loadFriendData(scrollView: UIScrollView, uid:Int){
 //        var url = "http://mm.renren.com/users-friend?uid=" + String(uid)
-//        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+    //        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+//    if data as NSObject == NSNull(){
+//    UIView.showAlertView("提示",message:"加载失败")
+//    return
+//    }
+//    
 //            println(data)
 //            var arr = data["data"] as NSArray
 //            for data : AnyObject  in arr{
@@ -195,8 +205,9 @@ class GetFriendView{
             friend.contentMode = .ScaleAspectFill
             //    imageView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
             friend.clipsToBounds = true
-            self.getController.index = i
+//            self.getController.index = i
             imageButton.addTarget(self.getController,action:"otherImage:",forControlEvents:.TouchUpInside)
+            imageButton.tag = i
             friendImageArray.insert(friend, atIndex: i)
             friendBtnArray.insert(imageButton, atIndex: i)
             imageButton.addSubview(friend)

@@ -31,6 +31,11 @@ class DetailsController: UIViewController {
     func loadData(id:Int){
         var url = "http://mm.renren.com/task-get?id=" + String(id)
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+            if data as NSObject == NSNull(){
+                UIView.showAlertView("提示",message:"加载失败")
+                return
+            }
+            
             self.data = data["data"] as NSDictionary!
             DetailViewDraw(_controller: self)
         })
@@ -44,11 +49,12 @@ class DetailsController: UIViewController {
         self.presentModalViewController(otherCon, animated:true)
     }
     
+    func detailDoIt(sender: UIButton!){
+        BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？")
+    }
+    
     func goBackAction(sender: UIButton!) {
 //        self.navigationController.popViewControllerAnimated(true)
         self.dismissModalViewControllerAnimated(true)
     }
-    
-    
-    
 }

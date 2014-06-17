@@ -8,65 +8,88 @@
 
 import UIKit
 
+
+/**
+*  首页controller
+*/
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let identifier = "cell"
-    var indexTable : UITableView?
-    var dataArray = NSMutableArray()
+    let identifier = "cell" //tableCell的identifier
+    var indexTable : UITableView? //首页的tableView
+    var dataArray = NSMutableArray() //首页数据
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setIndexTable()
-        loadData()
-        // mainView 界面绘制
-        MainViewDraw(_controller: self)
+        setIndexTable() //设置并创建tableView
+        loadData() //数据加载
+        MainViewDraw(_controller: self) //mainView界面绘制
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // 使顶部状态bar变为白色
+    /**
+    *  使顶部状态bar变为白色
+    */
     override func preferredStatusBarStyle()->UIStatusBarStyle{
         return UIStatusBarStyle.LightContent
     }
     
+    /**
+    *  设置并创建tableView
+    */
     func setIndexTable(){
-        self.indexTable = UITableView(frame:CGRectMake(7,160,306,UIScreen.mainScreen().applicationFrame.height-179), style:UITableViewStyle.Plain)
-        self.indexTable!.delegate = self
-        self.indexTable!.dataSource = self
-        self.indexTable!.rowHeight = 135
-        self.indexTable!.registerClass(GetMainTabelCell.self, forCellReuseIdentifier: identifier)
-        self.indexTable!.backgroundColor = UIColor.clearColor()
-        self.indexTable!.separatorColor = UIColor.clearColor()
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.view?.addSubview(self.indexTable)
+        self.indexTable = UITableView(frame:CGRectMake(7,160,306,UIScreen.mainScreen().applicationFrame.height-179), style:UITableViewStyle.Plain) //创建tableView并设置CGRect以及样式
+        self.indexTable!.delegate = self //设置委托
+        self.indexTable!.dataSource = self //设置数据源
+        self.indexTable!.rowHeight = 135 //table每行高度
+        self.indexTable!.registerClass(GetMainTabelCell.self, forCellReuseIdentifier: identifier) //为table创建cell
+        self.indexTable!.backgroundColor = UIColor.clearColor() //清除背景色
+        self.indexTable!.separatorColor = UIColor.clearColor() //清除风格行样式
+        self.automaticallyAdjustsScrollViewInsets = false //scrollView的内容自动调整
+        self.view.addSubview(self.indexTable) //控件添加到controller
     }
     
+    /**
+    *  数据载入
+    */
     func loadData()
     {
-        var url = "http://mm.renren.com/task-all"
+        var url = "http://mm.renren.com/task-all" //接口url
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
-            var arr = data["data"] as NSArray
-            for data : AnyObject  in arr{
+            if data as NSObject == NSNull(){
+                UIView.showAlertView("提示",message:"加载失败")
+                return
+            }
+            
+            var arr = data["data"] as NSArray //获取返回的数据list数组
+            for data : AnyObject  in arr{ //遍历保存数据
                 self.dataArray.addObject(data)
             }
-            self.indexTable!.reloadData()
+            self.indexTable!.reloadData() //更新tableView内的数据
 //            UIView.showAlertView("提示",message:toString(self.dataArray))
             })
     }
     
-    // UITableViewDataSource Methods
+    /**
+    *  设置tabel组数
+    */
     func numberOfSectionsInTableView(tableView: UITableView!) -> Int
     {
         return 1
     }
     
+    /**
+    *  设置每组个数
+    */
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
         return self.dataArray.count
     }
     
-    //创建一个单元格
+    /**
+    *  创建一个单元格
+    */
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
         var cell = tableView?.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? GetMainTabelCell
@@ -90,6 +113,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        detailsCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(detailsCon, animated:true)
         self.indexTable!.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    func cellBottomEvent(sender: UIButton!){
+        switch(sender.tag) {
+        case 0:
+            BHAlertView().comment(self, title: "任务评论", subTitle: "是否前往评论该任务？")
+        case 1:
+            BHAlertView().share(self, title: "任务分享", subTitle: "是否确定分享该任务？")
+        case 2:
+            BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？")
+        default:
+            println("default")
+        }
     }
     
     func footBtn2Action(sender: UIButton!) {

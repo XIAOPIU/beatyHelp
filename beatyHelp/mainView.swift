@@ -100,28 +100,17 @@ class GetMainViewTop{
         var labelTextArray = getDictionary("userInfo").objectForKey("iconValue") as NSArray
         
         for i in 0..topIconArray.count{
-            // 添加圆形icon
-            creatRoundImage(topValueBg,CGRectMake(CGFloat(106+i*68),70,21,21),UIImage(named:topIconArray[i]),1.5);
-            //初始化label的尺寸
-            var label = UILabel(frame:CGRectMake(CGFloat(131+i*68), 72, 0, 0))
-            //获取文案
-            var str = toString(labelTextArray[i])
-            //设置文案
-            label.text = str
-            //设置文案颜色
-            label.textColor = UIColor.whiteColor()
-            //设置文案背景色，以及0.7透明
-            label.backgroundColor = UIColor(red:0,green:0,blue:0,alpha:0.7)
-            //设置文字居中
-            label.textAlignment = NSTextAlignment.Center
-            //设置文字字体以及字体大小
-            label.font = UIFont(name:"Arial",size:12)
-            //设置边框以及是否可见
-            label.layer.masksToBounds = true
-            //设置圆角尺寸
-            label.layer.cornerRadius = 10.0
-            //设置label宽高，使其根据文字内容自适应
-            label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y,CGFloat(12/2*countElements(str)+14), 12+4)
+            creatRoundImage(topValueBg,CGRectMake(CGFloat(106+i*68),70,21,21),UIImage(named:topIconArray[i]),1.5)// 添加圆形icon
+            var label = UILabel(frame:CGRectMake(CGFloat(131+i*68), 72, 0, 0)) //初始化label的尺寸
+            var str = toString(labelTextArray[i]) //获取文案
+            label.text = str //设置文案
+            label.textColor = UIColor.whiteColor() //设置文案颜色
+            label.backgroundColor = UIColor(red:0,green:0,blue:0,alpha:0.7) //设置文案背景色，以及0.7透明
+            label.textAlignment = NSTextAlignment.Center //设置文字居中
+            label.font = UIFont(name:"Arial",size:12) //设置文字字体以及字体大小
+            label.layer.masksToBounds = true //设置边框以及是否可见
+            label.layer.cornerRadius = 10.0 //设置圆角尺寸
+            label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y,CGFloat(12/2*countElements(str)+14), 12+4) //设置label宽高，使其根据文字内容自适应
             labelArray.insert(label, atIndex: i)
             topValueBg.addSubview(label)
         }
@@ -163,6 +152,19 @@ class GetMainViewMiddle{
         lineImgView = UIImageView(image:lineImg)
         //设置尺寸和位置
         lineImgView.frame = CGRectMake(0, 128, 234, 31)
+        
+        var chooseIcon = UIImageView(frame:CGRectMake(10, 10, 9, 11))
+        chooseIcon.image = UIImage(named: "chooseIcon")
+        lineImgView.addSubview(chooseIcon)
+        
+        var chooseLabel = UILabel(frame:CGRectMake(25, 5, 200, 20))
+        chooseLabel.text = "所有高校"
+        chooseLabel.font = UIFont(name:"Arial",size:14)
+        chooseLabel.textColor = UIColor.whiteColor()
+        chooseLabel.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
+        chooseLabel.shadowOffset = CGSizeMake(0, 0.5)
+        lineImgView.addSubview(chooseLabel)
+        
         uiView.addSubview(lineImgView)
     }
     
@@ -190,7 +192,7 @@ class GetMainViewMiddle{
 class GetMainTabelCell:UITableViewCell{
     var timeLabel:UILabel!
     var imgView:UIImageView!
-    var buttonArray:UIImageView[] = []
+    var buttonArray:UIButton[] = []
     var data :NSDictionary!
     
     var getController:UIViewController!
@@ -201,7 +203,6 @@ class GetMainTabelCell:UITableViewCell{
     
     override func layoutSubviews()
     {
-        
 //        var identifier = arrayDic[rowNo%3].objectForKey("identifier") as String
 //        var dateText = arrayDic[rowNo%3].objectForKey("time") as String
 //        var userImage = arrayDic[rowNo%3].objectForKey("userImage") as String
@@ -274,12 +275,16 @@ class GetMainTabelCell:UITableViewCell{
         self.addSubview(taskInfo)
 
         for i in 0..3{
+            
+            var buttonView = UIButton()
+            buttonView.frame = CGRectMake(CGFloat(101*i+2), self.height()-30, 100, 30)
             var buttonBg = UIImageView()
-            buttonBg.frame = CGRectMake(CGFloat(101*i+2), self.height()-30, 100, 30)
+            buttonBg.frame = CGRectMake(0, 0, 100, 30)
             
             var buttonIcon =  UIImageView(image: UIImage(named: "greyIcon0\(i+1)"))
             buttonIcon.frame = CGRectMake(40, 5, 20, 20)
-            buttonBg.addSubview(buttonIcon)
+            buttonView.addTarget(self.getController, action:"cellBottomEvent:", forControlEvents:.TouchUpInside)
+            buttonView.tag = i
             
             if i != 2 {
                 var middleLine=UIView(frame:CGRectMake(CGFloat(101*(i+1)+3), self.height()-25, 1, 20))
@@ -288,8 +293,11 @@ class GetMainTabelCell:UITableViewCell{
                 self.addSubview(middleLine)
             }
             
-            buttonArray.insert(buttonBg, atIndex: i)
-            self.addSubview(buttonBg)
+            buttonArray.insert(buttonView, atIndex: i)
+            buttonBg.addSubview(buttonIcon)
+            buttonView.addSubview(buttonBg)
+            self.addSubview(buttonView)
+//            self.userInteractionEnabled = true
         }
 
         timeLabel = UILabel(frame:CGRectMake(198, 14, 160, 20))

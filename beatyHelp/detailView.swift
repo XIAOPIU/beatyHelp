@@ -169,10 +169,11 @@ class GetDetailView{
     }
     
     func getButton(scrollView: UIScrollView){
-        var img = UIImage(named: "blueBtn")
+        var img = UIImage(named: "redBtn")
         img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
         img.accessibilityFrame = CGRectMake(0, 0, 304, 36)
-        button = GetlargeBtn(_frame : CGRectMake(7, bgHeight+10, 306, 36), _img : img, _title : "让 我 来！").button
+        button = GetlargeBtn(_frame : CGRectMake(7, bgHeight+10, 306, 36), _img : img, _title : "让 我 来").button
+        button.addTarget(self.getController,action:"detailDoIt:",forControlEvents:.TouchUpInside)
         scrollView.addSubview(button)
     }
 }

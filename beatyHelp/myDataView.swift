@@ -19,7 +19,7 @@ class MyDataViewDraw{
         GetMainViewTop(_controller: _controller,_pageNum: 2)
         GetMyDataMiddle(_scrollView: scrollView)
         GetMiddleList(_scrollView: scrollView)
-        GetMydataBtn(_scrollView: scrollView)
+        GetMydataBtn(_scrollView: scrollView, _controller: _controller)
         GetFootBar(_controller: _controller, _index: 3)
     }
     
@@ -235,14 +235,18 @@ class GetMiddleList{
 class GetMydataBtn{
     var btnArray: UIButton[] = []
     
-    init(_scrollView: UIScrollView){
+    init(_scrollView: UIScrollView,_controller: MyDataController){
         var btnNum = 3
         var btnNameArray = ["历史消息","设  置","登  出"]
+        
         for i in 0..btnNum{
             var img = i == btnNum-1 ? UIImage(named: "blackBtn") : UIImage(named: "blueBtn")
             img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
             img.accessibilityFrame = CGRectMake(0, 0, 304, 36)
             var button = GetlargeBtn(_frame : CGRectMake(7, CGFloat(205+40*i), 306, 36), _img : img, _title : btnNameArray[i]).button
+            if i == 2{
+                button.addTarget(_controller,action:"signOut:",forControlEvents:.TouchUpInside)
+            }
             btnArray.insert(button, atIndex: i)
             _scrollView.addSubview(button)
         }
