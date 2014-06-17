@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1852BA9E19500BF6006472D4 /* mobileIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852BA9D19500BF6006472D4 /* mobileIcon1.png */; };
 		185BBE4719496FA700B1D738 /* bottomLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4319496FA700B1D738 /* bottomLine@2x.png */; };
 		185BBE4819496FA700B1D738 /* separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4419496FA700B1D738 /* separator@2x.png */; };
 		185BBE4919496FA700B1D738 /* leftTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4519496FA700B1D738 /* leftTabIcon@2x.png */; };
 		185BBE4A19496FA700B1D738 /* rightTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4619496FA700B1D738 /* rightTabIcon@2x.png */; };
 		185E83B3194EFA72004C9DDA /* detailsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 185E83B1194EFA72004C9DDA /* detailsIcon.png */; };
 		185E83B4194EFA72004C9DDA /* whisperIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 185E83B2194EFA72004C9DDA /* whisperIcon.png */; };
+		1874AB4119503637008B73E1 /* BHHttpPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874AB4019503637008B73E1 /* BHHttpPostRequest.swift */; };
 		18A4946F194AFD5100380807 /* createView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4946E194AFD5100380807 /* createView.swift */; };
 		18A49471194AFD9500380807 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A49470194AFD9500380807 /* CreateController.swift */; };
 		18DAFC9B194AA3330049A647 /* mobileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DAFC8D194AA3330049A647 /* mobileIcon@2x.png */; };
@@ -114,12 +116,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1852BA9D19500BF6006472D4 /* mobileIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobileIcon1.png; sourceTree = "<group>"; };
 		185BBE4319496FA700B1D738 /* bottomLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomLine@2x.png"; sourceTree = "<group>"; };
 		185BBE4419496FA700B1D738 /* separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator@2x.png"; sourceTree = "<group>"; };
 		185BBE4519496FA700B1D738 /* leftTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftTabIcon@2x.png"; sourceTree = "<group>"; };
 		185BBE4619496FA700B1D738 /* rightTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightTabIcon@2x.png"; sourceTree = "<group>"; };
 		185E83B1194EFA72004C9DDA /* detailsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailsIcon.png; sourceTree = "<group>"; };
 		185E83B2194EFA72004C9DDA /* whisperIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whisperIcon.png; sourceTree = "<group>"; };
+		1874AB4019503637008B73E1 /* BHHttpPostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHHttpPostRequest.swift; sourceTree = "<group>"; };
 		18A4946E194AFD5100380807 /* createView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createView.swift; sourceTree = "<group>"; };
 		18A49470194AFD9500380807 /* CreateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
 		18DAFC8D194AA3330049A647 /* mobileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobileIcon@2x.png"; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 		A32D8D171946B12E00A03EB7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1852BA9D19500BF6006472D4 /* mobileIcon1.png */,
 				18FB53F9194E990600CED6FC /* typeBtn1.png */,
 				185E83B1194EFA72004C9DDA /* detailsIcon.png */,
 				185E83B2194EFA72004C9DDA /* whisperIcon.png */,
@@ -347,6 +352,7 @@
 			children = (
 				A3E671601941CFBA00DE0D03 /* tool.swift */,
 				A34434B4194946960061D2F9 /* BHHttpRequest.swift */,
+				1874AB4019503637008B73E1 /* BHHttpPostRequest.swift */,
 				A34434B619494F570061D2F9 /* BHUIViewExtension.swift */,
 				A34CA07019499DE000B7CE5C /* BHNSStringExtension.swift */,
 				A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */,
@@ -364,7 +370,6 @@
 				A31C38BC1945A08700A3713D /* manageView.swift */,
 				A33AFF651948424D006A4839 /* detailView.swift */,
 				18A4946E194AFD5100380807 /* createView.swift */,
-				A3942D78194AF2D9003D5F90 /* Main.storyboard */,
 				A3601FC8194ED43D003AA8F3 /* otherView.swift */,
 			);
 			name = view;
@@ -580,6 +585,7 @@
 				A3AFE51F1949739400C60A1F /* detailsTopBgBlue@2x.png in Resources */,
 				18DAFC9D194AA3330049A647 /* stopIcon@2x.png in Resources */,
 				A3AFE525194973D100C60A1F /* headBg@2x.png in Resources */,
+				1852BA9E19500BF6006472D4 /* mobileIcon1.png in Resources */,
 				185BBE4719496FA700B1D738 /* bottomLine@2x.png in Resources */,
 				A3AFE52B194978A200C60A1F /* icon01.png in Resources */,
 			);
@@ -602,6 +608,7 @@
 				A34CA07119499DE000B7CE5C /* BHNSStringExtension.swift in Sources */,
 				A34434B719494F570061D2F9 /* BHUIViewExtension.swift in Sources */,
 				A33AFF64194841F4006A4839 /* DetailsController.swift in Sources */,
+				1874AB4119503637008B73E1 /* BHHttpPostRequest.swift in Sources */,
 				A3601FC3194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift in Sources */,
 				A3601FC5194EAB9B003AA8F3 /* FileUtility.swift in Sources */,
 				A3E6715F1941CF9700DE0D03 /* mainView.swift in Sources */,
