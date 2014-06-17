@@ -14,6 +14,9 @@ class CreateViewDraw{
     var timeField:UITextField!
     var moneyField:UITextField!
     var timeSelect:UIDatePicker!
+    var infoInput:getInputArea!
+    var whisperInput:getInputArea!
+    var telInput:getInputArea!
     
     init(_controller: CreateController){
         GetUIBaseView(_controller: _controller)
@@ -24,12 +27,15 @@ class CreateViewDraw{
         timeField=typeBox.timeField
         moneyField=typeBox.moneyField
         timeSelect=typeBox.timeSelect
+        infoInput=typeBox.infoInput
+        whisperInput=typeBox.whisperInput
+        telInput=typeBox.telInput
     }
     
     func setScrollView(_controller:UIViewController){
         scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-60))
         // 设置可滚动的区域
-        scrollView.contentSize = CGSizeMake(320, UIScreen.mainScreen().applicationFrame.height-60)
+        scrollView.contentSize = CGSizeMake(320, 800)
         _controller.view.addSubview(scrollView)
     }
 }
@@ -42,11 +48,19 @@ class GetCreateView{
     var timeField:UITextField!
     var moneyField:UITextField!
     var timeSelect:UIDatePicker!
+    var infoInput:getInputArea!
+    var whisperInput:getInputArea!
+    var telInput:getInputArea!
     init(_controller:UIViewController,_scrollView: UIScrollView){
         bodyController=_controller
         bodyView=_scrollView
+        infoInput=getInputArea(_scrollView: bodyView,type:0)
+        whisperInput=getInputArea(_scrollView: bodyView,type:1)
+        telInput=getInputArea(_scrollView: bodyView,type:2)
+        whisperInput.setY(342)
+        telInput.setY(563)
+        setPubBtn()
         setTypeCon()
-        setInfoCon()
     }
     
     func setTypeCon(){
@@ -122,66 +136,17 @@ class GetCreateView{
         toolbarView.items=toolBtnArray
         timeField.inputAccessoryView=toolbarView
         moneyField.inputAccessoryView=toolbarView
+        infoInput.inputArea.inputAccessoryView=toolbarView
+        whisperInput.inputArea.inputAccessoryView=toolbarView
         
     }
     
-    func setInfoCon(){
-        //第一层外框
-        var infoCon=UIView(frame:CGRectMake(10, 125, 300,180))
-        var conLayer = infoCon.layer
-        conLayer.cornerRadius=3
-        bodyView.addSubview(infoCon)
-        infoCon.clipsToBounds=true
-        
-        //底部
-        var infoBg=UIView(frame:CGRectMake(0, 0, 300,180))
-        var infoLayer = infoBg.layer
-        infoLayer.backgroundColor = getColorFromDictionary("greyf3").CGColor
-        infoLayer.cornerRadius=3
-        infoLayer.borderWidth=1
-        infoLayer.borderColor=UIColor.whiteColor().CGColor
-        infoLayer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75).CGColor
-        infoLayer.shadowOffset = CGSizeMake(0, 1)
-        infoCon.addSubview(infoBg)
-        
-        //topbar
-        var topBar=UIView(frame:CGRectMake(0, 0, 300,30))
-        topBar.backgroundColor=getColorFromDictionary("red")
-        var topLayer = topBar.layer
-        topLayer.borderWidth=1
-        topLayer.borderColor=getColorFromDictionary("red").CGColor
-        infoCon.addSubview(topBar)
-        
-        
-        var conIcon = UIImageView(frame:CGRectMake(120,8,15,15))
-        var conLabel=UILabel(frame:CGRectMake(140, 8, 50, 15))
-        conIcon.image = UIImage(named:"detailsIcon")
-        conLabel.text="任务详情"
-        conLabel.textColor=UIColor.whiteColor()
-        conLabel.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
-        conLabel.shadowOffset = CGSizeMake(0, 0.5)
-        conLabel.font=UIFont(name:"Arial",size:12)
-        conLabel.textAlignment = NSTextAlignment.Center
-        topBar.addSubview(conIcon)
-        topBar.addSubview(conLabel)
-        
-        //textLabel
-        var infoLabel=UILabel(frame:CGRectMake(15, 35, 270,50))
-        infoLabel.text="任务详情任务详情任务详情任务详情任务详情任务详情任务详情"
-        infoLabel.textColor=UIColor.blackColor()
-        infoLabel.textColor=UIColor.grayColor()
-        infoLabel.font=UIFont(name:"Arial",size:12)
-        infoCon.addSubview(infoLabel)
-        
-        //textBg
-//        var textBg=UIView(frame:CGRectMake(15, 45, 270,100))
-//        textBg.backgroundColor=UIColor.whiteColor()
-//        var textBgLayer = textBg.layer
-//        textBgLayer.cornerRadius=3
-//        textBgLayer.borderWidth=1
-//        textBgLayer.borderColor=UIColor.whiteColor().CGColor
-//        infoCon.addSubview(textBg)
-        
+    func setPubBtn(){
+        var img = UIImage(named: "blueBtn")
+        img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
+        img.accessibilityFrame = CGRectMake(0, 0, 304, 36)
+        var button = GetlargeBtn(_frame : CGRectMake(7, 650, 306, 36), _img : img, _title : "发布任务").button
+        bodyView.addSubview(button)
     }
     
 }
@@ -213,4 +178,127 @@ class getMoneyField:UITextField , UITextFieldDelegate{
         textField.resignFirstResponder()
                 return true
     }
+    
+    func textFieldDidBeginEditing(textField: UITextField!){
+        println(1)
+    }
+}
+
+class getInputArea:UIView{
+    var inputArea:UITextView!
+    var inputType:Int!
+    var desInfo:String[]=[]
+    init(_scrollView:UIScrollView,type:Int){
+        inputType=type
+        //设置第一层外框
+        super.init(frame:CGRectMake(10, 125, 300,200))
+        var conLayer = self.layer
+        conLayer.cornerRadius=3
+        self.clipsToBounds=true
+        
+        setAreaBg()
+        if inputType==2{
+            desInfo=["联系信息", "mobileIcon1"]
+            self.setHeight(70)
+            setNumberArea()
+        }
+        else if inputType==1{
+            desInfo=["悄悄话", "whisperIcon", "请包括地点、时间等信息，还可以有诸如请客、支付报酬等悬赏哦！"]
+            setInputArea()
+        }
+        else{
+            desInfo=["任务详情", "detailsIcon", "请包括地点、时间等信息，还可以有诸如请客、支付报酬等悬赏哦！"]
+            setInputArea()
+        }
+        setTitleBar()
+        _scrollView.addSubview(self)
+    }
+    
+    //整个区域的背景
+    func setAreaBg(){
+        var areaBg=UIView(frame:CGRectMake(0, 0, 300,200))
+        if inputType==2{
+            areaBg.setHeight(70)
+        }
+        var areaBgLayer = areaBg.layer
+        areaBgLayer.backgroundColor = getColorFromDictionary("greyf3").CGColor
+        areaBgLayer.cornerRadius=3
+        areaBgLayer.borderWidth=1
+        areaBgLayer.borderColor=UIColor.whiteColor().CGColor
+        areaBgLayer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75).CGColor
+        areaBgLayer.shadowOffset = CGSizeMake(0, 1)
+        self.addSubview(areaBg)
+    }
+    
+    //顶部titleBar
+    func setTitleBar(){
+        var titleBar=UIView(frame:CGRectMake(0, 0, 300,30))
+        titleBar.backgroundColor=getColorFromDictionary("red")
+        var titleBarLayer = titleBar.layer
+        titleBarLayer.borderWidth=1
+        titleBarLayer.borderColor=getColorFromDictionary("red").CGColor
+        self.addSubview(titleBar)
+        
+        //绘制title的图标和文字
+        var titleIcon = UIImageView(frame:CGRectMake(120,8,15,15))
+        titleIcon.image = UIImage(named:desInfo[1])
+        titleBar.addSubview(titleIcon)
+        
+        var titleLabel=UILabel(frame:CGRectMake(140, 8, 50, 15))
+        titleLabel.text=desInfo[0]
+        titleLabel.textColor=UIColor.whiteColor()
+        titleLabel.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        titleLabel.shadowOffset = CGSizeMake(0, 0.5)
+        titleLabel.font=UIFont(name:"Arial",size:12)
+        titleLabel.textAlignment = NSTextAlignment.Center
+        titleBar.addSubview(titleLabel)
+        
+    }
+    
+    //文本区域
+    func setInputArea(){
+        //描述信息
+        var tipsLabel=UILabel(frame:CGRectMake(15, 38, 270,30))
+        tipsLabel.text=desInfo[2]
+        tipsLabel.textColor=UIColor.grayColor()
+        tipsLabel.font=UIFont(name:"Arial",size:11)
+        tipsLabel.lineBreakMode = .ByWordWrapping
+        tipsLabel.numberOfLines = 0
+        self.addSubview(tipsLabel)
+        
+        //文本框背景
+        var inputBg=UIView(frame:CGRectMake(15, 72, 270,115))
+        inputBg.backgroundColor=UIColor.whiteColor()
+        var inputBgLayer = inputBg.layer
+        inputBgLayer.cornerRadius=3
+        inputBgLayer.borderWidth=1
+        inputBgLayer.borderColor=UIColor.whiteColor().CGColor
+        self.addSubview(inputBg)
+        
+        //文本框
+        inputArea=UITextView(frame:CGRectMake(0, 0, 270,95))
+        inputArea.backgroundColor=UIColor.clearColor()
+        inputBg.addSubview(inputArea)
+        
+        //文本计数
+        var inputAreaNum=UILabel(frame:CGRectMake(215, 95, 50,20))
+        inputAreaNum.text="0/140"
+        inputAreaNum.textColor=UIColor.grayColor()
+        inputAreaNum.font=UIFont(name:"Arial",size:11)
+        inputAreaNum.textAlignment=NSTextAlignment.Right
+        inputBg.addSubview(inputAreaNum)
+        
+    }
+    
+    //电话号码
+    func setNumberArea(){
+        //描述信息
+        var tipsLabel=UILabel(frame:CGRectMake(15, 35, 270,30))
+        tipsLabel.text="18612270100"
+        tipsLabel.textAlignment=NSTextAlignment.Center
+        tipsLabel.textColor=UIColor.blackColor()
+        tipsLabel.font=UIFont(name:"Arial",size:15)
+        self.addSubview(tipsLabel)
+    }
+    
 }

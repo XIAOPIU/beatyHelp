@@ -15,6 +15,9 @@ class CreateController: UIViewController{
     var timeField:UITextField?
     var moneyField:UITextField?
     var timeSelect:UIDatePicker?
+    var infoInput:getInputArea?
+    var whisperInput:getInputArea?
+    var telInput:getInputArea?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +26,16 @@ class CreateController: UIViewController{
         timeField=createView.timeField
         moneyField=createView.moneyField
         timeSelect=createView.timeSelect
+        infoInput=createView.infoInput
+        whisperInput=createView.whisperInput
+        telInput=createView.telInput
         var gestureTap=UITapGestureRecognizer(target: self, action: Selector("viewTapped"))
         gestureTap.cancelsTouchesInView = false;
         self.view.addGestureRecognizer(gestureTap)
+        
+        var postStr:NSString!
+        postStr="id=16&tasktype=3&coin=100&intro=啊啊，有木有人帮我去快递呀，放假在家取不到呀！天马公寓出门左拐顺丰&whisper=哈哈哈&userid=11"
+        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-update",_postStr:postStr)
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,11 +62,13 @@ class CreateController: UIViewController{
     func viewTapped() {
         self.timeField!.resignFirstResponder()
         self.moneyField!.resignFirstResponder()
+        self.infoInput!.inputArea.resignFirstResponder()
+        self.whisperInput!.inputArea.resignFirstResponder()
     }
+
     
     func cancelKeyboard() {
-        self.timeField!.resignFirstResponder()
-        self.moneyField!.resignFirstResponder()
+        viewTapped()
     }
     
     func finishKeyboard() {
@@ -68,8 +80,7 @@ class CreateController: UIViewController{
             var inputDate=formatter.stringFromDate(pickerDate)
             self.timeField!.text=inputDate
         }
-        self.timeField!.resignFirstResponder()
-        self.moneyField!.resignFirstResponder()
+        viewTapped()
     }
     
 }
