@@ -108,13 +108,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var createCon = CreateController()
         self.presentModalViewController(createCon, animated:true)
     }
-    
-    func loadData()
-    {
-        var url = "http://mm.renren.com/task-all?userid=1"
-        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
-            var getCode: AnyObject! = data.objectForKey("data")
-            UIView.showAlertView("提示",message:toString(getCode))
-        })
-    }
 }

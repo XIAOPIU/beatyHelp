@@ -46,8 +46,8 @@ class OtherController: UIViewController {
         //        println(123)
         // 跳转到详情内页
         var otherCon = OtherController()
-        //        otherCon.uid = dataArray[index].objectForKey("uid")
-        otherCon.uid = uid
+        otherCon.uid = (dataArray[index].objectForKey("id") as String).toInt()!
+//        otherCon.uid = uid
         self.presentModalViewController(otherCon, animated:true)
     }
     

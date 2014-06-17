@@ -14,7 +14,7 @@ class MainViewDraw{
         // 为controller添加baseView
         GetUIBaseView(_controller: _controller)
         GetMainViewTop(_controller: _controller,_pageNum: 1)
-        GetMainViewMiddle(_uiView: _controller.view)
+        GetMainViewMiddle(_controller: _controller)
         GetFootBar(_controller: _controller, _index: 1)
     }
 }
@@ -151,9 +151,9 @@ class GetMainViewMiddle{
     var lineImgView:UIImageView! // 筛选栏
     var imgBtnView:UIImageView! // 按钮
     
-    init(_uiView:UIView){
-        setLineImgView(_uiView)
-        setImgBtnView(_uiView)
+    init(_controller:UIViewController){
+        setLineImgView(_controller.view)
+        setImgBtnView(_controller)
     }
     
     func setLineImgView(uiView:UIView){
@@ -166,19 +166,11 @@ class GetMainViewMiddle{
         uiView.addSubview(lineImgView)
     }
     
-<<<<<<< HEAD
     func setImgBtnView(controller:UIViewController){
         var createBtn = UIButton(frame:CGRectMake(229, 128, 90, 32))
         var btnImg = UIImage(named:"middleBtn").stretchableImageWithLeftCapWidth(13,topCapHeight: 0)
         createBtn.setBackgroundImage(btnImg, forState: UIControlState.Normal)
         controller.view.addSubview(createBtn)
-=======
-    func setImgBtnView(uiView:UIView){
-        var btnImg = UIImage(named:"middleBtn").stretchableImageWithLeftCapWidth(13,topCapHeight: 0)
-        imgBtnView = UIImageView(image:btnImg)
-        imgBtnView.frame = CGRectMake(229, 128, 90, 32)
-        uiView.addSubview(imgBtnView)
->>>>>>> FETCH_HEAD
         
         var btnIcon = UIImageView(image: UIImage(named:"icon01"))
         btnIcon.frame = CGRectMake(11, 5, 20, 20)
