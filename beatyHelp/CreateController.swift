@@ -54,12 +54,12 @@ class CreateController: UIViewController{
             typeBtnArray[i].selected=false;
         }
         sender.selected=true;
-//        console.log(sender.index)
+        self.chooseType=Int(sender.tag)+1
     }
     
     func pubBtnAction(sender: UIButton!) {
         var postStr:NSString!
-        postStr="id=16&tasktype=3&coin=100&intro=啊啊，有木有人帮我去快递呀，放假在家取不到呀！天马公寓出门左拐顺丰&whisper=哈哈哈&userid=11"
+        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=100&intro=啊啊，有木有人帮我去快递呀，放假在家取不到呀！天马公寓出门左拐顺丰&whisper=哈哈哈&userid=11"
         var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-save",_postStr:postStr)
     }
     

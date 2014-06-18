@@ -87,6 +87,7 @@ class GetCreateView{
             typeBtn.setImage(UIImage(named:"typeBtn\(i+1)x"), forState: UIControlState.Highlighted)
             typeBtn.setImage(UIImage(named:"typeBtn\(i+1)x"), forState: UIControlState.Selected)
             typeBtn.addTarget(bodyController,action:Selector("typeBtnAction:"),forControlEvents:.TouchUpInside);
+            typeBtn.tag=i
             typeBtnArray.insert(typeBtn, atIndex: i)
             typeCon.addSubview(typeBtn)
         }
