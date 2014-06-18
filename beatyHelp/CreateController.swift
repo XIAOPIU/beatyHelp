@@ -18,6 +18,7 @@ class CreateController: UIViewController{
     var infoInput:getInputArea?
     var whisperInput:getInputArea?
     var telInput:getInputArea?
+    var chooseType:Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,6 @@ class CreateController: UIViewController{
         var gestureTap=UITapGestureRecognizer(target: self, action: Selector("viewTapped"))
         gestureTap.cancelsTouchesInView = false;
         self.view.addGestureRecognizer(gestureTap)
-        
-        var postStr:NSString!
-        postStr="id=16&tasktype=3&coin=100&intro=啊啊，有木有人帮我去快递呀，放假在家取不到呀！天马公寓出门左拐顺丰&whisper=哈哈哈&userid=11"
-        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-update",_postStr:postStr)
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,6 +54,13 @@ class CreateController: UIViewController{
             typeBtnArray[i].selected=false;
         }
         sender.selected=true;
+//        console.log(sender.index)
+    }
+    
+    func pubBtnAction(sender: UIButton!) {
+        var postStr:NSString!
+        postStr="id=16&tasktype=3&coin=100&intro=啊啊，有木有人帮我去快递呀，放假在家取不到呀！天马公寓出门左拐顺丰&whisper=哈哈哈&userid=11"
+        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-save",_postStr:postStr)
     }
     
     func viewTapped() {

@@ -35,7 +35,7 @@ class CreateViewDraw{
     func setScrollView(_controller:UIViewController){
         scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-60))
         // 设置可滚动的区域
-        scrollView.contentSize = CGSizeMake(320, 800)
+        scrollView.contentSize = CGSizeMake(320, 700)
         _controller.view.addSubview(scrollView)
     }
 }
@@ -114,7 +114,7 @@ class GetCreateView{
     }
     
     func setToolbar(){
-        var toolbarView=UIToolbar(frame:CGRectMake(0, 0, 320,20))
+        var toolbarView=UIToolbar(frame:CGRectMake(0, 0, 320,35))
         toolbarView.barStyle=UIBarStyle.Default
         
         //为工具条创建第一个按钮
@@ -146,6 +146,7 @@ class GetCreateView{
         img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
         img.accessibilityFrame = CGRectMake(0, 0, 304, 36)
         var button = GetlargeBtn(_frame : CGRectMake(7, 650, 306, 36), _img : img, _title : "发布任务").button
+        button.addTarget(bodyController,action:Selector("pubBtnAction:"),forControlEvents:.TouchUpInside);
         bodyView.addSubview(button)
     }
     
@@ -157,14 +158,19 @@ class getMoneyField:UITextField , UITextFieldDelegate{
         self.backgroundColor=UIColor.whiteColor()
         self.placeholder="悬赏：100"
         self.font=UIFont(name:"Arial",size:12)
-        self.returnKeyType=UIReturnKeyType.Done
         self.delegate = self
         var moneyLayer = self.layer
         moneyLayer.cornerRadius=3;
         moneyLayer.borderWidth = 1
         moneyLayer.borderColor = UIColor(red: 190, green: 195, blue: 199, alpha: 1).CGColor
-        self.keyboardType=UIKeyboardType.NumberPad
         self.clearButtonMode=UITextFieldViewMode.WhileEditing
+        self.returnKeyType=UIReturnKeyType.Done
+//        self.keyboardAppearance = .Dark;
+        self.keyboardType=UIKeyboardType.Default
+//        var timeSelect=UIView(frame:CGRectMake(0, 0, 320,100))
+//        timeSelect.backgroundColor=UIColor.blackColor()
+//        var timeSelect=UIDatePicker(frame:CGRectMake(0, 0, 0,0))
+//        self.inputView=timeSelect
         _UIView.addSubview(self)
     }
     
@@ -180,7 +186,6 @@ class getMoneyField:UITextField , UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(textField: UITextField!){
-        println(1)
     }
 }
 
@@ -302,3 +307,4 @@ class getInputArea:UIView{
     }
     
 }
+

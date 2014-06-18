@@ -45,8 +45,4 @@ class PostConnection:NSURLConnection,NSURLConnectionDelegate,NSURLConnectionData
         self.jsonData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         println(self.jsonData)
     }
-    
-//    override class func sendAsynchronousRequest(request: NSURLRequest!, queue: NSOperationQueue!, completionHandler handler: ((NSURLResponse!, NSData!, NSError!) -> Void)!){
-//        println(1)
-//    }
 }
