@@ -63,8 +63,9 @@ class CreateController: UIViewController{
         var info=self.infoInput!.inputArea.text
         var whisper=self.whisperInput!.inputArea.text
         var duedate=self.timeField!.text
-        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=18612270100&userid=11&status=1&duedate=\(duedate)"
-        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-save",_postStr:postStr)
+//        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=18612270100&userid=11&status=1&duedate=\(duedate)"
+        postStr="id=11&school=湖南大学&tasktype=2&contact=18612270100&userid=9&status=2&duedate=2014-10-10"
+        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-update",_postStr:postStr)
         println(postStr)
         BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧")
     }

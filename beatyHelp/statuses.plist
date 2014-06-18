@@ -78,15 +78,15 @@
 			<key>userName</key>
 			<string>张子萱</string>
 			<key>statusLabel</key>
-			<string>任务已领取</string>
+			<string>任务已取消</string>
 			<key>status</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>imageName</key>
 			<string>listCellBlueX</string>
 			<key>identifier</key>
 			<string>cell</string>
 			<key>statusColor</key>
-			<string>greenT</string>
+			<string>red</string>
 			<key>school</key>
 			<string>湖南大学</string>
 			<key>academy</key>
@@ -143,15 +143,15 @@
 			<key>userName</key>
 			<string>刘萌萌</string>
 			<key>statusLabel</key>
-			<string>任务已完成</string>
+			<string>任务待领取</string>
 			<key>status</key>
-			<integer>3</integer>
+			<integer>1</integer>
 			<key>imageName</key>
 			<string>listCellRedX</string>
 			<key>identifier</key>
 			<string>cell</string>
 			<key>statusColor</key>
-			<string>blue</string>
+			<string>greenT</string>
 			<key>school</key>
 			<string>清华大学</string>
 			<key>academy</key>
@@ -190,15 +190,68 @@
 			<key>userName</key>
 			<string>赵晓彤</string>
 			<key>statusLabel</key>
-			<string>任务已终止</string>
+			<string>任务已领取</string>
 			<key>status</key>
-			<integer>0</integer>
+			<integer>2</integer>
+			<key>imageName</key>
+			<string>listCellGreenX</string>
+			<key>identifier</key>
+			<string>cell</string>
+			<key>school</key>
+			<string>湖南大学</string>
+			<key>statusColor</key>
+			<string>red</string>
+			<key>academy</key>
+			<string>金融学院</string>
+			<key>tel</key>
+			<string>18601940888</string>
+			<key>getTime</key>
+			<string>2014-05-21 14:37</string>
+			<key>limitTime</key>
+			<string>2014-06-30 12:30</string>
+			<key>commonFri</key>
+			<array>
+				<dict>
+					<key>photo</key>
+					<string>tinyPhoto8</string>
+					<key>userId</key>
+					<string>8</string>
+				</dict>
+				<dict>
+					<key>photo</key>
+					<string>tinyPhoto9</string>
+					<key>userId</key>
+					<string>9</string>
+				</dict>
+				<dict>
+					<key>photo</key>
+					<string>tinyPhoto10</string>
+					<key>userId</key>
+					<string>10</string>
+				</dict>
+			</array>
+			<key>gold</key>
+			<string>15</string>
+			<key>taskName</key>
+			<string>领快递</string>
+			<key>taskIcon</key>
+			<string>icon04</string>
+		</dict>
+		<dict>
+			<key>userImage</key>
+			<string>userList03.jpg</string>
+			<key>userName</key>
+			<string>赵晓彤</string>
+			<key>statusLabel</key>
+			<string>任务已完成</string>
+			<key>status</key>
+			<integer>3</integer>
 			<key>imageName</key>
 			<string>listCellGreenX</string>
 			<key>identifier</key>
 			<string>cell</string>
 			<key>statusColor</key>
-			<string>red</string>
+			<string>blue</string>
 			<key>school</key>
 			<string>湖南大学</string>
 			<key>academy</key>

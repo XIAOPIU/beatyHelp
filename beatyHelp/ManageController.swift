@@ -10,15 +10,19 @@ import Foundation
 import UIKit
 
 class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    let identifier = "cell" //tableCell的identifier
+    var indexTable : UITableView? //首页的tableView
     var pubTable : UITableView?
     var getTable : UITableView?
     var leftTab : UIButton? // 发布的任务
     var rightTab : UIButton? //领取的任务
+    var dataArray = NSMutableArray() //数据list
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setPubTable()
         setGetTable()
+        loadData(self.pubTable!,url:"http://mm.renren.com/task-all?userid=11")
         var manageView = ManageViewDraw(_controller: self)
         leftTab=manageView.leftTab
         rightTab=manageView.rightTab
@@ -34,15 +38,16 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func setPubTable(){
+        
         self.pubTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-90), style:UITableViewStyle.Plain)
         self.pubTable!.delegate = self
         self.pubTable!.dataSource = self
         self.pubTable!.rowHeight = 160
-        self.pubTable!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.pubTable!.registerClass(GetPubTabelCell.self, forCellReuseIdentifier: identifier)
         self.pubTable!.backgroundColor = UIColor.clearColor()
         self.pubTable!.separatorColor = UIColor.clearColor()
         self.automaticallyAdjustsScrollViewInsets = false
-        self.view?.addSubview(self.pubTable)
+        self.view.addSubview(self.pubTable)
     }
     
     func setGetTable(){
@@ -50,12 +55,35 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.getTable!.delegate = self
         self.getTable!.dataSource = self
         self.getTable!.rowHeight = 160
-        self.getTable!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.getTable!.registerClass(GetPubTabelCell.self, forCellReuseIdentifier: "cell")
         self.getTable!.backgroundColor = UIColor.clearColor()
         self.getTable!.separatorColor = UIColor.clearColor()
         self.automaticallyAdjustsScrollViewInsets = false
-        self.view?.addSubview(self.getTable)
-        self.getTable!.hidden=true;
+        self.view.addSubview(self.getTable)
+//        self.getTable!.hidden=true;
+        self.getTable!.alpha=0
+        self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width
+    }
+    
+    /**
+    *  数据载入
+    */
+    func loadData(curTable:UITableView!,url:String!)
+    {
+        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+            if data as NSObject == NSNull(){
+                UIView.showAlertView("提示",message:"加载失败")
+                return
+            }
+            
+            var arr = data["data"] as NSArray //获取返回的数据list数组
+            self.dataArray=[]
+            for data : AnyObject  in arr{ //遍历保存数据
+                self.dataArray.addObject(data)
+            }
+            curTable.reloadData() //更新tableView内的数据
+            //            UIView.showAlertView("提示",message:toString(self.dataArray))
+            })
     }
     
     // UITableViewDataSource Methods
@@ -66,18 +94,26 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        return 12
+        return self.dataArray.count
     }
     
     //创建一个单元格
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
-        if(tableView==self.pubTable){
-            return GetPubTableView(tableView: tableView,indexPath: indexPath,tableIndex: 0).cell
-        }
-        else{
-            return GetPubTableView(tableView: tableView,indexPath: indexPath,tableIndex: 1).cell
-        }
+//        if(tableView==self.pubTable){
+//            return GetPubTableView(tableView: tableView,indexPath: indexPath,tableIndex: 0).cell
+//        }
+//        else{
+//            return GetPubTableView(tableView: tableView,indexPath: indexPath,tableIndex: 1).cell
+//        }
+        
+        
+        var cell = tableView?.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? GetPubTabelCell
+        var index = indexPath!.row
+        var getData = self.dataArray[index] as NSDictionary
+        cell!.data = getData
+        cell!.getController = self
+        return cell
     }
     
     // UITableViewDelegate Methods
@@ -95,6 +131,16 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //            self.presentModalViewController(detailsCon, animated:false)
 //            self.getTable!.deselectRowAtIndexPath(indexPath, animated: false)
 //        }
+        // 跳转到详情内页
+        var detailsCon = DetailsController()
+        var row = indexPath!.row
+        detailsCon.rowIndex = row
+        var getId = self.dataArray[row].objectForKey("id") as String
+        detailsCon.id = getId.toInt()!
+        //        self.navigationController.pushViewController(detailsCon, animated: true)
+        //        detailsCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+        self.presentModalViewController(detailsCon, animated:true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     func footBtn1Action(sender: UIButton!) {
@@ -112,15 +158,30 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func leftTabAction(sender: UIButton!) {
         sender.alpha=1
         self.rightTab!.alpha=0.5
-        self.pubTable!.hidden=false;
-        self.getTable!.hidden=true;
+//        self.pubTable!.hidden=false;
+//        self.getTable!.hidden=true;
+        loadData(self.pubTable!,url:"http://mm.renren.com/task-all?userid=11")
+        UIView.animateWithDuration(0.5, animations: {
+            self.getTable!.alpha = 0;
+            self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width
+            self.pubTable!.alpha = 1;
+            self.pubTable!.frame.origin.x = 0
+            }, completion: { finished in })
     }
     
     func rightTabAction(sender: UIButton!) {
         sender.alpha=1
         self.leftTab!.alpha=0.5
-        self.getTable!.hidden=false;
-        self.pubTable!.hidden=true;
+//        self.getTable!.hidden=false;
+//        self.pubTable!.hidden=true;
+        loadData(self.getTable!,url:"http://mm.renren.com/task-all")
+        // Animate in the alert view
+        UIView.animateWithDuration(0.5, animations: {
+             self.getTable!.alpha = 1;
+             self.getTable!.frame.origin.x = 0
+             self.pubTable!.alpha = 0;
+             self.pubTable!.frame.origin.x = -UIScreen.mainScreen().applicationFrame.width
+            }, completion: { finished in })
     }
     
 }
