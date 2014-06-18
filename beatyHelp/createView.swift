@@ -33,7 +33,7 @@ class CreateViewDraw{
     }
     
     func setScrollView(_controller:UIViewController){
-        scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-60))
+        scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-40))
         // 设置可滚动的区域
         scrollView.contentSize = CGSizeMake(320, 700)
         _controller.view.addSubview(scrollView)

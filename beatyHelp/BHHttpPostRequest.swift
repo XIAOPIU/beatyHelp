@@ -29,8 +29,6 @@ class PostRequest:NSMutableURLRequest{
             return
         }
     }
-    
-    
 }
 
 class PostConnection:NSURLConnection,NSURLConnectionDelegate,NSURLConnectionDataDelegate{
