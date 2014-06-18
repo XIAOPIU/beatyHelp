@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import QuartzCore
+
 class DetailViewDraw{
     var scrollView:UIScrollView! //创建滚动并设置尺寸
     
@@ -15,13 +17,11 @@ class DetailViewDraw{
         GetUIBaseView(_controller: _controller)
         GetHeadBar(_controller: _controller, _title: "任务详情")
         setScrollView(_controller)
-        var detailView = GetDetailView(_scrollView: scrollView, _controller: _controller)
+        GetDetailView(_scrollView: scrollView, _controller: _controller)
     }
     
     func setScrollView(_controller:DetailsController){
-        scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-60))
-        // 设置可滚动的区域
-//        scrollView.contentSize = CGSizeMake(320, UIScreen.mainScreen().applicationFrame.height)
+        scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-40))
         _controller.view.addSubview(scrollView)
     }
 }
@@ -34,6 +34,14 @@ class GetDetailView{
     var stateLabel: UILabel!
     var taskInfo: UILabel!
     var button: UIButton!
+    
+    var commentListBg:UIView!  //创建框体并设置尺寸
+    var topValueBg:UIView! //创建图片并设置尺寸
+    var topTitle:UILabel! //创建顶部title
+    var commentField:UITextField! //评论输入框
+    var commentBtn:UIButton! //评论提交按钮
+    var commentListBgArray:UIView[] = []
+    let ListNum = 4
     
     var data: NSDictionary!
     var getController: DetailsController!
@@ -51,6 +59,9 @@ class GetDetailView{
         idNum = _controller.id
         
         setView(_scrollView)
+        var setHeight = bgHeight + CGFloat(50*ListNum) + 143
+        // 设置可滚动的区域
+        _scrollView.contentSize = CGSizeMake(320, setHeight)
     }
     
     func setView(scrollView: UIScrollView){
@@ -62,6 +73,14 @@ class GetDetailView{
         setStateLabel()
         setTaskInfo()
         getButton(scrollView)
+        getCommentListBg(scrollView)
+        getTopValueBg()
+        getTopTitle()
+        getCommentListBgArray()
+        getCommentField()
+        setToolbar()
+        getCommentBtn()
+        getCommentList()
     }
     
     func setTopBg(_scrollView: UIScrollView){
@@ -169,11 +188,190 @@ class GetDetailView{
     }
     
     func getButton(scrollView: UIScrollView){
-        var img = UIImage(named: "redBtn")
+        var img = UIImage(named: "blueBtn")
         img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
         img.accessibilityFrame = CGRectMake(0, 0, 304, 36)
         button = GetlargeBtn(_frame : CGRectMake(7, bgHeight+10, 306, 36), _img : img, _title : "让 我 来").button
         button.addTarget(self.getController,action:"detailDoIt:",forControlEvents:.TouchUpInside)
         scrollView.addSubview(button)
+    }
+    
+    func getCommentListBg(scrollView: UIScrollView){
+        commentListBg = UIView(frame: CGRectMake(10, bgHeight+54, 300, CGFloat(28+50*(ListNum+1))))
+        var layer = commentListBg.layer
+        layer.shadowOffset = CGSizeMake(0, 1)
+        layer.shadowRadius = 5
+        layer.shadowColor = UIColor.blackColor().CGColor
+        layer.shadowOpacity = 0.05
+        scrollView.addSubview(commentListBg)
+    }
+    
+    func getTopValueBg(){
+        topValueBg = UIView(frame:CGRectMake(0, 0, 300, 28))
+        var topLayer = topValueBg.layer
+        topLayer.backgroundColor = getColorFromDictionary("red").CGColor
+        //设置只有右边的两个圆角
+        var topMaskPath = UIBezierPath(roundedRect:topValueBg.bounds, byRoundingCorners: UIRectCorner.TopRight|UIRectCorner.TopLeft, cornerRadii:CGSizeMake(5, 5))
+        var topMaskLayer = CAShapeLayer()
+        topMaskLayer.frame = topLayer.bounds
+        topMaskLayer.path = topMaskPath.CGPath
+        topValueBg.layer.mask = topMaskLayer
+        commentListBg.addSubview(topValueBg)
+    }
+    
+    func getTopTitle(){
+        //绘制title的图标和文字
+        var titleIcon = UIImageView(frame:CGRectMake(110,7,15,15))
+        titleIcon.image = UIImage(named:"detailsIcon")
+        topValueBg.addSubview(titleIcon)
+        
+        topTitle = UILabel(frame: CGRectMake(130, 8, 80, 12))
+        topTitle.text = "用户评论:(\(ListNum))"
+        topTitle.font = UIFont(name:"Arial",size:12)
+        topTitle.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        topTitle.shadowOffset = CGSizeMake(0, 0.5)
+        topTitle.textColor = UIColor.whiteColor()
+        topValueBg.addSubview(topTitle)
+    }
+    
+    func getCommentListBgArray(){
+        for i in 0..ListNum+1 {
+            var middleValueBg = UIView(frame:CGRectMake( 0, CGFloat(28+50*i), 300, 50))
+            var middleLayer = middleValueBg.layer
+            if i%2 == 1{
+                middleLayer.backgroundColor = getColorFromDictionary("greyf3").CGColor
+            }else{
+                middleLayer.backgroundColor = getColorFromDictionary("greyd8").CGColor
+            }
+            if i == ListNum {
+                var middleMaskPath = UIBezierPath(roundedRect: middleValueBg.bounds, byRoundingCorners: UIRectCorner.BottomLeft|UIRectCorner.BottomRight, cornerRadii:CGSizeMake(5, 5))
+                var middleMaskLayer = CAShapeLayer()
+                middleMaskLayer.frame = middleLayer.bounds
+                middleMaskLayer.path = middleMaskPath.CGPath
+                middleValueBg.layer.mask = middleMaskLayer
+            }
+            commentListBgArray.insert(middleValueBg, atIndex: i)
+            commentListBg.addSubview(middleValueBg)
+        }
+    }
+    
+    func getCommentList(){
+        var nameArray = ["刘萌萌","李牛牛","王晓萌","陈琪"]
+        var contentArray = ["这个机会给我吧！我每天请吃早饭！","哎，晚了一步呀，不甘心呀！！！","我擦擦，让我来呀！","哎，手速太慢！"]
+        var timeArray = ["2014-05-20  13:18","2014-05-20  09:33","2014-05-19  23:29","2014-05-19  22:47"]
+        
+        for i in 0..ListNum{
+            var userImage = UIImageView(frame:CGRectMake(9, 9, 32, 32))
+            userImage.image = UIImage(named: "tinyPhoto\(i+1)")
+            userImage.layer.cornerRadius = 3
+            commentListBgArray[i+1].addSubview(userImage)
+            
+            var userName = UILabel(frame:CGRectMake(50, 7, 140, 20))
+            userName.text = nameArray[i]
+            userName.font = UIFont(name:"Arial",size:12)
+            userName.textColor = getColorFromDictionary("grey33")
+            commentListBgArray[i+1].addSubview(userName)
+            
+            var content = UILabel(frame:CGRectMake(50, 25, 200, 20))
+            content.text = contentArray[i]
+            content.font = UIFont(name:"Arial",size:11)
+            content.textColor = getColorFromDictionary("grey50")
+            commentListBgArray[i+1].addSubview(content)
+            
+            var time = UILabel(frame:CGRectMake(208, 7, 100, 20))
+            time.text = timeArray[i]
+            time.font = UIFont(name:"Arial",size:10)
+            time.textColor = getColorFromDictionary("grey60")
+            commentListBgArray[i+1].addSubview(time)
+            
+            var reply = UILabel(frame:CGRectMake(263, 25, 30, 20))
+            var replyContent = NSMutableAttributedString(string: String("回 复"))
+            var contentRange = NSRange(location: 0, length: replyContent.length)
+            //        var getStyle = NSUnderlineStyle.StyleSingle
+            var getValue = NSNumber(integer:1)
+            replyContent.addAttribute(NSUnderlineStyleAttributeName, value: getValue, range: contentRange)
+            reply.attributedText = replyContent
+            reply.font = UIFont(name:"Arial",size:12)
+            reply.textColor = getColorFromDictionary("red")
+            commentListBgArray[i+1].addSubview(reply)
+        }
+    }
+    
+    func getCommentField(){
+        commentField=GetCommentField(_UIView:commentListBgArray[0])
+        getController.commentField = commentField
+    }
+    
+    func setToolbar(){
+        var toolbarView=UIToolbar(frame:CGRectMake(0, 0, 320,35))
+        toolbarView.barStyle=UIBarStyle.Default
+        
+        //为工具条创建第一个按钮
+        var cancelBtn=UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.Bordered, target: nil, action:Selector("cancelKeyboard"))
+        
+        //为工具条创建第二个按钮
+        var spaceBtn=UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        
+        //为工具条创建第三个按钮
+        var finishBtn=UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Done, target: nil, action: Selector("finishKeyboard"))
+        
+        //为三个按钮创建数组
+        var toolBtnArray=NSMutableArray()
+        toolBtnArray.addObject(cancelBtn)
+        toolBtnArray.addObject(spaceBtn)
+        toolBtnArray.addObject(finishBtn)
+        
+        //为toolbar设置按钮
+        toolbarView.items=toolBtnArray
+        commentField.inputAccessoryView=toolbarView
+    }
+    
+    func getCommentBtn(){
+        var img = UIImage(named: "redBtn")
+        img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
+        img.accessibilityFrame = CGRectMake(0, 0, 50, 33)
+        commentBtn = GetlargeBtn(_frame : CGRectMake(244, 7.5, 50, 33), _img : img, _title : "发 送").button
+//        commentBtn.addTarget(self.getController,action:"detailDoIt:",forControlEvents:.TouchUpInside)
+        commentListBgArray[0].addSubview(commentBtn)
+    }
+}
+
+
+
+class GetCommentField:UITextField , UITextFieldDelegate{
+    init(_UIView:UIView){
+        super.init(frame:CGRectMake(10, 10, 228,28))
+        self.backgroundColor=UIColor.whiteColor()
+        self.placeholder="请输入评论内容"
+        self.font=UIFont(name:"Arial",size:12)
+        self.delegate = self
+        var moneyLayer = self.layer
+        moneyLayer.cornerRadius=3;
+        moneyLayer.borderWidth = 1
+        moneyLayer.borderColor = UIColor(red: 190, green: 195, blue: 199, alpha: 1).CGColor
+        self.clearButtonMode=UITextFieldViewMode.WhileEditing
+        self.returnKeyType=UIReturnKeyType.Done
+        //        self.keyboardAppearance = .Dark;
+        self.keyboardType=UIKeyboardType.NumberPad
+        //        var timeSelect=UIView(frame:CGRectMake(0, 0, 320,100))
+        //        timeSelect.backgroundColor=UIColor.blackColor()
+        //        var timeSelect=UIDatePicker(frame:CGRectMake(0, 0, 0,0))
+        //        self.inputView=timeSelect
+        _UIView.addSubview(self)
+    }
+    
+    
+    func textFieldDidEndEditing(textField: UITextField!){
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool{
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField!){
+        
     }
 }

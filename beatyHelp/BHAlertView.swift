@@ -240,7 +240,7 @@ class BHAlertView : UIView {
             img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
             img.accessibilityFrame = CGRectMake(0, 0, kWindowWidth - 24, 36)
             self.circleIconImageView.image = UIImage(named: "alertIcon03")
-            self.doneButton.setTitle("让 我 来", forState: UIControlState.Normal)
+            self.doneButton.setTitle("确定领取", forState: UIControlState.Normal)
             self.doneButton.setBackgroundImage(img, forState: UIControlState.Normal)
             
         case BHAlertViewStyle.Share:
@@ -249,7 +249,7 @@ class BHAlertView : UIView {
             img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
             img.accessibilityFrame = CGRectMake(0, 0, kWindowWidth - 24, 36)
             self.circleIconImageView.image = UIImage(named: "alertIcon02")
-            self.doneButton.setTitle("分 享", forState: UIControlState.Normal)
+            self.doneButton.setTitle("确定分享", forState: UIControlState.Normal)
             self.doneButton.setBackgroundImage(img, forState: UIControlState.Normal)
             
         case BHAlertViewStyle.Comment:
@@ -258,7 +258,7 @@ class BHAlertView : UIView {
             img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
             img.accessibilityFrame = CGRectMake(0, 0, kWindowWidth - 24, 36)
             self.circleIconImageView.image = UIImage(named: "alertIcon01")
-            self.doneButton.setTitle("评 论", forState: UIControlState.Normal)
+            self.doneButton.setTitle("前往评论", forState: UIControlState.Normal)
             self.doneButton.setBackgroundImage(img, forState: UIControlState.Normal)
             
         case BHAlertViewStyle.SignOut:

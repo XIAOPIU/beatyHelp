@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class DetailsController: UIViewController {
+    var commentField:UITextField? //评论输入框
+    
     var rowIndex: Int = 0
     var id: Int = 0
     var data: NSDictionary?
@@ -38,7 +40,18 @@ class DetailsController: UIViewController {
             
             self.data = data["data"] as NSDictionary!
             DetailViewDraw(_controller: self)
+            var gestureTap=UITapGestureRecognizer(target: self, action: Selector("viewTapped"))
+            gestureTap.cancelsTouchesInView = false;
+            self.view.addGestureRecognizer(gestureTap)
         })
+    }
+    
+    func viewTapped() {
+        self.commentField!.resignFirstResponder()
+    }
+    
+    func cancelKeyboard() {
+        viewTapped()
     }
     
     func otherImage(sender: UIButton!){

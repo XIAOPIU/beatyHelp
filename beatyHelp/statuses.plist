@@ -307,6 +307,13 @@
 			<integer>255</integer>
 			<integer>1</integer>
 		</array>
+		<key>grey60</key>
+		<array>
+			<integer>102</integer>
+			<integer>102</integer>
+			<integer>102</integer>
+			<integer>1</integer>
+		</array>
 		<key>grey50</key>
 		<array>
 			<integer>80</integer>

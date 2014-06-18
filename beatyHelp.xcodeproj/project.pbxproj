@@ -80,7 +80,7 @@
 		A35264FA194AB10900C52FA2 /* greyIcon02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A35264F7194AB10900C52FA2 /* greyIcon02@2x.png */; };
 		A35264FB194AB10900C52FA2 /* greyIcon03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A35264F8194AB10900C52FA2 /* greyIcon03@2x.png */; };
 		A3601FC3194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */; };
-		A3601FC5194EAB9B003AA8F3 /* FileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */; };
+		A3601FC5194EAB9B003AA8F3 /* BHFileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC4194EAB9B003AA8F3 /* BHFileUtility.swift */; };
 		A3601FC7194ED3F7003AA8F3 /* OtherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC6194ED3F7003AA8F3 /* OtherController.swift */; };
 		A3601FC9194ED43D003AA8F3 /* otherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3601FC8194ED43D003AA8F3 /* otherView.swift */; };
 		A36702F0195013C800640801 /* BHAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36702EF195013C800640801 /* BHAlertView.swift */; };
@@ -204,7 +204,7 @@
 		A35264F7194AB10900C52FA2 /* greyIcon02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyIcon02@2x.png"; sourceTree = "<group>"; };
 		A35264F8194AB10900C52FA2 /* greyIcon03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyIcon03@2x.png"; sourceTree = "<group>"; };
 		A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHUIImageViewWebExtension.swift; sourceTree = "<group>"; };
-		A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtility.swift; sourceTree = "<group>"; };
+		A3601FC4194EAB9B003AA8F3 /* BHFileUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHFileUtility.swift; sourceTree = "<group>"; };
 		A3601FC6194ED3F7003AA8F3 /* OtherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherController.swift; sourceTree = "<group>"; };
 		A3601FC8194ED43D003AA8F3 /* otherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = otherView.swift; sourceTree = "<group>"; };
 		A36702EF195013C800640801 /* BHAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHAlertView.swift; sourceTree = "<group>"; };
@@ -396,7 +396,7 @@
 				A34434B619494F570061D2F9 /* BHUIViewExtension.swift */,
 				A34CA07019499DE000B7CE5C /* BHNSStringExtension.swift */,
 				A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */,
-				A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */,
+				A3601FC4194EAB9B003AA8F3 /* BHFileUtility.swift */,
 				A36702EF195013C800640801 /* BHAlertView.swift */,
 				A3DD3CD819509896003863C8 /* BHHttpManager.swift */,
 			);
@@ -665,7 +665,7 @@
 				A33AFF64194841F4006A4839 /* DetailsController.swift in Sources */,
 				1874AB4119503637008B73E1 /* BHHttpPostRequest.swift in Sources */,
 				A3601FC3194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift in Sources */,
-				A3601FC5194EAB9B003AA8F3 /* FileUtility.swift in Sources */,
+				A3601FC5194EAB9B003AA8F3 /* BHFileUtility.swift in Sources */,
 				A3E6715F1941CF9700DE0D03 /* mainView.swift in Sources */,
 				A31C38B8194597F700A3713D /* MyDataController.swift in Sources */,
 				A3F492581941B37D0067A74F /* ViewController.swift in Sources */,

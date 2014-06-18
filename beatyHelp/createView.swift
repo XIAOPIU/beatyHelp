@@ -187,6 +187,7 @@ class getMoneyField:UITextField , UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(textField: UITextField!){
+        
     }
 }
 
@@ -293,7 +294,6 @@ class getInputArea:UIView{
         inputAreaNum.font=UIFont(name:"Arial",size:11)
         inputAreaNum.textAlignment=NSTextAlignment.Right
         inputBg.addSubview(inputAreaNum)
-        
     }
     
     //电话号码
