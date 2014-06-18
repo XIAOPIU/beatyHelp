@@ -104,6 +104,7 @@
 		A3CC823E19503EA600AACA8A /* alertIcon03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CC823B19503EA600AACA8A /* alertIcon03@2x.png */; };
 		A3CC82401950410500AACA8A /* redBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CC823F1950410400AACA8A /* redBtn@2x.png */; };
 		A3CC82421950531C00AACA8A /* alertIcon04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CC82411950531C00AACA8A /* alertIcon04@2x.png */; };
+		A3DD3CD919509896003863C8 /* BHHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DD3CD819509896003863C8 /* BHHttpManager.swift */; };
 		A3E6715F1941CF9700DE0D03 /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E6715E1941CF9700DE0D03 /* mainView.swift */; };
 		A3E671611941CFBA00DE0D03 /* BHTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E671601941CFBA00DE0D03 /* BHTool.swift */; };
 		A3E671631941FB9900DE0D03 /* baseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E671621941FB9900DE0D03 /* baseView.swift */; };
@@ -129,7 +130,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1852BA9D19500BF6006472D4 /* mobileIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobileIcon1.png; sourceTree = "<group>"; };
 		185BBE4319496FA700B1D738 /* bottomLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomLine@2x.png"; sourceTree = "<group>"; };
 		185BBE4419496FA700B1D738 /* separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator@2x.png"; sourceTree = "<group>"; };
 		185BBE4519496FA700B1D738 /* leftTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftTabIcon@2x.png"; sourceTree = "<group>"; };
@@ -230,6 +230,7 @@
 		A3CC823B19503EA600AACA8A /* alertIcon03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertIcon03@2x.png"; sourceTree = "<group>"; };
 		A3CC823F1950410400AACA8A /* redBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redBtn@2x.png"; sourceTree = "<group>"; };
 		A3CC82411950531C00AACA8A /* alertIcon04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertIcon04@2x.png"; sourceTree = "<group>"; };
+		A3DD3CD819509896003863C8 /* BHHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHHttpManager.swift; sourceTree = "<group>"; };
 		A3E6715E1941CF9700DE0D03 /* mainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
 		A3E671601941CFBA00DE0D03 /* BHTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHTool.swift; sourceTree = "<group>"; };
 		A3E671621941FB9900DE0D03 /* baseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = baseView.swift; sourceTree = "<group>"; };
@@ -397,6 +398,7 @@
 				A3601FC2194EAB4D003AA8F3 /* BHUIImageViewWebExtension.swift */,
 				A3601FC4194EAB9B003AA8F3 /* FileUtility.swift */,
 				A36702EF195013C800640801 /* BHAlertView.swift */,
+				A3DD3CD819509896003863C8 /* BHHttpManager.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -638,7 +640,6 @@
 				A3AFE51F1949739400C60A1F /* detailsTopBgBlue@2x.png in Resources */,
 				18DAFC9D194AA3330049A647 /* stopIcon@2x.png in Resources */,
 				A3AFE525194973D100C60A1F /* headBg@2x.png in Resources */,
-				1852BA9E19500BF6006472D4 /* mobileIcon1.png in Resources */,
 				185BBE4719496FA700B1D738 /* bottomLine@2x.png in Resources */,
 				A3AFE52B194978A200C60A1F /* icon01@2x.png in Resources */,
 			);
@@ -677,6 +678,7 @@
 				A33AFF661948424D006A4839 /* detailView.swift in Sources */,
 				A3F492561941B37D0067A74F /* AppDelegate.swift in Sources */,
 				A34434B5194946960061D2F9 /* BHHttpRequest.swift in Sources */,
+				A3DD3CD919509896003863C8 /* BHHttpManager.swift in Sources */,
 				18A4946F194AFD5100380807 /* createView.swift in Sources */,
 				A39CCF4019455975006D061A /* ManageController.swift in Sources */,
 				A3601FC9194ED43D003AA8F3 /* otherView.swift in Sources */,
@@ -739,7 +741,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -775,7 +777,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
