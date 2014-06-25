@@ -66,7 +66,7 @@ class CreateController: UIViewController{
         var mobile=self.telInput!.inputField.text
         postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=\(mobile)&userid=1&status=1&duedate=\(duedate)"
 //        postStr="id=21&school=清华大学&tasktype=3&contact=18594562365&userid=11&status=1&duedate=2014-10-10"
-        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-save",_postStr:postStr)
+        var getDate=PostRequest(_controller:self,_url:"http://mm.nextsystem.pw/task-save",_postStr:postStr)
         println(postStr)
         BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧",alertType:"pubSuccess")
     }

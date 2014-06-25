@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     */
     func loadData()
     {
-        var url = "http://mm.renren.com/task-all?status=1" //接口url
+        var url = "http://mm.nextsystem.pw/task-all?status=1" //接口url
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")

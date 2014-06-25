@@ -22,7 +22,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         setPubTable()
         setGetTable()
-        loadData(self.pubTable!,url:"http://mm.renren.com/task-all?userid=1")
+        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=1")
         var manageView = ManageViewDraw(_controller: self)
         leftTab=manageView.leftTab
         rightTab=manageView.rightTab
@@ -176,7 +176,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.rightTab!.alpha=0.5
 //        self.pubTable!.hidden=false;
 //        self.getTable!.hidden=true;
-        loadData(self.pubTable!,url:"http://mm.renren.com/task-all?userid=1")
+        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=1")
         UIView.animateWithDuration(0.5, animations: {
             self.getTable!.alpha = 0;
             self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width-7
@@ -190,7 +190,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.leftTab!.alpha=0.5
 //        self.getTable!.hidden=false;
 //        self.pubTable!.hidden=true;
-        loadData(self.getTable!,url:"http://mm.renren.com/task-all?applyid=52")
+        loadData(self.getTable!,url:"http://mm.nextsystem.pw/task-all?applyid=52")
         // Animate in the alert view
         UIView.animateWithDuration(0.5, animations: {
              self.getTable!.alpha = 1;

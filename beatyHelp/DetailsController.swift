@@ -31,7 +31,7 @@ class DetailsController: UIViewController {
     }
     
     func loadData(id:Int){
-        var url = "http://mm.renren.com/task-get?id=" + String(id)
+        var url = "http://mm.nextsystem.pw/task-get?id=" + String(id)
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
