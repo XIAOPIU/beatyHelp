@@ -200,7 +200,7 @@ class GetMiddleList{
         var content = NSMutableAttributedString(string: String("更多"))
         var contentRange = NSRange(location: 0, length: content.length)
         //        var getStyle = NSUnderlineStyle.StyleSingle
-        var getValue = NSNumber(integer:2)
+        var getValue = NSNumber(integer:1)
         content.addAttribute(NSUnderlineStyleAttributeName, value: getValue, range: contentRange)
         topLabelMore.attributedText = content
         topLabelMore.font = UIFont(name:"Arial",size:12)
