@@ -54,9 +54,9 @@ class GetCreateView{
     init(_controller:UIViewController,_scrollView: UIScrollView){
         bodyController=_controller
         bodyView=_scrollView
-        infoInput=getInputArea(_scrollView: bodyView,type:0)
-        whisperInput=getInputArea(_scrollView: bodyView,type:1)
-        telInput=getInputArea(_scrollView: bodyView,type:2)
+        infoInput=getInputArea(_controller:bodyController,_scrollView: bodyView,type:0)
+        whisperInput=getInputArea(_controller:bodyController,_scrollView: bodyView,type:1)
+        telInput=getInputArea(_controller:bodyController,_scrollView: bodyView,type:2)
         whisperInput.setY(342)
         telInput.setY(563)
         setPubBtn()
@@ -95,20 +95,13 @@ class GetCreateView{
     }
     
     func setTimeSelect(){
-        timeField=UITextField(frame:CGRectMake(11, 52, 132,27))
-        timeField.backgroundColor=UIColor.whiteColor()
-        timeField.placeholder="有效期：2014-01-05"
-        timeField.font=UIFont(name:"Arial",size:12)
-        var timeLayer = timeField.layer
-        timeLayer.cornerRadius=3;
-        timeLayer.borderWidth = 1
-        timeLayer.borderColor = UIColor(red: 190, green: 195, blue: 199, alpha: 1).CGColor
-        typeCon.addSubview(timeField)
         
+        timeField=getTextField(_controller:self.bodyController,_UIView:typeCon)
+        timeField.placeholder="2014-01-05 15:00"
+        timeField.setX(11)
+        moneyField=getTextField(_controller:self.bodyController,_UIView:typeCon)
         
-        
-        
-        moneyField=getMoneyField(_UIView:typeCon)
+        moneyField.clearButtonMode=UITextFieldViewMode.WhileEditing
         
         timeSelect=UIDatePicker(frame:CGRectMake(0, 0, 0,0))
         timeField.inputView=timeSelect
@@ -139,6 +132,7 @@ class GetCreateView{
         moneyField.inputAccessoryView=toolbarView
         infoInput.inputArea.inputAccessoryView=toolbarView
         whisperInput.inputArea.inputAccessoryView=toolbarView
+        telInput.inputField.inputAccessoryView=toolbarView
         
     }
     
@@ -146,32 +140,38 @@ class GetCreateView{
         var img = UIImage(named: "blueBtn")
         img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
         img.accessibilityFrame = CGRectMake(0, 0, 304, 36)
-        var button = GetlargeBtn(_frame : CGRectMake(7, 650, 306, 36), _img : img, _title : "发布任务").button
+        var button = GetlargeBtn(_frame : CGRectMake(7, 660, 306, 36), _img : img, _title : "发布任务").button
         button.addTarget(bodyController,action:Selector("pubBtnAction:"),forControlEvents:.TouchUpInside);
         bodyView.addSubview(button)
     }
     
 }
 
-class getMoneyField:UITextField , UITextFieldDelegate{
-    init(_UIView:UIView){
+class getTextField:UITextField , UITextFieldDelegate{
+    var imgView:UIImageView!
+    var bodyController:UIViewController!
+    init(_controller:UIViewController,_UIView:UIView){
         super.init(frame:CGRectMake(157, 52, 132,27))
-        self.backgroundColor=UIColor.whiteColor()
+        self.bodyController=_controller
+        self.backgroundColor=UIColor.clearColor()
         self.placeholder="悬赏：100"
         self.font=UIFont(name:"Arial",size:12)
         self.delegate = self
         var moneyLayer = self.layer
         moneyLayer.cornerRadius=3;
         moneyLayer.borderWidth = 1
-        moneyLayer.borderColor = UIColor(red: 190, green: 195, blue: 199, alpha: 1).CGColor
-        self.clearButtonMode=UITextFieldViewMode.WhileEditing
+        moneyLayer.borderColor = UIColor.clearColor().CGColor
+        
+        var eg=UIEdgeInsets(top: 8,left: 8,bottom: 10,right: 10)
+        var img = UIImage(named:"textArea").resizableImageWithCapInsets(eg)
+        imgView=UIImageView(image:img)
+        imgView.frame = CGRectMake(0, 0, 132,27)
+        
+        self.addSubview(imgView)
+        self.sendSubviewToBack(imgView)
+        
         self.returnKeyType=UIReturnKeyType.Done
-//        self.keyboardAppearance = .Dark;
         self.keyboardType=UIKeyboardType.NumberPad
-//        var timeSelect=UIView(frame:CGRectMake(0, 0, 320,100))
-//        timeSelect.backgroundColor=UIColor.blackColor()
-//        var timeSelect=UIDatePicker(frame:CGRectMake(0, 0, 0,0))
-//        self.inputView=timeSelect
         _UIView.addSubview(self)
     }
     
@@ -187,18 +187,23 @@ class getMoneyField:UITextField , UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(textField: UITextField!){
-        
+        var test=self.superview.frame.origin.y
+        println(test)
     }
 }
+
 
 class getInputArea:UIView{
     var inputArea:UITextView!
     var inputType:Int!
     var desInfo:String[]=[]
-    init(_scrollView:UIScrollView,type:Int){
+    var inputField:getTextField!
+    var bodyController:UIViewController!
+    init(_controller:UIViewController,_scrollView:UIScrollView,type:Int){
         inputType=type
         //设置第一层外框
         super.init(frame:CGRectMake(10, 125, 300,200))
+        bodyController=_controller
         var conLayer = self.layer
         conLayer.cornerRadius=3
         self.clipsToBounds=true
@@ -206,7 +211,7 @@ class getInputArea:UIView{
         setAreaBg()
         if inputType==2{
             desInfo=["联系信息", "mobileIcon2"]
-            self.setHeight(70)
+            self.setHeight(80)
             setNumberArea()
         }
         else if inputType==1{
@@ -225,7 +230,7 @@ class getInputArea:UIView{
     func setAreaBg(){
         var areaBg=UIView(frame:CGRectMake(0, 0, 300,200))
         if inputType==2{
-            areaBg.setHeight(70)
+            areaBg.setHeight(80)
         }
         var areaBgLayer = areaBg.layer
         areaBgLayer.backgroundColor = getColorFromDictionary("greyf3").CGColor
@@ -274,13 +279,20 @@ class getInputArea:UIView{
         self.addSubview(tipsLabel)
         
         //文本框背景
+        var eg=UIEdgeInsets(top: 8,left: 8,bottom: 10,right: 10)
+        var img = UIImage(named:"textArea").resizableImageWithCapInsets(eg)
+        var imgView=UIImageView(image:img)
+        imgView.frame = CGRectMake(0, 0, 270,115)
         var inputBg=UIView(frame:CGRectMake(15, 72, 270,115))
-        inputBg.backgroundColor=UIColor.whiteColor()
+//        inputBg.backgroundColor=UIColor.whiteColor()
         var inputBgLayer = inputBg.layer
         inputBgLayer.cornerRadius=3
         inputBgLayer.borderWidth=1
-        inputBgLayer.borderColor=UIColor.whiteColor().CGColor
+        inputBgLayer.borderColor=UIColor.clearColor().CGColor
         self.addSubview(inputBg)
+        
+        inputBg.addSubview(imgView)
+        inputBg.sendSubviewToBack(imgView)
         
         //文本框
         inputArea=UITextView(frame:CGRectMake(0, 0, 270,95))
@@ -298,13 +310,16 @@ class getInputArea:UIView{
     
     //电话号码
     func setNumberArea(){
-        //描述信息
-        var tipsLabel=UILabel(frame:CGRectMake(15, 35, 270,30))
-        tipsLabel.text="18612270100"
-        tipsLabel.textAlignment=NSTextAlignment.Center
-        tipsLabel.textColor=UIColor.blackColor()
-        tipsLabel.font=UIFont(name:"Arial",size:15)
-        self.addSubview(tipsLabel)
+        inputField=getTextField(_controller:bodyController,_UIView:self)
+        inputField.frame=CGRectMake(50, 42, 200,27)
+        
+        inputField.placeholder=""
+        inputField.text="18612270100"
+        inputField.textAlignment=NSTextAlignment.Center
+        inputField.keyboardType=UIKeyboardType.NumberPad
+    
+        inputField.imgView.frame = CGRectMake(0, 0, 200,27)
+        
     }
     
 }

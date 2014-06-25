@@ -104,7 +104,6 @@ class GetPubTableView{
         cellIndex=indexPath
         tabIndex=tableIndex
         drawCell(tableView, indexPath: indexPath!,tableIndex: tableIndex)
-        println(data)
     }
     
     func drawCell(tableView: UITableView!, indexPath: NSIndexPath!,tableIndex: Int){
@@ -229,7 +228,7 @@ class GetPubTableView{
         getTimeLabel.textColor = UIColor.grayColor()
         cell.addSubview(getTimeLabel)
         
-        //领取时间文案
+        //有效时间文案
         var limitTime=arrayDic[rowNo%3].objectForKey("limitTime") as String
         var limitTimeText="有效时间 |  \(limitTime)"
         var limitTimeLabel = UILabel(frame:CGRectMake(160, 110, 135, 12))
@@ -326,8 +325,23 @@ class GetPubTabelCell:UITableViewCell{
     var buttonArray:UIButton[] = []
     var data :NSDictionary!
     var status:Int!
+    var tableType :Int!
     
     var getController:UIViewController!
+    
+    
+    class func cellHeightByData(data:NSDictionary)->CGFloat
+    
+    {
+        var status = (data.objectForKey("status") as String).toInt()!
+        if status<=1{
+            return 110
+        }
+        else{
+            return 160
+        }
+    }
+    
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -338,8 +352,9 @@ class GetPubTabelCell:UITableViewCell{
         super.layoutSubviews()
         self.backgroundColor = UIColor.clearColor()
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        var arrayDic = getDictionary("publist") as NSArray
-        var imageNameIndex = (data.objectForKey("tasktype") as String).toInt()! - 1
+        self.status=(data.objectForKey("status") as String).toInt()!
+        var arrayDic = getDictionary("list") as NSArray
+        var imageNameIndex = (data.objectForKey("tasktype") as String).toInt()!
         var imageName = arrayDic[imageNameIndex].objectForKey("imageName") as String
         var iconImage = arrayDic[imageNameIndex].objectForKey("taskIcon") as String
         var nameLabel = arrayDic[imageNameIndex].objectForKey("taskName") as String
@@ -378,15 +393,8 @@ class GetPubTabelCell:UITableViewCell{
         goldValue.shadowOffset = CGSizeMake(0, 0.5)
         self.addSubview(goldValue)
         
-        var userName = UILabel(frame:CGRectMake(0, 79, 70, 20))
-        userName.text = data.objectForKey("uname") as String
-        userName.textAlignment = NSTextAlignment.Center
-        userName.font = UIFont(name:"Arial",size:11)
-        userName.textColor = getColorFromDictionary("grey33")
-        self.addSubview(userName)
         
         //状态文案
-        self.status=(data.objectForKey("status") as String).toInt()!
         var statusText = arrayDic[self.status].objectForKey("statusLabel") as String
         var statusColor = arrayDic[self.status].objectForKey("statusColor") as String
         var statusLabel = UILabel(frame:CGRectMake(218, 14, 160, 20))
@@ -395,65 +403,117 @@ class GetPubTabelCell:UITableViewCell{
         statusLabel.textColor = getColorFromDictionary(statusColor)
         self.addSubview(statusLabel)
         
-        //学校文案
-        var school=data.objectForKey("school") as String
-        var schoolLabel = UILabel(frame:CGRectMake(75, 40, 217, 15))
-        schoolLabel.text=school
-        schoolLabel.font = UIFont(name:"Arial",size:11)
-        schoolLabel.textColor = UIColor.blackColor()
-        self.addSubview(schoolLabel)
+        //领取时间文案
+        var getTime=data.objectForKey("pubdate") as String
+        var getTimeText="发布时间 |  \(getTime)"
+        var getTimeLabel = UILabel(frame:CGRectMake(10, 110, 140, 12))
+        getTimeLabel.text = getTimeText
+        getTimeLabel.font = UIFont(name:"Arial",size:10)
+        getTimeLabel.textColor = UIColor.grayColor()
+        self.addSubview(getTimeLabel)
         
-        setBottom()
-//        var infoLabel = data.objectForKey("intro") as String
-//        var taskInfo = UILabel(frame:CGRectMake(75, 43, 224, 55))
-//        taskInfo.text = infoLabel
-//        taskInfo.font = UIFont(name:"Arial",size:12)
-//        taskInfo.textColor = getColorFromDictionary("grey50")
-//        var height = infoLabel.stringHeightWith(12,width:224)
-//        taskInfo.setHeight(height <= 55 ? height : 55)
-//        //自动折行设置
-//        taskInfo.lineBreakMode = .ByWordWrapping
-//        taskInfo.numberOfLines = 0
-//        self.addSubview(taskInfo)
+        //有效时间文案
+        var limitTime=data.objectForKey("duedate") as String
+        var limitTimeText="有效时间 |  \(limitTime)"
+        var limitTimeLabel = UILabel(frame:CGRectMake(160, 110, 140, 12))
+        limitTimeLabel.text = limitTimeText
+        limitTimeLabel.font = UIFont(name:"Arial",size:10)
+        limitTimeLabel.textColor = UIColor.grayColor()
+        self.addSubview(limitTimeLabel)
         
-//        for i in 0..3{
-//            
-//            var buttonView = UIButton()
-//            buttonView.frame = CGRectMake(CGFloat(101*i+2), self.height()-30, 100, 30)
-//            var buttonBg = UIImageView()
-//            buttonBg.frame = CGRectMake(0, 0, 100, 30)
-//            
-//            var buttonIcon =  UIImageView(image: UIImage(named: "greyIcon0\(i+1)"))
-//            buttonIcon.frame = CGRectMake(40, 5, 20, 20)
-//            buttonView.addTarget(self.getController, action:"cellBottomEvent:", forControlEvents:.TouchUpInside)
-//            buttonView.tag = i
-//            
-//            if i != 2 {
-//                var middleLine=UIView(frame:CGRectMake(CGFloat(101*(i+1)+3), self.height()-25, 1, 20))
-//                middleLine.backgroundColor=UIColor.grayColor()
-//                middleLine.alpha=0.3
-//                self.addSubview(middleLine)
-//            }
-//            
-//            buttonArray.insert(buttonView, atIndex: i)
-//            buttonBg.addSubview(buttonIcon)
-//            buttonView.addSubview(buttonBg)
-//            self.addSubview(buttonView)
-//            //            self.userInteractionEnabled = true
-//        }
-        
-//        timeLabel = UILabel(frame:CGRectMake(198, 14, 160, 20))
-//        timeLabel.text = data.objectForKey("pubdate") as String
-//        timeLabel.font = UIFont(name:"Arial",size:10)
-//        timeLabel.textColor = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1)
-//        self.addSubview(timeLabel)
-        
-        var URL = data.objectForKey("avatar") as String
+        //根据不同状态和类别做区分
         var imageButton = UIButton(frame:CGRectMake(3, 9, 64, 64))
-        imageButton.addTarget(self,action:"otherImage:",forControlEvents:.TouchUpInside)
+        var URL:String!
+        var school:String!
+        var tel:String!
+        if self.status>1{
+            var userName = UILabel(frame:CGRectMake(0, 79, 70, 20))
+            var schoolLabel = UILabel(frame:CGRectMake(75, 40, 217, 15))
+            var telLabel = UILabel(frame:CGRectMake(229, 55, 217, 15))
+            var commonFriLabel = UILabel(frame:CGRectMake(75, 55, 217, 15))
+            var _applyInfo = data.objectForKey("apply") as NSDictionary
+            var _commonFri = data.objectForKey("friend") as NSArray
+            
+            //电话号码图标
+            var mobileIcon = UIImage(named:"mobileIcon")
+            var mobileView = UIImageView(image:mobileIcon)
+            mobileView.frame = CGRectMake(220, 57, 6 , 10)
+            self.addSubview(mobileView)
+            
+            if self.tableType==0{
+                userName.text = _applyInfo.objectForKey("uname") as String
+                URL = _applyInfo.objectForKey("avatar") as String
+                school=_applyInfo.objectForKey("school") as String
+                tel=_applyInfo.objectForKey("mobile") as String
+                imageButton.tag=(data.objectForKey("applyid") as String).toInt()!
+            }
+            else{
+                userName.text = data.objectForKey("uname") as String
+                URL = data.objectForKey("avatar") as String
+                school=data.objectForKey("school") as String
+                tel=data.objectForKey("mobile") as String
+                imageButton.tag=(data.objectForKey("userid") as String).toInt()!
+            }
+            userName.textAlignment = NSTextAlignment.Center
+            userName.font = UIFont(name:"Arial",size:11)
+            userName.textColor = getColorFromDictionary("grey33")
+            self.addSubview(userName)
+            
+            //学校文案
+            schoolLabel.text=school
+            schoolLabel.font = UIFont(name:"Arial",size:11)
+            schoolLabel.textColor = UIColor.blackColor()
+            self.addSubview(schoolLabel)
+            
+            //电话号码文案
+            telLabel.text = tel
+            telLabel.font = UIFont(name:"Arial",size:10)
+            telLabel.textColor = UIColor.blackColor()
+            self.addSubview(telLabel)
+            
+            //共同好友文案
+            var commonFriNum=_commonFri.count
+            commonFriLabel.text = "你们的共同好友有\(commonFriNum)位"
+            commonFriLabel.font = UIFont(name:"Arial",size:10)
+            commonFriLabel.textColor = UIColor.blackColor()
+            self.addSubview(commonFriLabel)
+            
+            //共同好友照片
+            for i in 0..commonFriNum{
+                var photoName=_commonFri[i].objectForKey("avatar") as String
+                println(photoName)
+                var img = UIImage(named:photoName)
+                var friViewBtn=UIButton(frame:CGRectMake(CGFloat(75+i*37), 73, 32 , 32))
+                var friView = UIImageView(image:img)
+                friView.frame = CGRectMake(0, 0, 32 , 32)
+                friView.setImage(photoName,placeHolder: UIImage(named: "userList01.jpg"));
+                friView.layer.cornerRadius=3
+                friView.contentScaleFactor = UIScreen.mainScreen().scale
+                friView.contentMode = .ScaleAspectFill
+                friView.clipsToBounds = true
+                friViewBtn.tag = (_commonFri[i].objectForKey("uid") as String).toInt()!
+                friViewBtn.addTarget(self,action:"otherImage:",forControlEvents:.TouchUpInside)
+                friViewBtn.addSubview(friView)
+                self.addSubview(friViewBtn)
+            }
+            
+            imageButton.addTarget(self,action:"otherImage:",forControlEvents:.TouchUpInside)
+        }
+        else{
+            URL = arrayDic[0].objectForKey("userImage") as String
+            getTimeLabel.frame = CGRectMake(75, 45, 140, 12)
+            limitTimeLabel.frame = CGRectMake(75, 60, 140, 12)
+            self.imgView.setHeight(110)
+        }
+        
         // 添加圆形头像
         creatRoundImage(imageButton,CGRectMake(0, 0, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
         self.addSubview(imageButton)
+        
+        
+        
+        setBottom()
+        
     }
     
     func setBottom(){
@@ -491,6 +551,7 @@ class GetPubTabelCell:UITableViewCell{
         commentLabel.textColor = UIColor.grayColor()
         
         if self.status==2{
+            
             var leftBtn=UIButton(frame:CGRectMake(2, 130, 150, 28))
             leftBtn.addSubview(previewImgView)
             leftBtn.addSubview(previewLabel)
@@ -505,12 +566,18 @@ class GetPubTabelCell:UITableViewCell{
             var rightBtn=UIButton(frame:CGRectMake(152, 130, 150, 28))
             rightBtn.addSubview(stopImgView)
             rightBtn.addSubview(stopLabel)
+            if self.tableType==1{
+                stopLabel.text = "完成"
+                rightBtn.tag=(data.objectForKey("id") as String).toInt()!
+                rightBtn.addTarget(self,action:"finish:",forControlEvents:.TouchUpInside)
+            }
             self.addSubview(rightBtn)
         }
         else if self.status==3{
             var leftBtn=UIButton(frame:CGRectMake(2, 130, 150, 28))
             leftBtn.addSubview(previewImgView)
             leftBtn.addSubview(previewLabel)
+            leftBtn.addTarget(self,action:"preview:",forControlEvents:.TouchUpInside)
             self.addSubview(leftBtn)
             
             var middleLine=UIView(frame:CGRectMake(150, 135, 1, 20))
@@ -521,6 +588,9 @@ class GetPubTabelCell:UITableViewCell{
             var rightBtn=UIButton(frame:CGRectMake(152, 130, 150, 28))
             rightBtn.addSubview(commentImgView)
             rightBtn.addSubview(commentLabel)
+            if self.tableType==0{
+                commentLabel.text = "评价领取人"
+            }
             self.addSubview(rightBtn)
         }
         else{
@@ -529,6 +599,7 @@ class GetPubTabelCell:UITableViewCell{
             leftBtn.addSubview(previewLabel)
             previewImgView.setX(130)
             previewLabel.setX(150)
+            leftBtn.setY(82)
             leftBtn.addTarget(self,action:"preview:",forControlEvents:.TouchUpInside)
             self.addSubview(leftBtn)
         }
@@ -537,14 +608,22 @@ class GetPubTabelCell:UITableViewCell{
     func otherImage(sender: UIButton!){
         // 跳转到详情内页
         var otherCon = OtherController()
-        otherCon.uid = (data.objectForKey("uid") as String).toInt()!
+        otherCon.uid = sender.tag
         self.getController.presentModalViewController(otherCon, animated:true)
     }
-    
+//
     func preview(sender: UIButton!){
         // 跳转到详情内页
         var detailsCon = DetailsController()
         detailsCon.id = (data.objectForKey("id") as String).toInt()!
         self.getController.presentModalViewController(detailsCon, animated:true)
+    }
+    
+    func finish(sender: UIButton!){
+        var taskId=sender.tag
+        var postStr="id=\(taskId)&applyid=52"
+        println(postStr)
+        var getDate=PostRequest(_controller:self.getController,_url:"http://mm.renren.com/task-done",_postStr:postStr)
+//        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧")
     }
 }

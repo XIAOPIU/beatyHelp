@@ -5,74 +5,6 @@
 	<key>list</key>
 	<array>
 		<dict>
-			<key>taskInfo</key>
-			<string>哎，心情烦闷。重金悬赏求聊天！希望可以任我吼，任我骂的。如果宣泄成功，我再请吃饭！</string>
-			<key>userName</key>
-			<string>张子萱</string>
-			<key>gold</key>
-			<string>20</string>
-			<key>taskName</key>
-			<string>陪聊天</string>
-			<key>taskIcon</key>
-			<string>icon02</string>
-			<key>userImage</key>
-			<string>userList01.jpg</string>
-			<key>time</key>
-			<string>至 2014-05-19  17:00</string>
-			<key>imageName</key>
-			<string>listCellBlueX</string>
-			<key>identifier</key>
-			<string>cell</string>
-		</dict>
-		<dict>
-			<key>taskInfo</key>
-			<string>找人一同上自习，寝室小伙伴们都有男朋
-友了，每天都是孤零零的上自习，求同伴。
-— 地点：湖南大学综合楼
-— 周一：早上 09：00 - 12：00 
-— 周四：下午 03：00 - 09：30
-单身帅哥们速速来揭榜！！！</string>
-			<key>userName</key>
-			<string>刘萌萌</string>
-			<key>gold</key>
-			<string>100</string>
-			<key>taskName</key>
-			<string>上自习</string>
-			<key>taskIcon</key>
-			<string>icon03</string>
-			<key>userImage</key>
-			<string>userList02.jpg</string>
-			<key>time</key>
-			<string>至 2014-06-30  12:30</string>
-			<key>imageName</key>
-			<string>listCellRedX</string>
-			<key>identifier</key>
-			<string>cell</string>
-		</dict>
-		<dict>
-			<key>taskInfo</key>
-			<string>我去，本人在外面旅游，没法领快递。求好心人帮领。大概明天下午到。求好心人帮助！</string>
-			<key>userName</key>
-			<string>赵晓彤</string>
-			<key>gold</key>
-			<string>15</string>
-			<key>taskName</key>
-			<string>领快递</string>
-			<key>taskIcon</key>
-			<string>icon04</string>
-			<key>userImage</key>
-			<string>userList03.jpg</string>
-			<key>time</key>
-			<string>至 2014-05-20  17:30</string>
-			<key>imageName</key>
-			<string>listCellGreenX</string>
-			<key>identifier</key>
-			<string>cell</string>
-		</dict>
-	</array>
-	<key>publist</key>
-	<array>
-		<dict>
 			<key>userImage</key>
 			<string>userList01.jpg</string>
 			<key>userName</key>
@@ -100,9 +32,9 @@
 			<key>gold</key>
 			<string>20</string>
 			<key>taskName</key>
-			<string>陪聊天</string>
+			<string>叫起床</string>
 			<key>taskIcon</key>
-			<string>icon02</string>
+			<string>icon01</string>
 			<key>commonFri</key>
 			<array>
 				<dict>
@@ -147,7 +79,7 @@
 			<key>status</key>
 			<integer>1</integer>
 			<key>imageName</key>
-			<string>listCellRedX</string>
+			<string>listCellBlueX</string>
 			<key>identifier</key>
 			<string>cell</string>
 			<key>statusColor</key>
@@ -180,9 +112,9 @@
 			<key>gold</key>
 			<string>100</string>
 			<key>taskName</key>
-			<string>上自习</string>
+			<string>陪聊天</string>
 			<key>taskIcon</key>
-			<string>icon03</string>
+			<string>icon02</string>
 		</dict>
 		<dict>
 			<key>userImage</key>
@@ -194,7 +126,7 @@
 			<key>status</key>
 			<integer>2</integer>
 			<key>imageName</key>
-			<string>listCellGreenX</string>
+			<string>listCellRedX</string>
 			<key>identifier</key>
 			<string>cell</string>
 			<key>school</key>
@@ -233,9 +165,9 @@
 			<key>gold</key>
 			<string>15</string>
 			<key>taskName</key>
-			<string>领快递</string>
+			<string>上自习</string>
 			<key>taskIcon</key>
-			<string>icon04</string>
+			<string>icon03</string>
 		</dict>
 		<dict>
 			<key>userImage</key>

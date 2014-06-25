@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let identifier = "cell" //tableCell的identifier
     var indexTable : UITableView? //首页的tableView
     var dataArray = NSMutableArray() //首页数据
+    var userData = NSMutableArray() //首页数据
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     /**
-    *  数据载入
+    *  tablelist数据载入
     */
     func loadData()
     {

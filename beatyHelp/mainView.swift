@@ -216,7 +216,7 @@ class GetMainTabelCell:UITableViewCell{
         self.backgroundColor = UIColor.clearColor()
         self.selectionStyle = UITableViewCellSelectionStyle.None
         var arrayDic = getDictionary("list") as NSArray
-        var imageNameIndex = (data.objectForKey("tasktype") as String).toInt()! - 1
+        var imageNameIndex = (data.objectForKey("tasktype") as String).toInt()! 
         var imageName = arrayDic[imageNameIndex].objectForKey("imageName") as String
         var iconImage = arrayDic[imageNameIndex].objectForKey("taskIcon") as String
         var nameLabel = arrayDic[imageNameIndex].objectForKey("taskName") as String

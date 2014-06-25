@@ -22,7 +22,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         setPubTable()
         setGetTable()
-        loadData(self.pubTable!,url:"http://mm.renren.com/task-all?userid=11")
+        loadData(self.pubTable!,url:"http://mm.renren.com/task-all?userid=1")
         var manageView = ManageViewDraw(_controller: self)
         leftTab=manageView.leftTab
         rightTab=manageView.rightTab
@@ -38,11 +38,10 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func setPubTable(){
-        
         self.pubTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-90), style:UITableViewStyle.Plain)
         self.pubTable!.delegate = self
         self.pubTable!.dataSource = self
-        self.pubTable!.rowHeight = 160
+//        self.pubTable!.rowHeight = 160
         self.pubTable!.registerClass(GetPubTabelCell.self, forCellReuseIdentifier: identifier)
         self.pubTable!.backgroundColor = UIColor.clearColor()
         self.pubTable!.separatorColor = UIColor.clearColor()
@@ -54,7 +53,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.getTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-90), style:UITableViewStyle.Plain)
         self.getTable!.delegate = self
         self.getTable!.dataSource = self
-        self.getTable!.rowHeight = 160
+//        self.getTable!.rowHeight = 160
         self.getTable!.registerClass(GetPubTabelCell.self, forCellReuseIdentifier: "cell")
         self.getTable!.backgroundColor = UIColor.clearColor()
         self.getTable!.separatorColor = UIColor.clearColor()
@@ -107,11 +106,16 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //            return GetPubTableView(tableView: tableView,indexPath: indexPath,tableIndex: 1).cell
 //        }
         
-        
         var cell = tableView?.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? GetPubTabelCell
         var index = indexPath!.row
         var getData = self.dataArray[index] as NSDictionary
         cell!.data = getData
+        if tableView==self.pubTable{
+            cell!.tableType=0
+        }
+        else{
+            cell!.tableType=1
+        }
         cell!.getController = self
         return cell
     }
@@ -143,6 +147,18 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
+    
+    
+    
+    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat
+    
+     {
+        var index = indexPath!.row
+        var data = self.dataArray[index] as NSDictionary
+        return  GetPubTabelCell.cellHeightByData(data)
+    }
+    
+    
     func footBtn1Action(sender: UIButton!) {
         var ViewCon = ViewController()
 //        ViewCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
@@ -160,12 +176,12 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.rightTab!.alpha=0.5
 //        self.pubTable!.hidden=false;
 //        self.getTable!.hidden=true;
-        loadData(self.pubTable!,url:"http://mm.renren.com/task-all?userid=11")
+        loadData(self.pubTable!,url:"http://mm.renren.com/task-all?userid=1")
         UIView.animateWithDuration(0.5, animations: {
             self.getTable!.alpha = 0;
-            self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width
+            self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width-7
             self.pubTable!.alpha = 1;
-            self.pubTable!.frame.origin.x = 0
+            self.pubTable!.frame.origin.x = 7
             }, completion: { finished in })
     }
     
@@ -174,14 +190,20 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.leftTab!.alpha=0.5
 //        self.getTable!.hidden=false;
 //        self.pubTable!.hidden=true;
-        loadData(self.getTable!,url:"http://mm.renren.com/task-all")
+        loadData(self.getTable!,url:"http://mm.renren.com/task-all?applyid=52")
         // Animate in the alert view
         UIView.animateWithDuration(0.5, animations: {
              self.getTable!.alpha = 1;
-             self.getTable!.frame.origin.x = 0
+             self.getTable!.frame.origin.x = 7
              self.pubTable!.alpha = 0;
-             self.pubTable!.frame.origin.x = -UIScreen.mainScreen().applicationFrame.width
+             self.pubTable!.frame.origin.x = -UIScreen.mainScreen().applicationFrame.width+7
             }, completion: { finished in })
     }
+    
+//    func otherImage(sender: UIButton!){
+//        var otherCon = OtherController()
+//        otherCon.uid = sender.tag
+//        self.presentModalViewController(otherCon, animated:true)
+//    }
     
 }

@@ -63,18 +63,21 @@ class CreateController: UIViewController{
         var info=self.infoInput!.inputArea.text
         var whisper=self.whisperInput!.inputArea.text
         var duedate=self.timeField!.text
-//        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=18612270100&userid=11&status=1&duedate=\(duedate)"
-        postStr="id=11&school=湖南大学&tasktype=2&contact=18612270100&userid=9&status=2&duedate=2014-10-10"
-        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-update",_postStr:postStr)
+        var mobile=self.telInput!.inputField.text
+        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=\(mobile)&userid=1&status=1&duedate=\(duedate)"
+//        postStr="id=21&school=清华大学&tasktype=3&contact=18594562365&userid=11&status=1&duedate=2014-10-10"
+        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-save",_postStr:postStr)
         println(postStr)
-        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧")
+        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧",alertType:"pubSuccess")
     }
+    
     
     func viewTapped() {
         self.timeField!.resignFirstResponder()
         self.moneyField!.resignFirstResponder()
         self.infoInput!.inputArea.resignFirstResponder()
         self.whisperInput!.inputArea.resignFirstResponder()
+        self.telInput!.inputField.resignFirstResponder()
     }
 
     

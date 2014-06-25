@@ -1,9 +1,9 @@
 //
-//  detailView.swift
+//  assessView.swift
 //  beatyHelp
 //
-//  Created by 李国锐,张杨雪 on 6/11/14.
-//  Copyright (c) 2014 XIAOPIU. All rights reserved.
+//  Created by apple  on 14-6-24.
+//  Copyright (c) 2014年 XIAOPIU. All rights reserved.
 //
 
 import Foundation
@@ -160,7 +160,7 @@ class GetDetailView{
         stateLabel.text = self.arrayDic[self.status].objectForKey("statusLabel") as String
         stateLabel.textAlignment = NSTextAlignment.Center
         stateLabel.font = UIFont(name:"Arial",size:10)
-       var statusColor = self.arrayDic[self.status].objectForKey("statusColor") as String
+        var statusColor = self.arrayDic[self.status].objectForKey("statusColor") as String
         println(self.arrayDic[self.status])
         stateLabel.textColor = getColorFromDictionary(statusColor)
         topBg.addSubview(stateLabel)
@@ -336,7 +336,7 @@ class GetDetailView{
         img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
         img.accessibilityFrame = CGRectMake(0, 0, 50, 33)
         commentBtn = GetlargeBtn(_frame : CGRectMake(244, 7.5, 50, 33), _img : img, _title : "发 送").button
-//        commentBtn.addTarget(self.getController,action:"detailDoIt:",forControlEvents:.TouchUpInside)
+        //        commentBtn.addTarget(self.getController,action:"detailDoIt:",forControlEvents:.TouchUpInside)
         commentListBgArray[0].addSubview(commentBtn)
     }
 }

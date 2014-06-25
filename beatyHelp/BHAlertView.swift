@@ -59,6 +59,7 @@ class BHAlertView : UIView {
     var doneButton: UIButton
     var rootViewController: UIViewController
     var durationTimer: NSTimer!
+    var alertType:String!
     
     init () {
         // Content View
@@ -141,8 +142,9 @@ class BHAlertView : UIView {
     }
     
     // showSuccess(view, title, subTitle)
-    func showSuccess(view: UIViewController, title: String, subTitle: String) -> BHAlertViewClose {
-        return showTitle(view, title: title, subTitle: subTitle, duration: 2.0, completeText: nil, style: BHAlertViewStyle.Success);
+    func showSuccess(view: UIViewController, title: String, subTitle: String,alertType:String) -> BHAlertViewClose {
+        self.alertType=alertType
+        return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.Success);
     }
     
     // showError(view, title, subTitle)
@@ -311,7 +313,12 @@ class BHAlertView : UIView {
     }
     
     // When click 'Done' button, hide view.
-    func doneButtonAction() { hideView(); }
+    func doneButtonAction() {
+        if(self.alertType=="pubSuccess"){
+            indexCon()
+        }
+        hideView()
+    }
     
     func closeAlert(){ hideView(); }
     
@@ -324,5 +331,10 @@ class BHAlertView : UIView {
                 self.shadowView.removeFromSuperview()
                 self.removeFromSuperview()
             })
+    }
+    
+    func indexCon(){
+        var indexCon = ViewController()
+        self.rootViewController.presentModalViewController(indexCon, animated:false)
     }
 }
