@@ -32,7 +32,7 @@ class CreateViewDraw{
         telInput=typeBox.telInput
     }
     
-    func setScrollView(_controller:UIViewController){
+    func setScrollView(_controller:CreateController){
         scrollView = UIScrollView(frame:CGRectMake(0, 60, 320, UIScreen.mainScreen().applicationFrame.height-40))
         // 设置可滚动的区域
         scrollView.contentSize = CGSizeMake(320, 700)
@@ -41,7 +41,7 @@ class CreateViewDraw{
 }
 
 class GetCreateView{
-    var bodyController:UIViewController!
+    var bodyController:CreateController!
     var bodyView:UIScrollView!
     var typeCon:UIView!
     var typeBtnArray:UIButton[] = []
@@ -51,7 +51,7 @@ class GetCreateView{
     var infoInput:getInputArea!
     var whisperInput:getInputArea!
     var telInput:getInputArea!
-    init(_controller:UIViewController,_scrollView: UIScrollView){
+    init(_controller:CreateController,_scrollView: UIScrollView){
         bodyController=_controller
         bodyView=_scrollView
         infoInput=getInputArea(_controller:bodyController,_scrollView: bodyView,type:0)
@@ -147,16 +147,22 @@ class GetCreateView{
     
 }
 
+class getDelegate:NSObject,UITextFieldDelegate{
+    init(){
+        super.init()
+    }
+}
+
 class getTextField:UITextField , UITextFieldDelegate{
     var imgView:UIImageView!
-    var bodyController:UIViewController!
-    init(_controller:UIViewController,_UIView:UIView){
+    var bodyController:CreateController!
+    init(_controller:CreateController,_UIView:UIView){
         super.init(frame:CGRectMake(157, 52, 132,27))
         self.bodyController=_controller
         self.backgroundColor=UIColor.clearColor()
         self.placeholder="悬赏：100"
         self.font=UIFont(name:"Arial",size:12)
-        self.delegate = self
+        self.delegate = _controller
         var moneyLayer = self.layer
         moneyLayer.cornerRadius=3;
         moneyLayer.borderWidth = 1
@@ -174,22 +180,6 @@ class getTextField:UITextField , UITextFieldDelegate{
         self.keyboardType=UIKeyboardType.NumberPad
         _UIView.addSubview(self)
     }
-    
-    
-    func textFieldDidEndEditing(textField: UITextField!){
-        textField.resignFirstResponder()
-    }
-    
-    func textFieldShouldReturn(textField: UITextField!) -> Bool{
-        
-        textField.resignFirstResponder()
-                return true
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField!){
-        var test=self.superview.frame.origin.y
-        println(test)
-    }
 }
 
 
@@ -198,8 +188,8 @@ class getInputArea:UIView{
     var inputType:Int!
     var desInfo:String[]=[]
     var inputField:getTextField!
-    var bodyController:UIViewController!
-    init(_controller:UIViewController,_scrollView:UIScrollView,type:Int){
+    var bodyController:CreateController!
+    init(_controller:CreateController,_scrollView:UIScrollView,type:Int){
         inputType=type
         //设置第一层外框
         super.init(frame:CGRectMake(10, 125, 300,200))

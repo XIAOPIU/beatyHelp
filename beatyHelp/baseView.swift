@@ -89,8 +89,13 @@ class GetHeadBar{
     
     func setBackBtn(controller:UIViewController){
         backBtn = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        backBtn.frame = CGRectMake(15, 31, 17, 17)
-        backBtn.setImage(UIImage(named:"headBackBtn01"), forState: UIControlState.Normal)
+        backBtn.frame = CGRectMake(7, 24, 30, 30)
+//        backBtn.frame = CGRectMake(15, 31, 17, 17)
+        
+        var imageView = UIImageView(image:UIImage(named:"headBackBtn01"))
+        imageView.frame = CGRectMake(7, 7, 17, 17)
+        backBtn.addSubview(imageView)
+//        backBtn.setImage(image, forState: UIControlState.Normal)
         backBtn.addTarget(controller,action:"goBackAction:",forControlEvents:.TouchUpInside);
         controller.view.addSubview(backBtn)
     }

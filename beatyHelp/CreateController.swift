@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CreateController: UIViewController{
+class CreateController: UIViewController,UITextFieldDelegate{
     var rowIndex: Int = 0
     var typeBtnArray:UIButton[] = []
     var timeField:UITextField?
@@ -19,10 +19,12 @@ class CreateController: UIViewController{
     var whisperInput:getInputArea?
     var telInput:getInputArea?
     var chooseType:Int = 1
+    var scrollView:UIScrollView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         var createView=CreateViewDraw(_controller: self)
+        scrollView=createView.scrollView
         typeBtnArray=createView.typeBtnArray
         timeField=createView.timeField
         moneyField=createView.moneyField
@@ -42,6 +44,24 @@ class CreateController: UIViewController{
     // 使顶部状态bar变为白色
     override func preferredStatusBarStyle()->UIStatusBarStyle{
         return UIStatusBarStyle.LightContent
+    }
+    
+    //textfiled代理协议方法
+    func textFieldDidEndEditing(textField: UITextField!){
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool{
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField!){
+//        scrollView.scrollRectToVisible(rect: CGRect(100,0), animated: Bool)
+        var offset = textField.superview.frame.origin.y
+        var _height=self.view.frame.size.height
+        println(offset)
+        println(_height)
     }
     
     func goBackAction(sender: UIButton!) {
@@ -66,7 +86,7 @@ class CreateController: UIViewController{
         var mobile=self.telInput!.inputField.text
         postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=\(mobile)&userid=1&status=1&duedate=\(duedate)"
 //        postStr="id=21&school=清华大学&tasktype=3&contact=18594562365&userid=11&status=1&duedate=2014-10-10"
-        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-save",_postStr:postStr)
+        var getDate=PostRequest(_controller:self,_url:"http://mm.nextsystem.pw/task-save",_postStr:postStr)
         println(postStr)
         BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧",alertType:"pubSuccess")
     }

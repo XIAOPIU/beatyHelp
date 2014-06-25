@@ -623,7 +623,7 @@ class GetPubTabelCell:UITableViewCell{
         var taskId=sender.tag
         var postStr="id=\(taskId)&applyid=52"
         println(postStr)
-        var getDate=PostRequest(_controller:self.getController,_url:"http://mm.renren.com/task-done",_postStr:postStr)
+        var getDate=PostRequest(_controller:self.getController,_url:"http://mm.nextsystem.pw/task-done",_postStr:postStr)
 //        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧")
     }
 }

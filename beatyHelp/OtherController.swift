@@ -29,7 +29,7 @@ class OtherController: UIViewController {
     }
     
     func loadFriendData(uid:Int){
-        var url = "http://mm.renren.com/users-friend?uid=" + String(uid)
+        var url = "http://mm.nextsystem.pw/users-friend?uid=" + String(uid)
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
