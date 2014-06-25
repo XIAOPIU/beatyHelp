@@ -59,7 +59,9 @@ class BHAlertView : UIView {
     var doneButton: UIButton
     var rootViewController: UIViewController
     var durationTimer: NSTimer!
-    var alertType:String!
+    var alertType = ""
+    var userId = ""
+    var conView: UIViewController!
     
     init () {
         // Content View
@@ -142,8 +144,8 @@ class BHAlertView : UIView {
     }
     
     // showSuccess(view, title, subTitle)
-    func showSuccess(view: UIViewController, title: String, subTitle: String,alertType:String) -> BHAlertViewClose {
-        self.alertType=alertType
+    func showSuccess(view: UIViewController, title: String, subTitle: String, alertType:String) -> BHAlertViewClose {
+        self.alertType = alertType
         return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.Success);
     }
     
@@ -168,17 +170,24 @@ class BHAlertView : UIView {
     }
     
     // doIt(view, title, subTitle)
-    func doIt(view: UIViewController, title: String, subTitle: String) -> BHAlertViewClose {
+    func doIt(view: UIViewController, title: String, subTitle: String, alertType:String, userId:String) -> BHAlertViewClose {
+        self.conView = view
+        self.alertType = alertType
+        self.userId = userId
         return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.DoIt);
     }
     
     // comment(view, title, subTitle)
-    func comment(view: UIViewController, title: String, subTitle: String) -> BHAlertViewClose {
+    func comment(view: UIViewController, title: String, subTitle: String, alertType:String, userId:String) -> BHAlertViewClose {
+        self.conView = view
+        self.alertType = alertType
+        self.userId = userId
         return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.Comment);
     }
     
     // comment(view, title, subTitle)
-    func share(view: UIViewController, title: String, subTitle: String) -> BHAlertViewClose {
+    func share(view: UIViewController, title: String, subTitle: String, alertType:String) -> BHAlertViewClose {
+        self.alertType = alertType
         return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.Share);
     }
     
@@ -316,6 +325,10 @@ class BHAlertView : UIView {
     func doneButtonAction() {
         if(self.alertType=="pubSuccess"){
             indexCon()
+        }else if(self.alertType=="alertDoIt"){
+            doItDone()
+        }else if(self.alertType=="alertComment"){
+            commentDone()
         }
         hideView()
     }
@@ -336,5 +349,33 @@ class BHAlertView : UIView {
     func indexCon(){
         var indexCon = ViewController()
         self.rootViewController.presentModalViewController(indexCon, animated:false)
+    }
+    
+    func doItDone(){
+        // 跳转到详情内页
+        var detailsCon = DetailsController()
+        detailsCon.id = self.userId.toInt()!
+        self.conView.presentModalViewController(detailsCon, animated:true)
+    }
+    
+//    func pubBtnAction(sender: UIButton!) {
+//        var postStr:NSString!
+//        var coin=self.moneyField!.text
+//        var info=self.infoInput!.inputArea.text
+//        var whisper=self.whisperInput!.inputArea.text
+//        var duedate=self.timeField!.text
+//        var mobile=self.telInput!.inputField.text
+//        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=\(mobile)&userid=1&status=1&duedate=\(duedate)"
+//        //        postStr="id=21&school=清华大学&tasktype=3&contact=18594562365&userid=11&status=1&duedate=2014-10-10"
+//        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-save",_postStr:postStr)
+//        println(postStr)
+//        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧",alertType:"pubSuccess")
+//    }
+    
+    func commentDone(){
+        // 跳转到详情内页
+        var detailsCon = DetailsController()
+        detailsCon.id = self.userId.toInt()!
+        self.conView.presentModalViewController(detailsCon, animated:true)
     }
 }

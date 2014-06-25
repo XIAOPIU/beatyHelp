@@ -63,7 +63,7 @@ class DetailsController: UIViewController {
     }
     
     func detailDoIt(sender: UIButton!){
-        BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？")
+        BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？", alertType: "alertDoIt", userId: String(self.id))
     }
     
     func goBackAction(sender: UIButton!) {

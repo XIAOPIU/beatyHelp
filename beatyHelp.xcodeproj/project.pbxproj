@@ -121,6 +121,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		18AEB1EE195AA26D001F86AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F492481941B37D0067A74F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3F4924F1941B37D0067A74F;
+			remoteInfo = beatyHelp;
+		};
 		A3F492631941B37D0067A74F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A3F492481941B37D0067A74F /* Project object */;
@@ -513,6 +520,7 @@
 			);
 			dependencies = (
 				A3F492641941B37D0067A74F /* PBXTargetDependency */,
+				18AEB1EF195AA26D001F86AD /* PBXTargetDependency */,
 			);
 			name = beatyHelpTests;
 			productName = beatyHelpTests;
@@ -703,6 +711,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		18AEB1EF195AA26D001F86AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3F4924F1941B37D0067A74F /* beatyHelp */;
+			targetProxy = 18AEB1EE195AA26D001F86AD /* PBXContainerItemProxy */;
+		};
 		A3F492641941B37D0067A74F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A3F4924F1941B37D0067A74F /* beatyHelp */;
@@ -728,7 +741,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = apple;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = apple;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -770,7 +784,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = apple;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = apple;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -794,10 +809,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = beatyHelp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "beatyHelp/beatyHelp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -810,10 +828,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = beatyHelp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "beatyHelp/beatyHelp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
