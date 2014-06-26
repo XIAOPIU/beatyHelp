@@ -74,7 +74,6 @@ class GetDetailView{
         setNameLabel()
         setStateLabel()
         setTaskInfo()
-        getButton(scrollView)
         getCommentListBg(scrollView)
         getTopValueBg()
         getTopTitle()
@@ -83,6 +82,11 @@ class GetDetailView{
         setToolbar()
         getCommentBtn()
         getCommentList()
+        if self.status == 1{
+            getButton(scrollView)
+        }else{
+            self.commentListBg.frame = CGRectMake(10, bgHeight+12, 300, CGFloat(28+50*(ListNum+1)))
+        }
     }
     
     func setTopBg(_scrollView: UIScrollView){
