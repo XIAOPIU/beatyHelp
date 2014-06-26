@@ -22,7 +22,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         setPubTable()
         setGetTable()
-        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=1")
+        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=11")
         var manageView = ManageViewDraw(_controller: self)
         leftTab=manageView.leftTab
         rightTab=manageView.rightTab
@@ -39,9 +39,10 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func setPubTable(){
         self.pubTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-90), style:UITableViewStyle.Plain)
+//        self.pubTable!.rowHeight = 160
+        
         self.pubTable!.delegate = self
         self.pubTable!.dataSource = self
-//        self.pubTable!.rowHeight = 160
         self.pubTable!.registerClass(GetPubTabelCell.self, forCellReuseIdentifier: identifier)
         self.pubTable!.backgroundColor = UIColor.clearColor()
         self.pubTable!.separatorColor = UIColor.clearColor()
@@ -51,9 +52,10 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func setGetTable(){
         self.getTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-90), style:UITableViewStyle.Plain)
+//        self.getTable!.rowHeight = 160
+        
         self.getTable!.delegate = self
         self.getTable!.dataSource = self
-//        self.getTable!.rowHeight = 160
         self.getTable!.registerClass(GetPubTabelCell.self, forCellReuseIdentifier: "cell")
         self.getTable!.backgroundColor = UIColor.clearColor()
         self.getTable!.separatorColor = UIColor.clearColor()
@@ -74,7 +76,6 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 UIView.showAlertView("提示",message:"加载失败")
                 return
             }
-            
             var arr = data["data"] as NSArray //获取返回的数据list数组
             self.dataArray=[]
             for data : AnyObject  in arr{ //遍历保存数据

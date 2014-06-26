@@ -17,6 +17,7 @@ enum BHAlertViewStyle: Int {
     case Warning
     case Info
     case DoIt
+    case FinishIt
     case Share
     case Comment
     case SignOut
@@ -63,6 +64,7 @@ class BHAlertView : UIView {
     var userId = ""
     var cellData: NSDictionary!
     var conView: UIViewController!
+    var tableCell:UITableViewCell!
     
     init () {
         // Content View
@@ -178,6 +180,15 @@ class BHAlertView : UIView {
         return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.DoIt);
     }
     
+    // FinishIt(view, title, subTitle)
+    func FinishIt(view: UIViewController, title: String, subTitle: String, alertType:String, cellData:NSDictionary,tableCell:UITableViewCell) -> BHAlertViewClose {
+        self.conView = view
+        self.alertType = alertType
+        self.cellData = cellData
+        self.tableCell=tableCell
+        return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.FinishIt);
+    }
+    
     // comment(view, title, subTitle)
     func comment(view: UIViewController, title: String, subTitle: String, alertType:String, userId:String) -> BHAlertViewClose {
         self.conView = view
@@ -220,7 +231,7 @@ class BHAlertView : UIView {
             viewColor = UIColorFromRGB(0x22B573)
             self.doneButton.backgroundColor = viewColor
             self.circleIconImageView.image = UIImage(named: "notification-success")
-            self.doneButton.setTitle("done", forState: UIControlState.Normal)
+            self.doneButton.setTitle("确定", forState: UIControlState.Normal)
             
         case BHAlertViewStyle.Error:
             viewColor = UIColorFromRGB(0xC1272D)
@@ -238,7 +249,7 @@ class BHAlertView : UIView {
             viewColor = UIColorFromRGB(0xFFD110)
             self.doneButton.backgroundColor = viewColor
             self.circleIconImageView.image = UIImage(named: "notification-warning")
-            self.doneButton.setTitle("done", forState: UIControlState.Normal)
+            self.doneButton.setTitle("确定", forState: UIControlState.Normal)
             
         case BHAlertViewStyle.Info:
             viewColor = UIColorFromRGB(0x2866BF)
@@ -253,6 +264,15 @@ class BHAlertView : UIView {
             img.accessibilityFrame = CGRectMake(0, 0, kWindowWidth - 24, 36)
             self.circleIconImageView.image = UIImage(named: "alertIcon03")
             self.doneButton.setTitle("确定领取", forState: UIControlState.Normal)
+            self.doneButton.setBackgroundImage(img, forState: UIControlState.Normal)
+            
+        case BHAlertViewStyle.FinishIt:
+            viewColor = UIColorFromRGB(0xec473a)
+            var img = UIImage(named: "redBtn")
+            img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
+            img.accessibilityFrame = CGRectMake(0, 0, kWindowWidth - 24, 36)
+            self.circleIconImageView.image = UIImage(named: "alertIcon03")
+            self.doneButton.setTitle("确定完成", forState: UIControlState.Normal)
             self.doneButton.setBackgroundImage(img, forState: UIControlState.Normal)
             
         case BHAlertViewStyle.Share:
@@ -330,6 +350,8 @@ class BHAlertView : UIView {
             doItDone()
         }else if(self.alertType=="alertComment"){
             commentDone()
+        }else if self.alertType=="alertFinish"{
+            finishItDone()
         }
         hideView()
     }
@@ -365,6 +387,22 @@ class BHAlertView : UIView {
         },failure: {(error: NSError) -> Void in
             UIView.showAlertView("提示",message:"加载失败")
         })
+    }
+    
+    func finishItDone(){
+        var id = self.cellData.objectForKey("id") as String
+        var parent=self.tableCell.superview.superview as UITableView
+        //            parent.reloadData()
+//        var request = HTTPTask()
+//        let url = "http://mm.renren.com/task-done"
+//        let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":"11"]
+//        request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
+//            
+//            var parent=self.tableCell.superview.superview as UITableView
+//            parent.reloadData()
+//            },failure: {(error: NSError) -> Void in
+//                UIView.showAlertView("提示",message:"加载失败")
+//            })
     }
     
     func commentDone(){
