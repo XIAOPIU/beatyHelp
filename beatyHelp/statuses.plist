@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>userImage</key>
-			<string>userList01.jpg</string>
+			<string>userDefault</string>
 			<key>userName</key>
 			<string>张子萱</string>
 			<key>statusLabel</key>

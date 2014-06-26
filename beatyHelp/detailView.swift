@@ -349,13 +349,13 @@ class GetCommentField:UITextField , UITextFieldDelegate{
         self.backgroundColor=UIColor.whiteColor()
         self.placeholder="请输入评论内容"
         self.font=UIFont(name:"Arial",size:12)
-        self.delegate = self
+//        self.delegate = self
         var moneyLayer = self.layer
         moneyLayer.cornerRadius=3;
         moneyLayer.borderWidth = 1
         moneyLayer.borderColor = UIColor(red: 190, green: 195, blue: 199, alpha: 1).CGColor
         self.clearButtonMode=UITextFieldViewMode.WhileEditing
-        self.returnKeyType=UIReturnKeyType.Done
+//        self.returnKeyType=UIReturnKeyType.Done
         //        self.keyboardAppearance = .Dark;
         self.keyboardType=UIKeyboardType.NumberPad
         //        var timeSelect=UIView(frame:CGRectMake(0, 0, 320,100))
@@ -363,20 +363,5 @@ class GetCommentField:UITextField , UITextFieldDelegate{
         //        var timeSelect=UIDatePicker(frame:CGRectMake(0, 0, 0,0))
         //        self.inputView=timeSelect
         _UIView.addSubview(self)
-    }
-    
-    
-    func textFieldDidEndEditing(textField: UITextField!){
-        textField.resignFirstResponder()
-    }
-    
-    func textFieldShouldReturn(textField: UITextField!) -> Bool{
-        
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField!){
-        
     }
 }

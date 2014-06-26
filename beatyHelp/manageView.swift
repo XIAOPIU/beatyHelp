@@ -507,7 +507,7 @@ class GetPubTabelCell:UITableViewCell{
         }
         
         // 添加圆形头像
-        creatRoundImage(imageButton,CGRectMake(0, 0, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
+        creatRoundImage(imageButton,CGRectMake(0, 0, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userDefault"));
         self.addSubview(imageButton)
         
         
@@ -623,7 +623,7 @@ class GetPubTabelCell:UITableViewCell{
         var taskId=sender.tag
         var postStr="id=\(taskId)&applyid=52"
         println(postStr)
-        var getDate=PostRequest(_controller:self.getController,_url:"http://mm.nextsystem.pw/task-done",_postStr:postStr)
+        var getDate=PostRequest(_controller:self.getController,_url:"http://mm.nextsystem.pw/task-done",_postStr:postStr,_type:"finish")
 //        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧")
     }
 }

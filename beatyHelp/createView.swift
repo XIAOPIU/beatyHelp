@@ -182,9 +182,18 @@ class getTextField:UITextField , UITextFieldDelegate{
     }
 }
 
+class getTextView:UITextView, UITextViewDelegate{
+    init(_controller:CreateController,_UIView:UIView){
+        super.init(frame:CGRectMake(0, 0, 270,95),textContainer:nil)
+        self.backgroundColor=UIColor.clearColor()
+        self.delegate = _controller
+        _UIView.addSubview(self)
+    }
+}
+
 
 class getInputArea:UIView{
-    var inputArea:UITextView!
+    var inputArea:getTextView!
     var inputType:Int!
     var desInfo:String[]=[]
     var inputField:getTextField!
@@ -285,9 +294,7 @@ class getInputArea:UIView{
         inputBg.sendSubviewToBack(imgView)
         
         //文本框
-        inputArea=UITextView(frame:CGRectMake(0, 0, 270,95))
-        inputArea.backgroundColor=UIColor.clearColor()
-        inputBg.addSubview(inputArea)
+        inputArea=getTextView(_controller: bodyController,_UIView:inputBg)
         
         //文本计数
         var inputAreaNum=UILabel(frame:CGRectMake(215, 95, 50,20))
