@@ -190,7 +190,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.leftTab!.alpha=0.5
 //        self.getTable!.hidden=false;
 //        self.pubTable!.hidden=true;
-        loadData(self.getTable!,url:"http://mm.nextsystem.pw/task-all?applyid=52")
+        loadData(self.getTable!,url:"http://mm.nextsystem.pw/task-all?applyid=11")
         // Animate in the alert view
         UIView.animateWithDuration(0.5, animations: {
              self.getTable!.alpha = 1;

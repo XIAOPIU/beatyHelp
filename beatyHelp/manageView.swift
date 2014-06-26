@@ -481,7 +481,6 @@ class GetPubTabelCell:UITableViewCell{
             //共同好友照片
             for i in 0..commonFriNum{
                 var photoName=_commonFri[i].objectForKey("avatar") as String
-                println(photoName)
                 var img = UIImage(named:photoName)
                 var friViewBtn=UIButton(frame:CGRectMake(CGFloat(75+i*37), 73, 32 , 32))
                 var friView = UIImageView(image:img)
@@ -622,7 +621,6 @@ class GetPubTabelCell:UITableViewCell{
     func finish(sender: UIButton!){
         var taskId=sender.tag
         var postStr="id=\(taskId)&applyid=52"
-        println(postStr)
         var getDate=PostRequest(_controller:self.getController,_url:"http://mm.nextsystem.pw/task-done",_postStr:postStr)
 //        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧")
     }

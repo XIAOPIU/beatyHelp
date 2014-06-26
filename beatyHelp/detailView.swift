@@ -87,7 +87,6 @@ class GetDetailView{
     
     func setTopBg(_scrollView: UIScrollView){
         imageNameIndex = (self.data.objectForKey("tasktype") as String).toInt()!
-        println(imageNameIndex)
         var img = UIImage(named: detailsArray[imageNameIndex]).stretchableImageWithLeftCapWidth(0, topCapHeight:95)
         topBg = UIImageView(image: img)
         topBg.frame = CGRectMake(7, 5, 306 , 145)
@@ -161,7 +160,6 @@ class GetDetailView{
         stateLabel.textAlignment = NSTextAlignment.Center
         stateLabel.font = UIFont(name:"Arial",size:10)
        var statusColor = self.arrayDic[self.status].objectForKey("statusColor") as String
-        println(self.arrayDic[self.status])
         stateLabel.textColor = getColorFromDictionary(statusColor)
         topBg.addSubview(stateLabel)
     }

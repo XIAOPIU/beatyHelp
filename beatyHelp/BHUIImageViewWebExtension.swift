@@ -17,7 +17,6 @@ extension UIImageView{
         var cacheFilename = url.lastPathComponent
         var cachePath = FileUtility.cachePath(cacheFilename)
         var image : AnyObject = FileUtility.imageDataFromPath(cachePath)
-        //  println(cachePath)
         if image as NSObject != NSNull()
         {
             self.image = image as UIImage
@@ -31,7 +30,6 @@ extension UIImageView{
                 {
                     dispatch_async(dispatch_get_main_queue(),
                         {
-                            println(error)
                             self.image = placeHolder
                         })
                 }

@@ -61,6 +61,7 @@ class BHAlertView : UIView {
     var durationTimer: NSTimer!
     var alertType = ""
     var userId = ""
+    var cellData: NSDictionary!
     var conView: UIViewController!
     
     init () {
@@ -170,10 +171,10 @@ class BHAlertView : UIView {
     }
     
     // doIt(view, title, subTitle)
-    func doIt(view: UIViewController, title: String, subTitle: String, alertType:String, userId:String) -> BHAlertViewClose {
+    func doIt(view: UIViewController, title: String, subTitle: String, alertType:String, cellData:NSDictionary) -> BHAlertViewClose {
         self.conView = view
         self.alertType = alertType
-        self.userId = userId
+        self.cellData = cellData
         return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.DoIt);
     }
     
@@ -352,25 +353,19 @@ class BHAlertView : UIView {
     }
     
     func doItDone(){
-        // 跳转到详情内页
-        var detailsCon = DetailsController()
-        detailsCon.id = self.userId.toInt()!
-        self.conView.presentModalViewController(detailsCon, animated:true)
+        var id = self.cellData.objectForKey("id") as String
+        var request = HTTPTask()
+        let url = "http://mm.renren.com/task-apply"
+        let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":"11"]
+        request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
+            // 跳转到详情内页
+            var detailsCon = DetailsController()
+            detailsCon.id = id.toInt()!
+            self.conView.presentModalViewController(detailsCon, animated:true)
+        },failure: {(error: NSError) -> Void in
+            UIView.showAlertView("提示",message:"加载失败")
+        })
     }
-    
-//    func pubBtnAction(sender: UIButton!) {
-//        var postStr:NSString!
-//        var coin=self.moneyField!.text
-//        var info=self.infoInput!.inputArea.text
-//        var whisper=self.whisperInput!.inputArea.text
-//        var duedate=self.timeField!.text
-//        var mobile=self.telInput!.inputField.text
-//        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=\(mobile)&userid=1&status=1&duedate=\(duedate)"
-//        //        postStr="id=21&school=清华大学&tasktype=3&contact=18594562365&userid=11&status=1&duedate=2014-10-10"
-//        var getDate=PostRequest(_controller:self,_url:"http://mm.renren.com/task-save",_postStr:postStr)
-//        println(postStr)
-//        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧",alertType:"pubSuccess")
-//    }
     
     func commentDone(){
         // 跳转到详情内页

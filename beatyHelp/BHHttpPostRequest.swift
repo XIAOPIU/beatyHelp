@@ -41,6 +41,5 @@ class PostConnection:NSURLConnection,NSURLConnectionDelegate,NSURLConnectionData
     
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!){
         self.jsonData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        println(self.jsonData)
     }
 }

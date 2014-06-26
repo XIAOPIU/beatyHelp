@@ -55,7 +55,6 @@ class DetailsController: UIViewController {
     }
     
     func otherImage(sender: UIButton!){
-//        println(123)
         // 跳转到详情内页
         var otherCon = OtherController()
         otherCon.uid = (self.data!.objectForKey("uid") as String).toInt()!
@@ -63,7 +62,7 @@ class DetailsController: UIViewController {
     }
     
     func detailDoIt(sender: UIButton!){
-        BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？", alertType: "alertDoIt", userId: String(self.id))
+        BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？", alertType: "alertDoIt", cellData: self.data!)
     }
     
     func goBackAction(sender: UIButton!) {

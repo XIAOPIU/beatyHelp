@@ -42,6 +42,10 @@
 		A31C38B8194597F700A3713D /* MyDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C38B7194597F700A3713D /* MyDataController.swift */; };
 		A31C38BA1945985B00A3713D /* myDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C38B91945985B00A3713D /* myDataView.swift */; };
 		A31C38BD1945A08700A3713D /* manageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C38BC1945A08700A3713D /* manageView.swift */; };
+		A328E22C195ACB5700C6EF82 /* HTTPRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328E228195ACB5700C6EF82 /* HTTPRequestSerializer.swift */; };
+		A328E22D195ACB5700C6EF82 /* HTTPResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328E229195ACB5700C6EF82 /* HTTPResponseSerializer.swift */; };
+		A328E22E195ACB5700C6EF82 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328E22A195ACB5700C6EF82 /* HTTPTask.swift */; };
+		A328E22F195ACB5700C6EF82 /* HTTPUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328E22B195ACB5700C6EF82 /* HTTPUpload.swift */; };
 		A32D8D141946B10C00A03EB7 /* MathSum.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D8D131946B10C00A03EB7 /* MathSum.m */; };
 		A32D8D161946B12400A03EB7 /* statuses.plist in Resources */ = {isa = PBXBuildFile; fileRef = A32D8D151946B12400A03EB7 /* statuses.plist */; };
 		A32D8D341946B12E00A03EB7 /* bgMini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A32D8D181946B12E00A03EB7 /* bgMini@2x.png */; };
@@ -173,6 +177,10 @@
 		A31C38B7194597F700A3713D /* MyDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDataController.swift; sourceTree = "<group>"; };
 		A31C38B91945985B00A3713D /* myDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myDataView.swift; sourceTree = "<group>"; };
 		A31C38BC1945A08700A3713D /* manageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = manageView.swift; sourceTree = "<group>"; };
+		A328E228195ACB5700C6EF82 /* HTTPRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestSerializer.swift; sourceTree = "<group>"; };
+		A328E229195ACB5700C6EF82 /* HTTPResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPResponseSerializer.swift; sourceTree = "<group>"; };
+		A328E22A195ACB5700C6EF82 /* HTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		A328E22B195ACB5700C6EF82 /* HTTPUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPUpload.swift; sourceTree = "<group>"; };
 		A32D8D121946B10C00A03EB7 /* MathSum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathSum.h; sourceTree = "<group>"; };
 		A32D8D131946B10C00A03EB7 /* MathSum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathSum.m; sourceTree = "<group>"; };
 		A32D8D151946B12400A03EB7 /* statuses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = statuses.plist; sourceTree = "<group>"; };
@@ -400,6 +408,10 @@
 		A3E6715C1941CF1200DE0D03 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				A328E228195ACB5700C6EF82 /* HTTPRequestSerializer.swift */,
+				A328E229195ACB5700C6EF82 /* HTTPResponseSerializer.swift */,
+				A328E22A195ACB5700C6EF82 /* HTTPTask.swift */,
+				A328E22B195ACB5700C6EF82 /* HTTPUpload.swift */,
 				A3E671601941CFBA00DE0D03 /* BHTool.swift */,
 				A34434B4194946960061D2F9 /* BHHttpRequest.swift */,
 				1874AB4019503637008B73E1 /* BHHttpPostRequest.swift */,
@@ -680,18 +692,22 @@
 				A3601FC5194EAB9B003AA8F3 /* BHFileUtility.swift in Sources */,
 				A3E6715F1941CF9700DE0D03 /* mainView.swift in Sources */,
 				A31C38B8194597F700A3713D /* MyDataController.swift in Sources */,
+				A328E22C195ACB5700C6EF82 /* HTTPRequestSerializer.swift in Sources */,
 				A3F492581941B37D0067A74F /* ViewController.swift in Sources */,
 				A31C38BA1945985B00A3713D /* myDataView.swift in Sources */,
 				A39CCF3E19454EAB006D061A /* footButtonAction.swift in Sources */,
 				A3E671631941FB9900DE0D03 /* baseView.swift in Sources */,
 				A31C38BD1945A08700A3713D /* manageView.swift in Sources */,
 				18A49471194AFD9500380807 /* CreateController.swift in Sources */,
+				A328E22F195ACB5700C6EF82 /* HTTPUpload.swift in Sources */,
 				A32D8D141946B10C00A03EB7 /* MathSum.m in Sources */,
 				A33AFF661948424D006A4839 /* detailView.swift in Sources */,
 				A3F492561941B37D0067A74F /* AppDelegate.swift in Sources */,
 				A34434B5194946960061D2F9 /* BHHttpRequest.swift in Sources */,
+				A328E22D195ACB5700C6EF82 /* HTTPResponseSerializer.swift in Sources */,
 				A3DD3CD919509896003863C8 /* BHHttpManager.swift in Sources */,
 				18A4946F194AFD5100380807 /* createView.swift in Sources */,
+				A328E22E195ACB5700C6EF82 /* HTTPTask.swift in Sources */,
 				A39CCF4019455975006D061A /* ManageController.swift in Sources */,
 				A3601FC9194ED43D003AA8F3 /* otherView.swift in Sources */,
 				A39CCF3A1943FEEE006D061A /* obTool.m in Sources */,
@@ -741,8 +757,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Emil Song (78CNE4S95X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Emil Song (78CNE4S95X)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -784,8 +800,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Emil Song (78CNE4S95X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Emil Song (78CNE4S95X)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

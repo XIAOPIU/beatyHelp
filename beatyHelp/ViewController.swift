@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     */
     func loadData()
     {
-        var url = "http://mm.nextsystem.pw/task-all?status=1" //接口url
+        var url = "http://mm.nextsystem.pw/task-all?status=1&exuid=11" //接口url
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
@@ -124,12 +124,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         switch(sender.tag) {
         case 0:
-            BHAlertView().comment(self, title: "任务评论", subTitle: "是否前往评论该任务？", alertType: "alertComment", userId: getId)
+            BHAlertView().comment(self, title: "任务评论", subTitle: "是否前往评论该任务？", alertType: "alertComment",userId: getId)
         case 1:
             BHAlertView().share(self, title: "任务分享", subTitle: "是否确定分享该任务？", alertType: "alertShare")
         case 2:
-//            println(path)
-            BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？", alertType: "alertDoIt", userId: getId)
+            BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？", alertType: "alertDoIt", cellData: self.dataArray[path.row] as NSDictionary )
         default:
             println("default")
         }

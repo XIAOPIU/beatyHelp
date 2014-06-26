@@ -152,7 +152,6 @@
 //    }
 //    
 //    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didFinishDownloadingToURL location: NSURL!){
-//        println("Finish") // 下载完成
 //        var defaultFileMag:NSFileManager! = NSFileManager.defaultManager()
 //        for var i = 0 ; i<downloadList.count; ++i{
 //            var d =  downloadList[i] as Download
@@ -161,7 +160,6 @@
 //                defaultFileMag.removeItemAtURL(destinationPath,error:nil);
 //                var copyFile:Bool = defaultFileMag.copyItemAtURL(location,toURL:destinationPath,error:nil)
 //                if copyFile == false {
-//                    println("copyItemAtURL error")
 //                    return
 //                }
 //                downloadList.removeObjectAtIndex(i)
@@ -183,8 +181,6 @@
 //                uploadList.removeObjectAtIndex(i)
 //            }
 //        }
-//        println("alwaysFinish") // 不管下载错误和正确
-//        println(error)
 //    }
 //    
 //    func URLSession(session: NSURLSession!, task: NSURLSessionTask!, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64){

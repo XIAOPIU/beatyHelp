@@ -20,7 +20,6 @@ class BHHttpRequest: NSObject {
         NSURLConnection.sendAsynchronousRequest(req, queue: queue, completionHandler: { response, data, error in
             if error {
                 dispatch_async(dispatch_get_main_queue(),{
-                    println(error)
                     completionHandler(data:NSNull())
                 })
             }else{

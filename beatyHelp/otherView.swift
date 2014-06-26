@@ -128,7 +128,6 @@ class GetFriendView{
 //    return
 //    }
 //    
-//            println(data)
 //            var arr = data["data"] as NSArray
 //            for data : AnyObject  in arr{
 //                self.dataArray.addObject(data)
