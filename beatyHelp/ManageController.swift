@@ -176,7 +176,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.rightTab!.alpha=0.5
 //        self.pubTable!.hidden=false;
 //        self.getTable!.hidden=true;
-        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=1")
+        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=11")
         UIView.animateWithDuration(0.5, animations: {
             self.getTable!.alpha = 0;
             self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width-7

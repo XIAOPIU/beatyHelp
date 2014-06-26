@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CreateController: UIViewController,UITextFieldDelegate{
+class CreateController: UIViewController,UITextFieldDelegate,UITextViewDelegate{
     var rowIndex: Int = 0
     var typeBtnArray:UIButton[] = []
     var timeField:UITextField?
@@ -47,19 +47,45 @@ class CreateController: UIViewController,UITextFieldDelegate{
     }
     
     //textfiled代理协议方法
-    func textFieldDidEndEditing(textField: UITextField!){
-        textField.resignFirstResponder()
-    }
-    
     func textFieldShouldReturn(textField: UITextField!) -> Bool{
         textField.resignFirstResponder()
         return true
     }
     
     func textFieldDidBeginEditing(textField: UITextField!){
-//        scrollView.scrollRectToVisible(rect: CGRect(100,0), animated: Bool)
-        var offset = textField.superview.frame.origin.y
-        var _height=self.view.frame.size.height
+        var viewFrame=self.scrollView!.frame
+        viewFrame.size.height=viewFrame.size.height-250
+        self.scrollView!.frame=viewFrame
+        var textFieldRect=textField.superview.frame
+        self.scrollView!.scrollRectToVisible(textFieldRect, animated: true)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField!){
+        textField.resignFirstResponder()
+        var viewFrame=self.scrollView!.frame
+        viewFrame.size.height=viewFrame.size.height+250
+        self.scrollView!.frame=viewFrame
+    }
+    
+    //textView代理协议方法
+//    func textViewShouldReturn(textField: UITextField!) -> Bool{
+//        textField.resignFirstResponder()
+//        return true
+//    }
+    
+    func textViewDidBeginEditing(textView: UITextView!){
+        var viewFrame=self.scrollView!.frame
+        viewFrame.size.height=viewFrame.size.height-250
+        self.scrollView!.frame=viewFrame
+        var textFieldRect=textView.superview.superview.frame
+        self.scrollView!.scrollRectToVisible(textFieldRect, animated: true)
+    }
+    
+    func textViewDidEndEditing(textView: UITextView!){
+        textView.resignFirstResponder()
+        var viewFrame=self.scrollView!.frame
+        viewFrame.size.height=viewFrame.size.height+250
+        self.scrollView!.frame=viewFrame
     }
     
     func goBackAction(sender: UIButton!) {
@@ -84,8 +110,8 @@ class CreateController: UIViewController,UITextFieldDelegate{
         var mobile=self.telInput!.inputField.text
         postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=\(mobile)&userid=1&status=1&duedate=\(duedate)"
 //        postStr="id=21&school=清华大学&tasktype=3&contact=18594562365&userid=11&status=1&duedate=2014-10-10"
-        var getDate=PostRequest(_controller:self,_url:"http://mm.nextsystem.pw/task-save",_postStr:postStr)
-        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧",alertType:"pubSuccess")
+        var getDate=PostRequest(_controller:self,_url:"http://mm.nextsystem.pw/task-save",_postStr:postStr,_type:"pub")
+        println(postStr)
     }
     
     
