@@ -617,7 +617,6 @@ class GetPubTabelCell:UITableViewCell{
         detailsCon.id = (data.objectForKey("id") as String).toInt()!
         self.getController.presentModalViewController(detailsCon, animated:true)
     }
-    
     func finish(sender: UIButton!){
 //        var taskId=sender.tag
 //        var postStr="id=\(taskId)&applyid=52"

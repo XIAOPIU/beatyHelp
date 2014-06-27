@@ -18,6 +18,7 @@ enum BHAlertViewStyle: Int {
     case Info
     case DoIt
     case FinishIt
+    case Login
     case Share
     case Comment
     case SignOut
@@ -189,6 +190,14 @@ class BHAlertView : UIView {
         return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.FinishIt);
     }
     
+    // Login(view, title, subTitle)
+    func Login(view: UIViewController, title: String, subTitle: String, alertType:String, cellData:NSDictionary) -> BHAlertViewClose {
+        self.conView = view
+        self.alertType = alertType
+        self.cellData = cellData
+        return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.Login);
+    }
+    
     // comment(view, title, subTitle)
     func comment(view: UIViewController, title: String, subTitle: String, alertType:String, userId:String) -> BHAlertViewClose {
         self.conView = view
@@ -275,6 +284,15 @@ class BHAlertView : UIView {
             self.doneButton.setTitle("确定完成", forState: UIControlState.Normal)
             self.doneButton.setBackgroundImage(img, forState: UIControlState.Normal)
             
+        case BHAlertViewStyle.Login:
+            viewColor = UIColorFromRGB(0xec473a)
+            var img = UIImage(named: "redBtn")
+            img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
+            img.accessibilityFrame = CGRectMake(0, 0, kWindowWidth - 24, 36)
+            self.circleIconImageView.image = UIImage(named: "alertIcon03")
+            self.doneButton.setTitle("确定登录", forState: UIControlState.Normal)
+            self.doneButton.setBackgroundImage(img, forState: UIControlState.Normal)
+            
         case BHAlertViewStyle.Share:
             viewColor = UIColorFromRGB(0xec473a)
             var img = UIImage(named: "redBtn")
@@ -352,6 +370,8 @@ class BHAlertView : UIView {
             commentDone()
         }else if self.alertType=="alertFinish"{
             finishItDone()
+        }else if self.alertType=="alertLogin"{
+            Login()
         }
         hideView()
     }
@@ -391,18 +411,23 @@ class BHAlertView : UIView {
     
     func finishItDone(){
         var id = self.cellData.objectForKey("id") as String
-        var parent=self.tableCell.superview.superview as UITableView
-        //            parent.reloadData()
-//        var request = HTTPTask()
-//        let url = "http://mm.renren.com/task-done"
-//        let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":"11"]
-//        request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
-//            
-//            var parent=self.tableCell.superview.superview as UITableView
-//            parent.reloadData()
-//            },failure: {(error: NSError) -> Void in
-//                UIView.showAlertView("提示",message:"加载失败")
-//            })
+        var request = HTTPTask()
+        let url = "http://mm.renren.com/task-done"
+        let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":"11"]
+        request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
+            
+            var parent=self.tableCell.superview.superview as UITableView
+            parent.reloadData()
+            },failure: {(error: NSError) -> Void in
+                UIView.showAlertView("提示",message:"加载失败")
+            })
+    }
+    
+    func Login(){
+        // 跳转到详情内页
+        var userid=self.cellData.objectForKey("id") as String
+        var indexCon = ViewController()
+        self.conView.presentModalViewController(indexCon, animated:true)
     }
     
     func commentDone(){
