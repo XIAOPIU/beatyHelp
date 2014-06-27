@@ -330,6 +330,10 @@ class GetPubTabelCell:UITableViewCell{
     var getController:UIViewController!
     
     
+    init(style: UITableViewCellStyle, reuseIdentifier: String!){
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
     class func cellHeightByData(data:NSDictionary)->CGFloat
     
     {

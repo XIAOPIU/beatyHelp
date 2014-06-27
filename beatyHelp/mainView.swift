@@ -58,8 +58,11 @@ class GetMainViewTop{
     func setUserImage(){
         // 在plist文件中获取用户头像信息
         var str2 = getDictionary("userInfo").objectForKey("headImage") as NSString
+        
         // 添加圆形头像
-        userImage = creatRoundImage(topValueBg,CGRectMake(20,15,78,78),UIImage(named:str2),3.0)
+//        creatRoundImage(imageButton,CGRectMake(0, 0, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
+        // 添加圆形头像
+        creatRoundImage(topValueBg,CGRectMake(20,15,78,78),UIImage(named:str2),3.0).setImage(str2,placeHolder: UIImage(named: "userList01.jpg"));
     }
     
     func setImageClick(){
@@ -68,7 +71,7 @@ class GetMainViewTop{
         var imageButton = UIButton(frame:CGRectMake(20,15,78,78))
         imageButton.addTarget(self.getController,action:"footBtn3Action:",forControlEvents:.TouchUpInside)
         // 添加圆形头像
-        creatRoundImage(imageButton,CGRectMake(0, 0, 78, 78),UIImage(named:str2),3)
+        creatRoundImage(imageButton,CGRectMake(0, 0, 78, 78),UIImage(named:str2),3).setImage(str2,placeHolder: UIImage(named: "userList01.jpg"));
         topValueBg.addSubview(imageButton)
         topValueBg.userInteractionEnabled = true
     }
@@ -196,6 +199,11 @@ class GetMainTabelCell:UITableViewCell{
     var data :NSDictionary!
     
     var getController:UIViewController!
+    
+    
+    init(style: UITableViewCellStyle, reuseIdentifier: String!){
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

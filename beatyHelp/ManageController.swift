@@ -22,7 +22,8 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         setPubTable()
         setGetTable()
-        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=11")
+        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=\(applyid)")
         var manageView = ManageViewDraw(_controller: self)
         leftTab=manageView.leftTab
         rightTab=manageView.rightTab
@@ -75,13 +76,14 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
                 return
+            }else{
+                var arr = data["data"] as NSArray //获取返回的数据list数组
+                self.dataArray=[]
+                for data : AnyObject  in arr{ //遍历保存数据
+                    self.dataArray.addObject(data)
+                }
+                curTable.reloadData() //更新tableView内的数据
             }
-            var arr = data["data"] as NSArray //获取返回的数据list数组
-            self.dataArray=[]
-            for data : AnyObject  in arr{ //遍历保存数据
-                self.dataArray.addObject(data)
-            }
-            curTable.reloadData() //更新tableView内的数据
             //            UIView.showAlertView("提示",message:toString(self.dataArray))
             })
     }
@@ -97,6 +99,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return self.dataArray.count
     }
     
+    
     //创建一个单元格
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
@@ -105,19 +108,25 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //        }
 //        else{
 //            return GetPubTableView(tableView: tableView,indexPath: indexPath,tableIndex: 1).cell
-//        }
+        //        }
+//        var CellIdentifier = NSString.localizedStringWithFormat("cell\(index)", indexPath.section, indexPath.row)
+//        var cell = tableView?.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? GetPubTabelCell
         
-        var cell = tableView?.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? GetPubTabelCell
-        var index = indexPath!.row
-        var getData = self.dataArray[index] as NSDictionary
-        cell!.data = getData
-        if tableView==self.pubTable{
-            cell!.tableType=0
+        var cell = tableView?.cellForRowAtIndexPath(indexPath) as? GetPubTabelCell
+        
+        if cell == nil{
+            cell = GetPubTabelCell(style: UITableViewCellStyle.Default,reuseIdentifier: identifier)
+            var index = indexPath!.row
+            var getData = self.dataArray[index] as NSDictionary
+            cell!.data = getData
+            if tableView==self.pubTable{
+                cell!.tableType=0
+            }
+            else{
+                cell!.tableType=1
+            }
+            cell!.getController = self
         }
-        else{
-            cell!.tableType=1
-        }
-        cell!.getController = self
         return cell
     }
     
@@ -148,14 +157,12 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
-    
-    
-    
     func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat
-    
      {
         var index = indexPath!.row
         var data = self.dataArray[index] as NSDictionary
+//        return  GetPubTabelCell.cellHeightByData(data)
+        
         return  GetPubTabelCell.cellHeightByData(data)
     }
     
@@ -176,8 +183,9 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         sender.alpha=1
         self.rightTab!.alpha=0.5
 //        self.pubTable!.hidden=false;
-//        self.getTable!.hidden=true;
-        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=11")
+        //        self.getTable!.hidden=true;
+        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=\(applyid)")
         UIView.animateWithDuration(0.5, animations: {
             self.getTable!.alpha = 0;
             self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width-7
@@ -190,8 +198,9 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         sender.alpha=1
         self.leftTab!.alpha=0.5
 //        self.getTable!.hidden=false;
-//        self.pubTable!.hidden=true;
-        loadData(self.getTable!,url:"http://mm.nextsystem.pw/task-all?applyid=11")
+        //        self.pubTable!.hidden=true;
+        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        loadData(self.getTable!,url:"http://mm.nextsystem.pw/task-all?applyid=\(applyid)")
         // Animate in the alert view
         UIView.animateWithDuration(0.5, animations: {
              self.getTable!.alpha = 1;

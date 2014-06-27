@@ -46,12 +46,13 @@ class PostConnection:NSURLConnection,NSURLConnectionDelegate,NSURLConnectionData
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!){
         self.jsonData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         if type=="pub"{
-            if self.jsonData["code"] as NSObject==0 {
+            println(self.jsonData)
+//            if self.jsonData["code"] as NSObject == 0 {
                 BHAlertView().showSuccess(mainController, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧",alertType:"pubSuccess")
-            }
-            else{
-                BHAlertView().showWarning(mainController, title: "发布失败", subTitle: "看看是不是有内容没有填哟")
-            }
+//            }
+//            else{
+//                BHAlertView().showWarning(mainController, title: "发布失败", subTitle: "看看是不是有内容没有填哟")
+//            }
         }
     }
 }

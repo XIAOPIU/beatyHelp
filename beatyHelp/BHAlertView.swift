@@ -378,7 +378,8 @@ class BHAlertView : UIView {
         var id = self.cellData.objectForKey("id") as String
         var request = HTTPTask()
         let url = "http://mm.renren.com/task-apply"
-        let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":"11"]
+        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":applyid]
         request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
             // 跳转到详情内页
             var detailsCon = DetailsController()
@@ -391,18 +392,17 @@ class BHAlertView : UIView {
     
     func finishItDone(){
         var id = self.cellData.objectForKey("id") as String
-        var parent=self.tableCell.superview.superview as UITableView
-        //            parent.reloadData()
-//        var request = HTTPTask()
-//        let url = "http://mm.renren.com/task-done"
-//        let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":"11"]
-//        request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
-//            
-//            var parent=self.tableCell.superview.superview as UITableView
-//            parent.reloadData()
-//            },failure: {(error: NSError) -> Void in
-//                UIView.showAlertView("提示",message:"加载失败")
-//            })
+        var request = HTTPTask()
+        let url = "http://mm.renren.com/task-done"
+        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":applyid]
+        request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
+            
+            var parent=self.tableCell.superview.superview as UITableView
+            parent.reloadData()
+            },failure: {(error: NSError) -> Void in
+                UIView.showAlertView("提示",message:"加载失败")
+            })
     }
     
     func commentDone(){

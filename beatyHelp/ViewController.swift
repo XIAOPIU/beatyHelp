@@ -17,12 +17,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var indexTable : UITableView? //首页的tableView
     var dataArray = NSMutableArray() //首页数据
     var userData = NSMutableArray() //首页数据
+    var getUserId = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndexTable() //设置并创建tableView
-        loadData() //数据加载
-        MainViewDraw(_controller: self) //mainView界面绘制
+        loadUserData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,12 +51,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.view.addSubview(self.indexTable) //控件添加到controller
     }
     
+    func loadUserData(){
+        var url = "http://mm.renren.com/users-get?id=\(getUserId)" //"
+        BHHttpRequest.requestWithURL(url,completionHandler:{ data in
+            if data as NSObject == NSNull(){
+                UIView.showAlertView("提示",message:"加载失败")
+                return
+            }
+            var getData = data["data"] as NSDictionary //获取返回的数据list数组
+            
+            var plistPath = NSBundle.mainBundle().pathForResource("statuses",ofType: "plist")
+            var dictionary = NSMutableDictionary(contentsOfFile:plistPath)
+            var userData : (AnyObject!) = dictionary.objectForKey("userInfo")
+            
+            userData.setObject(getData.objectForKey("id"), forKey:"userId")
+            userData.setObject(getData.objectForKey("uname"), forKey:"userName")
+            userData.setObject(getData.objectForKey("mobile"), forKey:"phoneNum")
+            userData.setObject(getData.objectForKey("status"), forKey:"userSign")
+            userData.setObject(getData.objectForKey("avatar"), forKey:"headImage")
+            
+            dictionary.setObject(userData, forKey:"userInfo")
+            
+            dictionary.writeToFile(plistPath, atomically: true)
+            self.loadData() //数据加载
+            self.indexTable!.reloadData() //更新tableView内的数据
+            //            UIView.showAlertView("提示",message:toString(self.dataArray))
+            })
+    }
+    
     /**
     *  tablelist数据载入
     */
     func loadData()
     {
-        var url = "http://mm.nextsystem.pw/task-all?status=1&exuid=11" //接口url
+        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        var url = "http://mm.nextsystem.pw/task-all?status=1&exuid=\(applyid)" //接口url
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
@@ -67,6 +96,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             for data : AnyObject  in arr{ //遍历保存数据
                 self.dataArray.addObject(data)
             }
+            MainViewDraw(_controller: self) //mainView界面绘制
             self.indexTable!.reloadData() //更新tableView内的数据
 //            UIView.showAlertView("提示",message:toString(self.dataArray))
             })
@@ -93,11 +123,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     */
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
-        var cell = tableView?.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? GetMainTabelCell
-        var index = indexPath!.row
-        var getData = self.dataArray[index] as NSDictionary
-        cell!.data = getData
-        cell!.getController = self
+        var cell = tableView?.cellForRowAtIndexPath(indexPath) as? GetMainTabelCell
+        
+        if cell == nil{
+            cell = GetMainTabelCell(style: UITableViewCellStyle.Default,reuseIdentifier: identifier)
+            var index = indexPath!.row
+            var getData = self.dataArray[index] as NSDictionary
+            cell!.data = getData
+            cell!.getController = self
+        }
         return cell
     }
     
