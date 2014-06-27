@@ -17,16 +17,26 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var leftTab : UIButton? // 发布的任务
     var rightTab : UIButton? //领取的任务
     var dataArray = NSMutableArray() //数据list
+    var initTab = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setPubTable()
         setGetTable()
         let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
-        loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=\(applyid)")
+        if initTab==0{
+            loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=\(applyid)")
+        }
+        else if initTab==1{
+            loadData(self.getTable!,url:"http://mm.nextsystem.pw/task-all?applyid=\(applyid)")
+        }
         var manageView = ManageViewDraw(_controller: self)
         leftTab=manageView.leftTab
         rightTab=manageView.rightTab
+        if self.initTab==1{
+            self.leftTab!.alpha=0.5
+            self.rightTab!.alpha=1
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,6 +47,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func preferredStatusBarStyle()->UIStatusBarStyle{
         return UIStatusBarStyle.LightContent
     }
+    
     
     func setPubTable(){
         self.pubTable = UITableView(frame:CGRectMake(7,70,306,UIScreen.mainScreen().applicationFrame.height-90), style:UITableViewStyle.Plain)
@@ -49,6 +60,10 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.pubTable!.separatorColor = UIColor.clearColor()
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(self.pubTable)
+        if(self.initTab==1){
+            self.pubTable!.alpha=0
+            self.pubTable!.frame.origin.x = -UIScreen.mainScreen().applicationFrame.width+7
+        }
     }
     
     func setGetTable(){
@@ -63,8 +78,10 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(self.getTable)
 //        self.getTable!.hidden=true;
-        self.getTable!.alpha=0
-        self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width
+        if(self.initTab==0){
+            self.getTable!.alpha=0
+            self.getTable!.frame.origin.x = UIScreen.mainScreen().applicationFrame.width
+        }
     }
     
     /**

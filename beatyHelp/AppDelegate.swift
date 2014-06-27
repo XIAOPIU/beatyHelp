@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        var viewController = ViewController()
-        var navigationController = UINavigationController(rootViewController: viewController)
+        var loginController = LoginController()
+        var navigationController = UINavigationController(rootViewController: loginController)
         navigationController.navigationBarHidden = true
         self.window!.rootViewController = navigationController
         self.window!.makeKeyAndVisible()

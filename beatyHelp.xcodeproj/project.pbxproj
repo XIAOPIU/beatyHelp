@@ -14,12 +14,15 @@
 		185BBE4919496FA700B1D738 /* leftTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4519496FA700B1D738 /* leftTabIcon@2x.png */; };
 		185BBE4A19496FA700B1D738 /* rightTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BBE4619496FA700B1D738 /* rightTabIcon@2x.png */; };
 		1874AB4119503637008B73E1 /* BHHttpPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1874AB4019503637008B73E1 /* BHHttpPostRequest.swift */; };
+		187BD295195D3425000E2183 /* loginBg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 187BD294195D3425000E2183 /* loginBg@2x.jpg */; };
 		18A4946F194AFD5100380807 /* createView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A4946E194AFD5100380807 /* createView.swift */; };
 		18A49471194AFD9500380807 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A49470194AFD9500380807 /* CreateController.swift */; };
 		18C01EA719508EA80058AAE7 /* whisperIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C01EA519508EA80058AAE7 /* whisperIcon@2x.png */; };
 		18C01EA819508EA80058AAE7 /* detailsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C01EA619508EA80058AAE7 /* detailsIcon@2x.png */; };
 		18C01EAC19508F460058AAE7 /* mobileIcon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C01EAB19508F460058AAE7 /* mobileIcon2@2x.png */; };
 		18C01EAE1950A0AC0058AAE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C01EAD1950A0AC0058AAE7 /* Main.storyboard */; };
+		18C9FD87195D2E0A0022C999 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C9FD86195D2E0A0022C999 /* loginView.swift */; };
+		18C9FD89195D2E300022C999 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C9FD88195D2E300022C999 /* LoginController.swift */; };
 		18DAFC9B194AA3330049A647 /* mobileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DAFC8D194AA3330049A647 /* mobileIcon@2x.png */; };
 		18DAFC9C194AA3330049A647 /* pubCommentIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DAFC8E194AA3330049A647 /* pubCommentIcon@2x.png */; };
 		18DAFC9D194AA3330049A647 /* stopIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DAFC8F194AA3330049A647 /* stopIcon@2x.png */; };
@@ -154,12 +157,15 @@
 		185BBE4519496FA700B1D738 /* leftTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftTabIcon@2x.png"; sourceTree = "<group>"; };
 		185BBE4619496FA700B1D738 /* rightTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightTabIcon@2x.png"; sourceTree = "<group>"; };
 		1874AB4019503637008B73E1 /* BHHttpPostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHHttpPostRequest.swift; sourceTree = "<group>"; };
+		187BD294195D3425000E2183 /* loginBg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "loginBg@2x.jpg"; sourceTree = "<group>"; };
 		18A4946E194AFD5100380807 /* createView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createView.swift; sourceTree = "<group>"; };
 		18A49470194AFD9500380807 /* CreateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
 		18C01EA519508EA80058AAE7 /* whisperIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whisperIcon@2x.png"; sourceTree = "<group>"; };
 		18C01EA619508EA80058AAE7 /* detailsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailsIcon@2x.png"; sourceTree = "<group>"; };
 		18C01EAB19508F460058AAE7 /* mobileIcon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobileIcon2@2x.png"; sourceTree = "<group>"; };
 		18C01EAD1950A0AC0058AAE7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		18C9FD86195D2E0A0022C999 /* loginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
+		18C9FD88195D2E300022C999 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		18DAFC8D194AA3330049A647 /* mobileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobileIcon@2x.png"; sourceTree = "<group>"; };
 		18DAFC8E194AA3330049A647 /* pubCommentIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pubCommentIcon@2x.png"; sourceTree = "<group>"; };
 		18DAFC8F194AA3330049A647 /* stopIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopIcon@2x.png"; sourceTree = "<group>"; };
@@ -302,6 +308,7 @@
 				A3CA5C9C195D430E00D917A7 /* loginBg@2x.jpg */,
 				A376271E1950884D00C402BC /* chooseIcon@2x.png */,
 				180C7BD11959A5160044096D /* textArea@2x.png */,
+				187BD294195D3425000E2183 /* loginBg@2x.jpg */,
 				A376272019508B7400C402BC /* headBackBtn01@2x.png */,
 				184E86AF195AD34100764B45 /* userDefault@2x.png */,
 				A3CC823919503EA600AACA8A /* alertIcon01@2x.png */,
@@ -412,6 +419,7 @@
 				A3F492571941B37D0067A74F /* ViewController.swift */,
 				A39CCF3F19455975006D061A /* ManageController.swift */,
 				A31C38B7194597F700A3713D /* MyDataController.swift */,
+				18C9FD88195D2E300022C999 /* LoginController.swift */,
 				A33AFF63194841F4006A4839 /* DetailsController.swift */,
 				18A49470194AFD9500380807 /* CreateController.swift */,
 				A3601FC6194ED3F7003AA8F3 /* OtherController.swift */,
@@ -446,6 +454,7 @@
 				A3E671621941FB9900DE0D03 /* baseView.swift */,
 				A3E6715E1941CF9700DE0D03 /* mainView.swift */,
 				A31C38B91945985B00A3713D /* myDataView.swift */,
+				18C9FD86195D2E0A0022C999 /* loginView.swift */,
 				A31C38BC1945A08700A3713D /* manageView.swift */,
 				A33AFF651948424D006A4839 /* detailView.swift */,
 				18A4946E194AFD5100380807 /* createView.swift */,
@@ -661,7 +670,7 @@
 				A32D8D411946B12E00A03EB7 /* listCellBlueX@2x.png in Resources */,
 				A32D8D401946B12E00A03EB7 /* listCellBlue@2x.png in Resources */,
 				A32D8D481946B12E00A03EB7 /* phoneIcon@2x.png in Resources */,
-				A3CA5C9D195D430E00D917A7 /* loginBg@2x.jpg in Resources */,
+				187BD295195D3425000E2183 /* loginBg@2x.jpg in Resources */,
 				A32D8D4F1946B12E00A03EB7 /* userList03@2x.jpg in Resources */,
 				A32D8D4E1946B12E00A03EB7 /* userList02@2x.jpg in Resources */,
 				18DAFC9F194AA3330049A647 /* tinyPhoto2@2x.png in Resources */,
@@ -714,6 +723,8 @@
 				A328E22C195ACB5700C6EF82 /* HTTPRequestSerializer.swift in Sources */,
 				A3F492581941B37D0067A74F /* ViewController.swift in Sources */,
 				A31C38BA1945985B00A3713D /* myDataView.swift in Sources */,
+				18C9FD87195D2E0A0022C999 /* loginView.swift in Sources */,
+				18C9FD89195D2E300022C999 /* LoginController.swift in Sources */,
 				A39CCF3E19454EAB006D061A /* footButtonAction.swift in Sources */,
 				A3E671631941FB9900DE0D03 /* baseView.swift in Sources */,
 				A31C38BD1945A08700A3713D /* manageView.swift in Sources */,
