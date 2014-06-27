@@ -390,8 +390,8 @@ class BHAlertView : UIView {
     }
     
     func indexCon(){
-        var indexCon = ViewController()
-        self.rootViewController.presentModalViewController(indexCon, animated:false)
+        var manageCon = ManageController()
+        self.rootViewController.presentModalViewController(manageCon, animated:false)
     }
     
     func doItDone(){
@@ -411,22 +411,30 @@ class BHAlertView : UIView {
     
     func finishItDone(){
         var id = self.cellData.objectForKey("id") as String
+//        var manageCon = ManageController()
+//                    manageCon.initTab=1
+//                    self.rootViewController.presentModalViewController(manageCon, animated:false)
         var request = HTTPTask()
         let url = "http://mm.renren.com/task-done"
         let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":"11"]
         request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
             
-            var parent=self.tableCell.superview.superview as UITableView
-            parent.reloadData()
-            },failure: {(error: NSError) -> Void in
-                UIView.showAlertView("提示",message:"加载失败")
-            })
+//            var parent=self.tableCell.superview.superview as UITableView
+//            parent.reloadData()
+            var manageCon = ManageController()
+            manageCon.initTab=1
+            self.rootViewController.presentModalViewController(manageCon, animated:false)
+            
+        },failure: {(error: NSError) -> Void in
+            UIView.showAlertView("提示",message:"加载失败")
+        })
     }
     
     func Login(){
         // 跳转到详情内页
-        var userid=self.cellData.objectForKey("id") as String
+        var userid=(self.cellData.objectForKey("id") as String).toInt()!
         var indexCon = ViewController()
+        indexCon.userId=userid
         self.conView.presentModalViewController(indexCon, animated:true)
     }
     

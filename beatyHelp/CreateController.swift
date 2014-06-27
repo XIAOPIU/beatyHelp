@@ -108,7 +108,7 @@ class CreateController: UIViewController,UITextFieldDelegate,UITextViewDelegate{
         var whisper=self.whisperInput!.inputArea.text
         var duedate=self.timeField!.text
         var mobile=self.telInput!.inputField.text
-        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=\(mobile)&userid=1&status=1&duedate=\(duedate)"
+        postStr="school=湖南大学&tasktype=\(self.chooseType)&coin=\(coin)&intro=\(info)&whisper=\(whisper)&contact=\(mobile)&userid=11&status=1&duedate=\(duedate)"
 //        postStr="id=21&school=清华大学&tasktype=3&contact=18594562365&userid=11&status=1&duedate=2014-10-10"
         var getDate=PostRequest(_controller:self,_url:"http://mm.nextsystem.pw/task-save",_postStr:postStr,_type:"pub")
         println(postStr)

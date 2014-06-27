@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var indexTable : UITableView? //首页的tableView
     var dataArray = NSMutableArray() //首页数据
     var userData = NSMutableArray() //首页数据
+    var userId : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()

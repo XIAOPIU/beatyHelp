@@ -618,11 +618,6 @@ class GetPubTabelCell:UITableViewCell{
         self.getController.presentModalViewController(detailsCon, animated:true)
     }
     func finish(sender: UIButton!){
-//        var taskId=sender.tag
-//        var postStr="id=\(taskId)&applyid=52"
-//        var getDate=PostRequest(_controller:self.getController,_url:"http://mm.nextsystem.pw/task-done",_postStr:postStr,_type:"finish")
-//        BHAlertView().showSuccess(self, title: "发布成功", subTitle: "您已成功发布任务，快去任务广场看看吧")
-        
         BHAlertView().FinishIt(self.getController, title: "任务完成", subTitle: "是否已完成该任务？", alertType: "alertFinish", cellData: self.data as NSDictionary,tableCell:self )
     }
 }
