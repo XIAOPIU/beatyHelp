@@ -216,7 +216,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.leftTab!.alpha=0.5
 //        self.getTable!.hidden=false;
         //        self.pubTable!.hidden=true;
-        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        let applyid = saveUserId
         loadData(self.getTable!,url:"http://mm.nextsystem.pw/task-all?applyid=\(applyid)")
         // Animate in the alert view
         UIView.animateWithDuration(0.5, animations: {

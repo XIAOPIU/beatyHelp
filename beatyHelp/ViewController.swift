@@ -167,6 +167,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var cell = sender.superview.superview as UITableViewCell
         var path = self.indexTable!.indexPathForCell(cell)
         var getId = self.dataArray[path.row].objectForKey("id") as String
+        var getPubdate = self.dataArray[path.row].objectForKey("pubdate") as String
 //        func indexPathForCell(cell: UITableViewCell!) -> NSIndexPath! // returns nil if cell is not
         
         switch(sender.tag) {
@@ -175,7 +176,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case 1:
             BHAlertView().share(self, title: "任务分享", subTitle: "是否确定分享该任务？", alertType: "alertShare")
         case 2:
-            BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在2014-05-19 17:00前完成？", alertType: "alertDoIt", cellData: self.dataArray[path.row] as NSDictionary )
+            BHAlertView().doIt(self, title: "任务领取", subTitle: "是否确定领取该任务，\n并在\(getPubdate)前完成？", alertType: "alertDoIt", cellData: self.dataArray[path.row] as NSDictionary )
         default:
             println("default")
         }
