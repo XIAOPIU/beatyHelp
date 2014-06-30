@@ -2,7 +2,7 @@
 //  OtherController.swift
 //  beatyHelp
 //
-//  Created by 李国锐 on 6/16/14.
+//  Created by 李国锐,张杨雪 on 6/9/14.
 //  Copyright (c) 2014 XIAOPIU. All rights reserved.
 //
 

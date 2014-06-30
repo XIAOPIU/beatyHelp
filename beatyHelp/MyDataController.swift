@@ -37,6 +37,6 @@ class MyDataController: UIViewController {
     }
     
     func signOut(sender: UIButton!){
-        BHAlertView().signOut(self, title: "退出应用", subTitle: "是否确定退出该应用？")
+        BHAlertView().signOut(self, title: "退出应用", subTitle: "是否确定退出该应用？",alertType: "signOut")
     }
 }

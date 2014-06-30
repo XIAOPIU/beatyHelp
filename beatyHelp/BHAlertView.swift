@@ -213,7 +213,8 @@ class BHAlertView : UIView {
     }
     
     // comment(view, title, subTitle)
-    func signOut(view: UIViewController, title: String, subTitle: String) -> BHAlertViewClose {
+    func signOut(view: UIViewController, title: String, subTitle: String, alertType:String) -> BHAlertViewClose {
+        self.alertType = alertType
         return showTitle(view, title: title, subTitle: subTitle, duration: nil, completeText: nil, style: BHAlertViewStyle.SignOut);
     }
     
@@ -289,7 +290,12 @@ class BHAlertView : UIView {
             var img = UIImage(named: "redBtn")
             img = img.stretchableImageWithLeftCapWidth(8, topCapHeight:0)
             img.accessibilityFrame = CGRectMake(0, 0, kWindowWidth - 24, 36)
-            self.circleIconImageView.image = UIImage(named: "alertIcon03")
+//            layer.backgroundColor=UIColor.blackColor()
+            var url=self.cellData.objectForKey("avatar") as String
+            self.circleIconImageView.frame.origin.x=0
+            self.circleIconImageView.frame.origin.y=0
+            creatRoundImage(self.circleIconImageView,CGRectMake(0, 0, 56, 56),UIImage(),1.5).setImage(url,placeHolder: UIImage(named: "userList01.jpg"));
+//            self.circleIconImageView.image = UIImage(named: "alertIcon03")
             self.doneButton.setTitle("确定登录", forState: UIControlState.Normal)
             self.doneButton.setBackgroundImage(img, forState: UIControlState.Normal)
             
@@ -372,6 +378,8 @@ class BHAlertView : UIView {
             finishItDone()
         }else if self.alertType=="alertLogin"{
             Login()
+        }else if self.alertType=="signOut"{
+            signOut()
         }
         hideView()
     }
@@ -442,5 +450,10 @@ class BHAlertView : UIView {
         var detailsCon = DetailsController()
         detailsCon.id = self.userId.toInt()!
         self.conView.presentModalViewController(detailsCon, animated:true)
+    }
+    
+    func signOut(){
+        var loginCon = LoginController()
+        self.rootViewController.presentModalViewController(loginCon, animated:false)
     }
 }
