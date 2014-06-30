@@ -33,6 +33,7 @@ class GetMainViewTop{
     init(_controller:UIViewController, _pageNum:Int){
         getController = _controller
         setTopValueBg(_controller.view)
+        setUserImage()
         setUserName()
         setUserSign()
         if _pageNum == 1 {
@@ -40,7 +41,6 @@ class GetMainViewTop{
             setLabelArray()
         }
         else if _pageNum == 2{
-            setUserImage()
             setPhoneIcon()
             setPhoneNum()
         }
@@ -57,9 +57,7 @@ class GetMainViewTop{
     
     func setUserImage(){
         // 在plist文件中获取用户头像信息
-        var str2 = getDictionary("userInfo").objectForKey("headImage") as NSString
-        println(str2)
-        
+        var str2 = saveAvatar
         // 添加圆形头像
 //        creatRoundImage(imageButton,CGRectMake(0, 0, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
         // 添加圆形头像
@@ -68,7 +66,7 @@ class GetMainViewTop{
     
     func setImageClick(){
         // 在plist文件中获取用户头像信息
-        var str2 = getDictionary("userInfo").objectForKey("headImage") as NSString
+        var str2 = saveAvatar
         var imageButton = UIButton(frame:CGRectMake(20,15,78,78))
         imageButton.addTarget(self.getController,action:"footBtn3Action:",forControlEvents:.TouchUpInside)
         // 添加圆形头像
@@ -79,7 +77,7 @@ class GetMainViewTop{
     
     func setUserName(){
         userName = UILabel(frame:CGRectMake(110, 20, 200, 20))
-        userName.text = toString(getDictionary("userInfo").objectForKey("userName"))
+        userName.text = saveUname
         userName.font = UIFont(name:"Arial",size:20)
         userName.textColor = UIColor.whiteColor()
         userName.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
@@ -89,7 +87,7 @@ class GetMainViewTop{
     
     func setUserSign(){
         userSign = UILabel(frame:CGRectMake(110, 45, 200, 20))
-        userSign.text = toString(getDictionary("userInfo").objectForKey("userSign"))
+        userSign.text = saveStatus
         userSign.font = UIFont(name:"Arial",size:14)
         userSign.textColor = UIColor.whiteColor()
         userSign.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)
@@ -131,7 +129,7 @@ class GetMainViewTop{
     
     func setPhoneNum(){
         phoneNum = UILabel(frame:CGRectMake(122, 68, 97, 21))
-        phoneNum.text = toString(getDictionary("userInfo").objectForKey("phoneNum"))
+        phoneNum.text = saveMobile
         phoneNum.font = UIFont(name:"Arial",size:12)
         phoneNum.textColor = UIColor.whiteColor()
         phoneNum.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)

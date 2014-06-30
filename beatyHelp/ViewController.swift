@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /**
 *  首页controller
 */
@@ -57,9 +56,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if self.getUserId == "-1"{
 //            var id = getDictionary("userInfo").objectForKey("userId") as String
 //            println(id)
-            self.getUserId = getDictionary("userInfo").objectForKey("userId") as String
+            self.getUserId = saveUserId
         }
-        var url = "http://mm.renren.com/users-get?id=\(self.getUserId)" //"
+        var url = "http://mm.nextsystem.pw/users-get?id=\(self.getUserId)" //"
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
@@ -67,19 +66,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             var getData = data["data"] as NSDictionary //获取返回的数据list数组
             
-            var plistPath = NSBundle.mainBundle().pathForResource("statuses",ofType: "plist")
-            var dictionary = NSMutableDictionary(contentsOfFile:plistPath)
-            var userData : (AnyObject!) = dictionary.objectForKey("userInfo")
+            saveUserId = self.getUserId
+            saveUname = getData.objectForKey("uname") as String
+            saveMobile = getData.objectForKey("mobile") as String
+            saveStatus = getData.objectForKey("status") as String
+            saveAvatar = getData.objectForKey("avatar") as String
             
-            userData.setObject(self.getUserId, forKey:"userId")
-            userData.setObject(getData.objectForKey("uname"), forKey:"userName")
-            userData.setObject(getData.objectForKey("mobile"), forKey:"phoneNum")
-            userData.setObject(getData.objectForKey("status"), forKey:"userSign")
-            userData.setObject(getData.objectForKey("avatar"), forKey:"headImage")
+//            var plistPath = NSBundle.mainBundle().pathForResource("save",ofType: "plist")
+//            var dictionary = NSMutableDictionary(contentsOfFile:plistPath)
+//            dictionary.setObject(self.getUserId, forKey:"userId")
+//            dictionary.setObject(getData.objectForKey("uname"), forKey:"userName")
+//            dictionary.setObject(getData.objectForKey("mobile"), forKey:"phoneNum")
+//            dictionary.setObject(getData.objectForKey("status"), forKey:"userSign")
+//            dictionary.setObject(getData.objectForKey("avatar"), forKey:"headImage")
+//            var doc = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
+//            var docPath = doc.objectAtIndex(0) as NSString
+//            var docLocation = docPath.stringByAppendingPathComponent("save.plist")
+//            dictionary.writeToFile(plistPath, atomically: true)
             
-            dictionary.setObject(userData, forKey:"userInfo")
-            
-            dictionary.writeToFile(plistPath, atomically: true)
             self.loadData() //数据加载
             self.indexTable!.reloadData() //更新tableView内的数据
             //            UIView.showAlertView("提示",message:toString(self.dataArray))
@@ -91,8 +95,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     */
     func loadData()
     {
-        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        let applyid = saveUserId
         var url = "http://mm.nextsystem.pw/task-all?status=1&exuid=\(applyid)" //接口url
+        println(url)
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
@@ -179,7 +184,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var manageCon = ManageController()
 //        manageCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(manageCon, animated:false)
-        self = nil;
     }
     
     func footBtn3Action(sender: UIButton!) {

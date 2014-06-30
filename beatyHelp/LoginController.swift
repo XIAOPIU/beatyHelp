@@ -30,7 +30,7 @@ class LoginController: UIViewController {
     
     
     func loginBtn(sender: UIButton!){
-        var userName=self.dataArray[sender.tag].objectForKey("uname") as String
+        var userName=saveUname
         //        BHAlertView().Success(self.bodyController, title: "任务完成", subTitle: "是否已完成该任务？", alertType: "alertFinish")
         BHAlertView().Login(self, title: "登录", subTitle: "确定以\(userName)的身份登录吗？", alertType: "alertLogin", cellData: self.dataArray[sender.tag] as NSDictionary )
     }

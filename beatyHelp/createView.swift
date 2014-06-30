@@ -311,7 +311,7 @@ class getInputArea:UIView{
         inputField.frame=CGRectMake(50, 42, 200,27)
         
         inputField.placeholder=""
-        inputField.text="18612270100"
+        inputField.text=saveMobile
         inputField.textAlignment=NSTextAlignment.Center
         inputField.keyboardType=UIKeyboardType.NumberPad
     

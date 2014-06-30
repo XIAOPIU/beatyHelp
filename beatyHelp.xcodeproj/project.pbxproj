@@ -108,7 +108,6 @@
 		A3AFE52D194978A200C60A1F /* icon03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AFE528194978A200C60A1F /* icon03@2x.png */; };
 		A3AFE52E194978A200C60A1F /* icon04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AFE529194978A200C60A1F /* icon04@2x.png */; };
 		A3AFE52F194978A200C60A1F /* icon05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AFE52A194978A200C60A1F /* icon05@2x.png */; };
-		A3CA5C9D195D430E00D917A7 /* loginBg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3CA5C9C195D430E00D917A7 /* loginBg@2x.jpg */; };
 		A3CA5CA2195D469D00D917A7 /* loginBg4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CA5CA0195D469D00D917A7 /* loginBg4@2x.png */; };
 		A3CA5CA3195D469D00D917A7 /* loginBg5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CA5CA1195D469D00D917A7 /* loginBg5@2x.png */; };
 		A3CC823C19503EA600AACA8A /* alertIcon01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CC823919503EA600AACA8A /* alertIcon01@2x.png */; };
@@ -130,6 +129,7 @@
 		A3F7C44719501841001E044D /* notification-notice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3F7C44219501841001E044D /* notification-notice@2x.png */; };
 		A3F7C44819501841001E044D /* notification-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3F7C44319501841001E044D /* notification-success@2x.png */; };
 		A3F7C44919501841001E044D /* notification-warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3F7C44419501841001E044D /* notification-warning@2x.png */; };
+		A3F8ADF6196113BE005637A2 /* saveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F8ADF5196113BE005637A2 /* saveData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +280,7 @@
 		A3F7C44219501841001E044D /* notification-notice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notification-notice@2x.png"; sourceTree = "<group>"; };
 		A3F7C44319501841001E044D /* notification-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notification-success@2x.png"; sourceTree = "<group>"; };
 		A3F7C44419501841001E044D /* notification-warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notification-warning@2x.png"; sourceTree = "<group>"; };
+		A3F8ADF5196113BE005637A2 /* saveData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saveData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +445,7 @@
 				A36702EF195013C800640801 /* BHAlertView.swift */,
 				A3DD3CD819509896003863C8 /* BHHttpManager.swift */,
 				A3E87BD3195D174100E9C8C6 /* BHFileOp.swift */,
+				A3F8ADF5196113BE005637A2 /* saveData.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -739,6 +741,7 @@
 				18A4946F194AFD5100380807 /* createView.swift in Sources */,
 				A328E22E195ACB5700C6EF82 /* HTTPTask.swift in Sources */,
 				A39CCF4019455975006D061A /* ManageController.swift in Sources */,
+				A3F8ADF6196113BE005637A2 /* saveData.swift in Sources */,
 				A3E87BD4195D174100E9C8C6 /* BHFileOp.swift in Sources */,
 				A3601FC9194ED43D003AA8F3 /* otherView.swift in Sources */,
 				A39CCF3A1943FEEE006D061A /* obTool.m in Sources */,

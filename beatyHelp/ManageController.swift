@@ -23,7 +23,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         setPubTable()
         setGetTable()
-        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        let applyid = saveUserId
         if initTab==0{
             loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=\(applyid)")
         }
@@ -201,7 +201,7 @@ class ManageController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.rightTab!.alpha=0.5
 //        self.pubTable!.hidden=false;
         //        self.getTable!.hidden=true;
-        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        let applyid = saveUserId
         loadData(self.pubTable!,url:"http://mm.nextsystem.pw/task-all?userid=\(applyid)")
         UIView.animateWithDuration(0.5, animations: {
             self.getTable!.alpha = 0;

@@ -27,17 +27,18 @@ class LoginViewDraw{
     }
     
     func getScrollView(controller: LoginController){
-        scrollView = UIScrollView(frame:CGRectMake(0, 70, 320, UIScreen.mainScreen().applicationFrame.height-70))
+        scrollView = UIScrollView(frame:CGRectMake(0, 70, 320, UIScreen.mainScreen().applicationFrame.height-50))
         // 设置可滚动的区域
         
-        if  UIScreen.mainScreen().applicationFrame.height == 460 {
-            scrollView.contentSize = CGSizeMake(320, 1000)
-        }
+        scrollView.contentSize = CGSizeMake(320, 1000)
+//        if  UIScreen.mainScreen().applicationFrame.height == 460 {
+//            scrollView.contentSize = CGSizeMake(320, 1000)
+//        }
         controller.view.addSubview(scrollView)
     }
     
     func setBg(controller: LoginController){
-        controller.view.backgroundColor = UIColor(patternImage: UIImage(named:"loginBg.jpg"))
+        controller.view.backgroundColor = UIColor(patternImage: UIImage(named:"loginBg5"))
     }
     
     

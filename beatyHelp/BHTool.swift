@@ -56,6 +56,19 @@ func getDictionary(string:String)->AnyObject{
 }
 
 /**
+*  获取save.plist文件的数据
+*
+*  @param string 需要获取的字典目录名
+*
+*  @return 返回所查找的目录名字典
+*/
+func getSaveDictionary(string:String)->AnyObject{
+    var plistPath = NSBundle.mainBundle().pathForResource("save",ofType: "plist")
+    var dictionary = NSDictionary(contentsOfFile:plistPath)
+    return dictionary.objectForKey(string)
+}
+
+/**
 *  通过字典查出相应颜色
 *
 *  @param dictionaryName 需要获取的颜色name

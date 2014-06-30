@@ -405,8 +405,8 @@ class BHAlertView : UIView {
     func doItDone(){
         var id = self.cellData.objectForKey("id") as String
         var request = HTTPTask()
-        let url = "http://mm.renren.com/task-apply"
-        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        let url = "http://mm.nextsystem.pw/task-apply"
+        let applyid = saveUserId
         let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":applyid]
         request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
             // 跳转到详情内页
@@ -421,8 +421,8 @@ class BHAlertView : UIView {
     func finishItDone(){
         var id = self.cellData.objectForKey("id") as String
         var request = HTTPTask()
-        let url = "http://mm.renren.com/task-done"
-        let applyid = toString(getDictionary("userInfo").objectForKey("userId"))
+        let url = "http://mm.nextsystem.pw/task-done"
+        let applyid = saveUserId
         let parametersDic:Dictionary<String,AnyObject> = ["id":id,"applyid":applyid]
         request.POST(url, parameters: parametersDic, success: {(response: AnyObject?) -> Void in
             

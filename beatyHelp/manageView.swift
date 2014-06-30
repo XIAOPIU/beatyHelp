@@ -56,11 +56,12 @@ class GetTopTab{
     
     //绘制左侧tab
     func setLeftTab(controller:UIViewController){
-        leftTab = UIButton(frame:CGRectMake(15, 11, 120, 20))
-        var tabIcon = UIImageView(frame:CGRectMake(0,0,18,17))
-        var tabLabel=UILabel(frame:CGRectMake(20, 0, 120, 20))
+        leftTab = UIButton(frame:CGRectMake(5, 6, 140, 30))
+        var tabIcon = UIImageView(frame:CGRectMake(20,5,18,17))
+        var tabLabel=UILabel(frame:CGRectMake(40, 5, 120, 20))
         tabIcon.image = UIImage(named:"leftTabIcon")
-        tabLabel.text="发布的任务(21)"
+        tabLabel.text="发布的任务"
+//        tabLabel.textAlignment = NSTextAlignment.Center
         tabLabel.font=UIFont(name:"Arial",size:13)
         tabLabel.textColor=UIColor.whiteColor()
         
@@ -72,11 +73,11 @@ class GetTopTab{
     
     //绘制右侧tab
     func setRightTab(controller:UIViewController){
-        rightTab = UIButton(frame:CGRectMake(165, 11, 120, 20))
-        var tabIcon = UIImageView(frame:CGRectMake(0,0,18,17))
-        var tabLabel=UILabel(frame:CGRectMake(20, 0, 120, 20))
+        rightTab = UIButton(frame:CGRectMake(155, 6, 140, 30))
+        var tabIcon = UIImageView(frame:CGRectMake(20,5,18,17))
+        var tabLabel=UILabel(frame:CGRectMake(40, 5, 120, 20))
         tabIcon.image = UIImage(named:"rightTabIcon")
-        tabLabel.text="领取的任务(21)"
+        tabLabel.text="领取的任务"
         tabLabel.font=UIFont(name:"Arial",size:13)
         tabLabel.textColor=UIColor.whiteColor()
         rightTab.alpha=0.5
