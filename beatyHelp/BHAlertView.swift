@@ -430,7 +430,8 @@ class BHAlertView : UIView {
 //            parent.reloadData()
             var manageCon = ManageController()
             manageCon.initTab=1
-            self.conView.presentModalViewController(manageCon, animated:false)
+            self.conView.presentModalViewController(manageCon, animated:true)
+//            println(1)
             
         },failure: {(error: NSError) -> Void in
             UIView.showAlertView("提示",message:"加载失败")
