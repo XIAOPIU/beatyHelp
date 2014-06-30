@@ -570,10 +570,10 @@ class GetPubTabelCell:UITableViewCell{
             var rightBtn=UIButton(frame:CGRectMake(152, 130, 150, 28))
             rightBtn.addSubview(stopImgView)
             rightBtn.addSubview(stopLabel)
-            if self.tableType==1{
+            if self.tableType==0{
                 stopLabel.text = "完成"
-                rightBtn.tag=(data.objectForKey("id") as String).toInt()!
                 rightBtn.addTarget(self,action:"finish:",forControlEvents:.TouchUpInside)
+                rightBtn.tag=(data.objectForKey("id") as String).toInt()!
             }
             self.addSubview(rightBtn)
         }

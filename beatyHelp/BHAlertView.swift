@@ -429,7 +429,7 @@ class BHAlertView : UIView {
 //            var parent=self.tableCell.superview.superview as UITableView
 //            parent.reloadData()
             var manageCon = ManageController()
-            manageCon.initTab=1
+//            manageCon.initTab=1
             self.conView.presentModalViewController(manageCon, animated:true)
 //            println(1)
             
