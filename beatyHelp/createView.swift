@@ -88,7 +88,7 @@ class GetCreateView{
                 typeBtn.setImage(UIImage(named:"typeBtn\(i+1)x"), forState: UIControlState.Highlighted)
                 typeBtn.setImage(UIImage(named:"typeBtn\(i+1)x"), forState: UIControlState.Selected)
                 typeBtn.addTarget(bodyController,action:Selector("typeBtnAction:"),forControlEvents:.TouchUpInside);
-                typeBtn.tag=i
+                typeBtn.tag=i+1
                 typeBtnArray.insert(typeBtn, atIndex: i)
                 typeCon.addSubview(typeBtn)
             }
@@ -96,10 +96,9 @@ class GetCreateView{
         else{
             var typeBtn = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
             typeBtn.frame = CGRectMake(CGFloat(btnX[0]), 17, 82, 24)
-            typeBtn.setImage(UIImage(named:"typeBtn1"), forState: UIControlState.Normal)
-            typeBtn.setImage(UIImage(named:"typeBtn1x"), forState: UIControlState.Highlighted)
-            typeBtn.setImage(UIImage(named:"typeBtn1x"), forState: UIControlState.Selected)
-            typeBtn.addTarget(bodyController,action:Selector("typeBtnAction:"),forControlEvents:.TouchUpInside);
+            typeBtn.setImage(UIImage(named:"typeBtn0"), forState: UIControlState.Normal)
+            typeBtn.setImage(UIImage(named:"typeBtn0x"), forState: UIControlState.Highlighted)
+            typeBtn.setImage(UIImage(named:"typeBtn0x"), forState: UIControlState.Selected)
             typeBtn.tag=0
             typeBtnArray.insert(typeBtn, atIndex: 0)
             typeCon.addSubview(typeBtn)

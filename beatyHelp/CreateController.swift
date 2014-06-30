@@ -35,6 +35,9 @@ class CreateController: UIViewController,UITextFieldDelegate,UITextViewDelegate{
         var gestureTap=UITapGestureRecognizer(target: self, action: Selector("viewTapped"))
         gestureTap.cancelsTouchesInView = false;
         self.view.addGestureRecognizer(gestureTap)
+        if saveSex == "0"{
+            self.chooseType = 0
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,7 +101,7 @@ class CreateController: UIViewController,UITextFieldDelegate,UITextViewDelegate{
             typeBtnArray[i].selected=false;
         }
         sender.selected=true;
-        self.chooseType=Int(sender.tag)+1
+        self.chooseType=sender.tag
     }
     
     func pubBtnAction(sender: UIButton!) {
