@@ -80,15 +80,28 @@ class GetCreateView{
     
     func setTypeBtnArray(){
         var btnX = [11, 108, 206]
-        for i in 0..3{
+        if saveSex == "1"{
+            for i in 0..3{
+                var typeBtn = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+                typeBtn.frame = CGRectMake(CGFloat(btnX[i]), 17, 82, 24)
+                typeBtn.setImage(UIImage(named:"typeBtn\(i+1)"), forState: UIControlState.Normal)
+                typeBtn.setImage(UIImage(named:"typeBtn\(i+1)x"), forState: UIControlState.Highlighted)
+                typeBtn.setImage(UIImage(named:"typeBtn\(i+1)x"), forState: UIControlState.Selected)
+                typeBtn.addTarget(bodyController,action:Selector("typeBtnAction:"),forControlEvents:.TouchUpInside);
+                typeBtn.tag=i
+                typeBtnArray.insert(typeBtn, atIndex: i)
+                typeCon.addSubview(typeBtn)
+            }
+        }
+        else{
             var typeBtn = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-            typeBtn.frame = CGRectMake(CGFloat(btnX[i]), 17, 82, 24)
-            typeBtn.setImage(UIImage(named:"typeBtn\(i+1)"), forState: UIControlState.Normal)
-            typeBtn.setImage(UIImage(named:"typeBtn\(i+1)x"), forState: UIControlState.Highlighted)
-            typeBtn.setImage(UIImage(named:"typeBtn\(i+1)x"), forState: UIControlState.Selected)
+            typeBtn.frame = CGRectMake(CGFloat(btnX[0]), 17, 82, 24)
+            typeBtn.setImage(UIImage(named:"typeBtn1"), forState: UIControlState.Normal)
+            typeBtn.setImage(UIImage(named:"typeBtn1x"), forState: UIControlState.Highlighted)
+            typeBtn.setImage(UIImage(named:"typeBtn1x"), forState: UIControlState.Selected)
             typeBtn.addTarget(bodyController,action:Selector("typeBtnAction:"),forControlEvents:.TouchUpInside);
-            typeBtn.tag=i
-            typeBtnArray.insert(typeBtn, atIndex: i)
+            typeBtn.tag=0
+            typeBtnArray.insert(typeBtn, atIndex: 0)
             typeCon.addSubview(typeBtn)
         }
         typeBtnArray[0].selected=true

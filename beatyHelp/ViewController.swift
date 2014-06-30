@@ -71,6 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             saveMobile = getData.objectForKey("mobile") as String
             saveStatus = getData.objectForKey("status") as String
             saveAvatar = getData.objectForKey("avatar") as String
+            saveSex = getData.objectForKey("sex") as String
             
 //            var plistPath = NSBundle.mainBundle().pathForResource("save",ofType: "plist")
 //            var dictionary = NSMutableDictionary(contentsOfFile:plistPath)

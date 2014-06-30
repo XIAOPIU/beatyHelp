@@ -359,7 +359,7 @@ class GetCommentField:UITextField , UITextFieldDelegate{
         self.clearButtonMode=UITextFieldViewMode.WhileEditing
 //        self.returnKeyType=UIReturnKeyType.Done
         //        self.keyboardAppearance = .Dark;
-        self.keyboardType=UIKeyboardType.NumberPad
+//        self.keyboardType=UIKeyboardType.NumberPad
         //        var timeSelect=UIView(frame:CGRectMake(0, 0, 320,100))
         //        timeSelect.backgroundColor=UIColor.blackColor()
         //        var timeSelect=UIDatePicker(frame:CGRectMake(0, 0, 0,0))
