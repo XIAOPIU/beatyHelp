@@ -17,13 +17,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var indexTable : UITableView? //首页的tableView
     var dataArray = NSMutableArray() //首页数据
     var userData = NSMutableArray() //首页数据
-    var getUserId = 1
+    var getUserId = "-1"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndexTable() //设置并创建tableView
         loadUserData()
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,7 +54,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func loadUserData(){
-        var url = "http://mm.renren.com/users-get?id=\(getUserId)" //"
+        if self.getUserId == "-1"{
+//            var id = getDictionary("userInfo").objectForKey("userId") as String
+//            println(id)
+            self.getUserId = getDictionary("userInfo").objectForKey("userId") as String
+        }
+        var url = "http://mm.renren.com/users-get?id=\(self.getUserId)" //"
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
@@ -65,7 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             var dictionary = NSMutableDictionary(contentsOfFile:plistPath)
             var userData : (AnyObject!) = dictionary.objectForKey("userInfo")
             
-            userData.setObject(getData.objectForKey("id"), forKey:"userId")
+            userData.setObject(self.getUserId, forKey:"userId")
             userData.setObject(getData.objectForKey("uname"), forKey:"userName")
             userData.setObject(getData.objectForKey("mobile"), forKey:"phoneNum")
             userData.setObject(getData.objectForKey("status"), forKey:"userSign")
@@ -173,6 +179,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var manageCon = ManageController()
 //        manageCon.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
         self.presentModalViewController(manageCon, animated:false)
+        self = nil;
     }
     
     func footBtn3Action(sender: UIButton!) {

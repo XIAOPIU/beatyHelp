@@ -439,9 +439,9 @@ class BHAlertView : UIView {
     
     func Login(){
         // 跳转到详情内页
-        var userid=(self.cellData.objectForKey("id") as String).toInt()!
+        var userid=self.cellData.objectForKey("id") as String
         var indexCon = ViewController()
-        indexCon.getUserId=userid
+        indexCon.getUserId = userid
         self.conView.presentModalViewController(indexCon, animated:true)
     }
     

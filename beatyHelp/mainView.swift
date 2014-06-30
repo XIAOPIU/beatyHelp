@@ -58,6 +58,7 @@ class GetMainViewTop{
     func setUserImage(){
         // 在plist文件中获取用户头像信息
         var str2 = getDictionary("userInfo").objectForKey("headImage") as NSString
+        println(str2)
         
         // 添加圆形头像
 //        creatRoundImage(imageButton,CGRectMake(0, 0, 64, 64),UIImage(),1.5).setImage(URL,placeHolder: UIImage(named: "userList01.jpg"));
