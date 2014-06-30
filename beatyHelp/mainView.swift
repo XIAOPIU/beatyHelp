@@ -87,7 +87,7 @@ class GetMainViewTop{
     
     func setUserSign(){
         userSign = UILabel(frame:CGRectMake(110, 45, 200, 20))
-        userSign.text = saveStatus
+        userSign.text = saveSchool
         userSign.font = UIFont(name:"Arial",size:14)
         userSign.textColor = UIColor.whiteColor()
         userSign.shadowColor = UIColor(red:0,green:0,blue:0,alpha:0.75)

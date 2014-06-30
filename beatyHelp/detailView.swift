@@ -170,8 +170,15 @@ class GetDetailView{
     
     func setTaskInfo(){
         var infoLabel = data.objectForKey("intro") as String
+        var whisper = data.objectForKey("whisper") as String
+        var userid = data.objectForKey("userid") as String
+        var applyid = data.objectForKey("applyid") as String
         taskInfo = UILabel(frame:CGRectMake(75, 35, 224, 55))
-        taskInfo.text = infoLabel
+        if saveUserId == userid || saveUserId == applyid{
+            taskInfo.text = "\(infoLabel)     ----------      悄悄话:\(whisper)"
+        }else{
+            taskInfo.text = infoLabel
+        }
         taskInfo.font = UIFont(name:"Arial",size:12)
         taskInfo.textColor = getColorFromDictionary("grey50")
         var height = infoLabel.stringHeightWith(12,width:224)

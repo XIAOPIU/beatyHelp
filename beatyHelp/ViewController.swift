@@ -68,6 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             saveUserId = self.getUserId
             saveUname = getData.objectForKey("uname") as String
+            saveSchool = getData.objectForKey("school") as String
             saveMobile = getData.objectForKey("mobile") as String
             saveStatus = getData.objectForKey("status") as String
             saveAvatar = getData.objectForKey("avatar") as String
@@ -97,22 +98,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func loadData()
     {
         let applyid = saveUserId
-        var url = "http://mm.nextsystem.pw/task-all?status=1&exuid=\(applyid)" //接口url
-        println(url)
+        var url = "http://mm.nextsystem.pw/task-all?status=1&exuid=\(applyid)&sex=\(saveSex)" //接口url
         BHHttpRequest.requestWithURL(url,completionHandler:{ data in
             if data as NSObject == NSNull(){
                 UIView.showAlertView("提示",message:"加载失败")
                 return
             }
             
-            var arr = data["data"] as NSArray //获取返回的数据list数组
-            for data : AnyObject  in arr{ //遍历保存数据
-                self.dataArray.addObject(data)
-            }
-            MainViewDraw(_controller: self) //mainView界面绘制
-            self.indexTable!.reloadData() //更新tableView内的数据
+        var arr = data["data"] as NSArray //获取返回的数据list数组
+        for data : AnyObject  in arr{ //遍历保存数据
+            self.dataArray.addObject(data)
+        }
+        MainViewDraw(_controller: self) //mainView界面绘制
+        self.indexTable!.reloadData() //更新tableView内的数据
 //            UIView.showAlertView("提示",message:toString(self.dataArray))
-            })
+        })
     }
     
     /**
