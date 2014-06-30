@@ -35,7 +35,7 @@ class CreateController: UIViewController,UITextFieldDelegate,UITextViewDelegate{
         var gestureTap=UITapGestureRecognizer(target: self, action: Selector("viewTapped"))
         gestureTap.cancelsTouchesInView = false;
         self.view.addGestureRecognizer(gestureTap)
-        if saveSex == "0"{
+        if saveSex == "1"{
             self.chooseType = 0
         }
     }

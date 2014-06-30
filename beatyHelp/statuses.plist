@@ -14,7 +14,7 @@
 			<key>status</key>
 			<integer>0</integer>
 			<key>imageName</key>
-			<string>listCellBlueX</string>
+			<string>listCellRedX</string>
 			<key>identifier</key>
 			<string>cell</string>
 			<key>statusColor</key>

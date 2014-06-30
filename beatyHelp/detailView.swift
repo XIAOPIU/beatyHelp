@@ -48,7 +48,7 @@ class GetDetailView{
     
     var arrayDic = getDictionary("list") as NSArray
     var rowNo = 1
-    var detailsArray = ["detailsTopBgBlue","detailsTopBgBlue", "detailsTopBgRed", "detailsTopBgGreen"]
+    var detailsArray = ["detailsTopBgRed","detailsTopBgBlue", "detailsTopBgRed", "detailsTopBgGreen"]
     var bgHeight: CGFloat!
     var idNum = 0
     var imageNameIndex = 0

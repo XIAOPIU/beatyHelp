@@ -80,7 +80,7 @@ class GetCreateView{
     
     func setTypeBtnArray(){
         var btnX = [11, 108, 206]
-        if saveSex == "1"{
+        if saveSex == "0"{
             for i in 0..3{
                 var typeBtn = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
                 typeBtn.frame = CGRectMake(CGFloat(btnX[i]), 17, 82, 24)
